@@ -1,10 +1,18 @@
-/* Custom Pixel Cursor */
-* {
-  cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAdgAAAHYBTnsmCAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABXSURBVCiRY/hPABCTswAJhv///zMwMDAw/P//HyQOV8wI0wxSjKoJphmfJphmXJqwaSKmGZ8mkGZcmvBpAmkmpgmkGZcmsOMw1RKtGaSYYRi5iBAAAMr2JAz1VboaAAAAAElFTkSuQmCC'), auto;
+/* Custom Pixel Cursor - Simple and Reliable */
+*, *::before, *::after {
+  cursor: crosshair !important;
 }
 
-button, a, .desktop-icon, .dock-item, .window-btn {
-  cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAdgAAAHYBTnsmCAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAB+SURBVCiRY/hPACBTM+P///8ZGBgYGP7//w8Sh6tlBGlgYGBgYPj//z+DqqoqTB6u1szMjOH///8MDAwMDDExMTA5mNq/f/8y/P//n4GBgYFBRUUFpgCkAZ9muAK4Yny2w9SgaUJoAtkIcwpIA8NGkGZkNSANICfB1DIMaxcBAPwgNnYJxSLnAAAAAElFTkSuQmCC'), pointer !important;
+button, a, .desktop-icon, .dock-item, .window-btn, .window-header, .trash-close, .desktop-icon-label, .trash-item {
+  cursor: pointer !important;
+}
+
+.window-header {
+  cursor: move !important;
+}
+
+input, textarea {
+  cursor: text !important;
 }
 
 .App {
