@@ -3,6 +3,7 @@ import DesktopIcon from './DesktopIcon';
 import Window from './Window';
 import AboutWindow from './AboutWindow';
 import ExtracurricularsWindow from './ExtracurricularsWindow';
+import FuturePlansWindow from './FuturePlansWindow';
 import Cloud from './Cloud';
 import StickyNote from './StickyNote';
 import PixelGirl from './PixelGirl';
@@ -134,6 +135,16 @@ const Desktop = ({ playSound }) => {
               playSound={playSound}
             />
           );
+        } else if (window.type === 'future') {
+          return (
+            <FuturePlansWindow
+              key={window.id}
+              zIndex={window.zIndex}
+              onClose={() => handleWindowClose(window.id)}
+              onFocus={() => handleWindowFocus(window.id)}
+              playSound={playSound}
+            />
+          );
         } else {
           return (
             <Window
@@ -202,8 +213,12 @@ const Desktop = ({ playSound }) => {
 
       {/* Pixel Girl Character - Now Clickable */}
       <PixelGirl onClick={() => {
-        const aboutProject = projectsData.find(p => p.id === 'about-me');
-        if (aboutProject) handleIconClick(aboutProject);
+        const futurePlan = {
+          id: 'future-plans',
+          type: 'future',
+          title: 'What\'s Next for Manish'
+        };
+        handleIconClick(futurePlan);
       }} />
 
       {/* Dock */}

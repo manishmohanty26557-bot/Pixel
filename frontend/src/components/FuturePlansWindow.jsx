@@ -1,9 +1,9 @@
 import React, { useRef, useEffect } from 'react';
 import Draggable from 'react-draggable';
-import { X, Minus, Square, Mail, Phone, GraduationCap } from 'lucide-react';
-import { aboutData, skillsData } from '../data/mockData';
+import { X } from 'lucide-react';
+import { aboutData } from '../data/mockData';
 
-const AboutWindow = ({ onClose, zIndex, onFocus, playSound }) => {
+const FuturePlansWindow = ({ onClose, zIndex, onFocus, playSound }) => {
   const nodeRef = useRef(null);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const AboutWindow = ({ onClose, zIndex, onFocus, playSound }) => {
       <div 
         ref={nodeRef}
         className="window"
-        style={{ zIndex, top: '10%', left: '25%' }}
+        style={{ zIndex, top: '12%', left: '18%' }}
         onMouseDown={onFocus}
       >
         <div className="window-header">
@@ -36,7 +36,7 @@ const AboutWindow = ({ onClose, zIndex, onFocus, playSound }) => {
               className="window-btn window-btn-close" 
               onClick={handleClose}
               onMouseDown={(e) => e.stopPropagation()}
-              data-testid="close-about"
+              data-testid="close-future-plans"
             >
               <X size={10} />
             </button>
@@ -49,46 +49,36 @@ const AboutWindow = ({ onClose, zIndex, onFocus, playSound }) => {
               onMouseDown={(e) => e.stopPropagation()}
             />
           </div>
-          <div className="window-title">About Me</div>
+          <div className="window-title">What's Next for Manish</div>
         </div>
         
         <div className="window-content">
           <div className="window-header-section">
-            <div className="window-icon">👤</div>
+            <div className="window-icon">🎯</div>
             <div>
-              <h2 className="window-project-title">{aboutData.name}</h2>
-              <p className="window-role">{aboutData.tagline}</p>
+              <h2 className="window-project-title">Next 2 Months</h2>
+              <p className="window-role">What I want to do next</p>
             </div>
           </div>
 
           <div className="window-description">
-            <p>{aboutData.bio}</p>
+            <p>The next chapter is all about big moves, building, and a little bit of fun. Here's what I'm chasing:</p>
           </div>
 
-          <div className="window-section">
-            <h3 className="window-section-title">Contact</h3>
-            <div className="about-contact">
-              <p className="about-contact-item">
-                <Mail size={12} /> {aboutData.email}
-              </p>
-              <p className="about-contact-item">
-                <Phone size={12} /> {aboutData.phone}
-              </p>
-              <p className="about-contact-item">
-                <GraduationCap size={12} /> {aboutData.education}
-              </p>
-            </div>
+          <div className="next-months-grid">
+            {aboutData.nextTwoMonths.map((item, idx) => (
+              <div key={idx} className="next-month-card">
+                <div className="next-month-icon">{item.icon}</div>
+                <div className="next-month-content">
+                  <h4 className="next-month-title">{item.title}</h4>
+                  <p className="next-month-desc">{item.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
 
-          <div className="window-section">
-            <h3 className="window-section-title">Core Skills</h3>
-            <div className="window-skills">
-              {skillsData.map((skill, idx) => (
-                <span key={idx} className="window-skill-tag">
-                  {skill}
-                </span>
-              ))}
-            </div>
+          <div className="future-cta">
+            <p>If this sounds like someone you'd want on your team, let's talk →</p>
           </div>
         </div>
       </div>
@@ -96,4 +86,4 @@ const AboutWindow = ({ onClose, zIndex, onFocus, playSound }) => {
   );
 };
 
-export default AboutWindow;
+export default FuturePlansWindow;
