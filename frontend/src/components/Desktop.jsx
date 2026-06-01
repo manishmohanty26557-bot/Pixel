@@ -197,6 +197,7 @@ const Desktop = ({ playSound }) => {
               </button>
             </div>
             <div className="trash-body">
+              <p className="bin-context">This is what My Dad thinks about AI 😄</p>
               <ul className="trash-list">
                 {dadJokesAboutAI.map((joke, idx) => (
                   <li key={idx} className="trash-item">{joke}</li>

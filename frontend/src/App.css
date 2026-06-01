@@ -664,6 +664,16 @@ input, textarea {
   margin: 0;
 }
 
+.bin-context {
+  font-size: 9px;
+  color: #5b21b6;
+  text-align: center;
+  margin-bottom: 16px;
+  font-style: italic;
+  padding: 8px;
+  border-bottom: 1px dashed #8B5CF6;
+}
+
 .trash-item {
   font-size: 9px;
   line-height: 2;
