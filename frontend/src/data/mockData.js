@@ -197,7 +197,7 @@ export const projectsData = [
     type: 'link',
     position: { x: 500, y: 450 },
     isLink: true,
-    url: 'https://tinyurl.com/4pxm97pn'
+    url: '/assets/resume.pdf'
   },
   {
     id: 'review-deck',
@@ -206,7 +206,7 @@ export const projectsData = [
     type: 'link',
     position: { x: 640, y: 450 },
     isLink: true,
-    url: 'https://tinyurl.com/4zrnpsvn'
+    url: '/assets/review-deck.pdf'
   }
 ];
 
