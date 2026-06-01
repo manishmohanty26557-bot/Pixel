@@ -66,6 +66,21 @@ const AboutWindow = ({ onClose, zIndex, onFocus, playSound }) => {
           </div>
 
           <div className="window-section">
+            <h3 className="window-section-title">🎯 Next 2 Months Plan</h3>
+            <div className="next-months-grid">
+              {aboutData.nextTwoMonths.map((item, idx) => (
+                <div key={idx} className="next-month-card">
+                  <div className="next-month-icon">{item.icon}</div>
+                  <div className="next-month-content">
+                    <h4 className="next-month-title">{item.title}</h4>
+                    <p className="next-month-desc">{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="window-section">
             <h3 className="window-section-title">Contact</h3>
             <div className="about-contact">
               <p className="about-contact-item">

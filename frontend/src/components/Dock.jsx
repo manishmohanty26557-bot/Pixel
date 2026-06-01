@@ -4,8 +4,8 @@ import { Trash2 } from 'lucide-react';
 const Dock = ({ onTrashClick }) => {
   return (
     <div className="dock-container">
+      <div className="dock-label">🗑️ Trash</div>
       <div className="dock">
-        {/* Trash Can Easter Egg */}
         <div 
           className="dock-item dock-trash"
           onClick={onTrashClick}

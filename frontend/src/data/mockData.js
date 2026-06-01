@@ -216,7 +216,29 @@ export const aboutData = {
   email: 'manishmohanty19@gmail.com',
   phone: '+91-8130625164',
   education: 'B.A. (Hons) Economics - Delhi College of Arts and Commerce, University of Delhi',
-  bio: 'Recently turned 21, drove growth at Zoop & Perfora, and have been following what you\'re building at Merlin and Thine. Growth & Performance Marketing Specialist with proven track record of driving revenue through data-driven strategies across multiple startups.'
+  bio: 'Recently turned 21, drove growth at Zoop & Perfora, and have been following what you\'re building at Merlin and Thine. Growth & Performance Marketing Specialist with proven track record of driving revenue through data-driven strategies across multiple startups.',
+  nextTwoMonths: [
+    {
+      icon: '✈️',
+      title: 'Move to Bangalore',
+      description: 'Relocating to India\'s startup capital - ready to immerse myself in the tech ecosystem and build with the best.'
+    },
+    {
+      icon: '🚀',
+      title: 'Work at an AI Startup',
+      description: 'Looking to join an early-stage AI company (preferably Thine/Merlin 👀) where I can own growth end-to-end and ship fast.'
+    },
+    {
+      icon: '🎸',
+      title: 'Something Fun',
+      description: 'Learning to play guitar, hunting for the best filter coffee in Bangalore, and finally beating my friend at FIFA. Priorities!'
+    },
+    {
+      icon: '📚',
+      title: 'Read 6 Books',
+      description: '1 book every 10 days - mix of biographies (founders), marketing classics, and a sci-fi to keep the brain spicy.'
+    }
+  ]
 };
 
 export const extracurricularsData = {
