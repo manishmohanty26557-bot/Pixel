@@ -187,7 +187,7 @@ const Desktop = ({ playSound }) => {
         <div className="trash-modal" onClick={handleCloseTrash}>
           <div className="trash-content" onClick={(e) => e.stopPropagation()}>
             <div className="trash-header">
-              <h2 className="trash-title">😂 Dad Jokes</h2>
+              <h2 className="trash-title">Bin</h2>
               <button 
                 className="trash-close" 
                 onClick={handleCloseTrash}
@@ -197,10 +197,6 @@ const Desktop = ({ playSound }) => {
               </button>
             </div>
             <div className="trash-body">
-              <div className="trash-context">
-                📖 <strong>Context:</strong> This is what my Dad said when I asked him about AI, Merlin, and Thine. Pure Hinglish wisdom from the 90s generation!
-              </div>
-              <p className="trash-subtitle">Yeh hai Dad ki AI ke baare mein soch 🤣</p>
               <ul className="trash-list">
                 {dadJokesAboutAI.map((joke, idx) => (
                   <li key={idx} className="trash-item">{joke}</li>
