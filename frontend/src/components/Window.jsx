@@ -9,14 +9,18 @@ const Window = ({ project, onClose, zIndex, onFocus, playSound }) => {
     if (playSound) {
       playSound();
     }
-  }, [playSound]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const handleClose = () => {
+  const handleClose = (e) => {
+    e.stopPropagation();
     if (playSound) {
       playSound();
     }
     onClose();
   };
+
+  const isStrategy = project.type === 'strategy';
 
   return (
     <Draggable
@@ -29,17 +33,28 @@ const Window = ({ project, onClose, zIndex, onFocus, playSound }) => {
         ref={nodeRef}
         className="window"
         style={{ zIndex }}
-        onClick={onFocus}
+        onMouseDown={onFocus}
       >
         <div className="window-header">
           <div className="window-controls">
-            <button className="window-btn window-btn-close" onClick={handleClose}>
+            <button 
+              className="window-btn window-btn-close" 
+              onClick={handleClose}
+              onMouseDown={(e) => e.stopPropagation()}
+              data-testid={`close-${project.id}`}
+            >
               <X size={10} />
             </button>
-            <button className="window-btn window-btn-minimize">
+            <button 
+              className="window-btn window-btn-minimize"
+              onMouseDown={(e) => e.stopPropagation()}
+            >
               <Minus size={10} />
             </button>
-            <button className="window-btn window-btn-maximize">
+            <button 
+              className="window-btn window-btn-maximize"
+              onMouseDown={(e) => e.stopPropagation()}
+            >
               <Square size={10} />
             </button>
           </div>
@@ -52,35 +67,57 @@ const Window = ({ project, onClose, zIndex, onFocus, playSound }) => {
             <div>
               <h2 className="window-project-title">{project.title}</h2>
               <p className="window-role">{project.content.role}</p>
-              <p className="window-period">{project.content.period}</p>
+              {project.content.period && (
+                <p className="window-period">{project.content.period}</p>
+              )}
             </div>
           </div>
 
           <div className="window-description">
-            <p>{project.content.description}</p>
+            <p><strong>{project.content.description}</strong></p>
+            {project.content.details && (
+              <p className="window-details">{project.content.details}</p>
+            )}
           </div>
 
-          <div className="window-section">
-            <h3 className="window-section-title">Key Achievements</h3>
-            <ul className="window-achievements">
-              {project.content.achievements.map((achievement, idx) => (
-                <li key={idx} className="window-achievement-item">
-                  {achievement}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="window-section">
-            <h3 className="window-section-title">Skills</h3>
-            <div className="window-skills">
-              {project.content.skills.map((skill, idx) => (
-                <span key={idx} className="window-skill-tag">
-                  {skill}
-                </span>
-              ))}
+          {isStrategy ? (
+            <div className="window-section">
+              <h3 className="window-section-title">Execution Plan</h3>
+              <ul className="window-achievements">
+                {project.content.keyPoints.map((point, idx) => (
+                  <li key={idx} className="window-achievement-item">
+                    {point}
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
+          ) : (
+            <>
+              <div className="window-section">
+                <h3 className="window-section-title">Key Achievements</h3>
+                <ul className="window-achievements">
+                  {project.content.achievements.map((achievement, idx) => (
+                    <li key={idx} className="window-achievement-item">
+                      {achievement}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {project.content.skills && (
+                <div className="window-section">
+                  <h3 className="window-section-title">Skills</h3>
+                  <div className="window-skills">
+                    {project.content.skills.map((skill, idx) => (
+                      <span key={idx} className="window-skill-tag">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </>
+          )}
         </div>
       </div>
     </Draggable>

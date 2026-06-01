@@ -1,18 +1,28 @@
 import React, { useState } from 'react';
 import DesktopIcon from './DesktopIcon';
 import Window from './Window';
+import AboutWindow from './AboutWindow';
+import ExtracurricularsWindow from './ExtracurricularsWindow';
 import Cloud from './Cloud';
 import StickyNote from './StickyNote';
 import PixelGirl from './PixelGirl';
 import Dock from './Dock';
-import { projectsData, funnyRejectedIdeas } from '../data/mockData';
+import { projectsData, dadJokesAboutAI } from '../data/mockData';
 
 const Desktop = ({ playSound }) => {
   const [openWindows, setOpenWindows] = useState([]);
   const [highestZIndex, setHighestZIndex] = useState(100);
   const [showTrash, setShowTrash] = useState(false);
+  const [showTrashConfirm, setShowTrashConfirm] = useState(false);
 
   const handleIconClick = (project) => {
+    // Handle external links
+    if (project.isLink && project.url) {
+      window.open(project.url, '_blank');
+      if (playSound) playSound();
+      return;
+    }
+
     // Check if window is already open
     if (openWindows.find(w => w.id === project.id)) {
       return;
@@ -25,6 +35,7 @@ const Desktop = ({ playSound }) => {
 
     setOpenWindows([...openWindows, newWindow]);
     setHighestZIndex(highestZIndex + 1);
+    if (playSound) playSound();
   };
 
   const handleWindowClose = (projectId) => {
@@ -40,7 +51,22 @@ const Desktop = ({ playSound }) => {
   };
 
   const handleTrashClick = () => {
+    setShowTrashConfirm(true);
+    if (playSound) {
+      playSound();
+    }
+  };
+
+  const handleTrashConfirm = () => {
+    setShowTrashConfirm(false);
     setShowTrash(true);
+    if (playSound) {
+      playSound();
+    }
+  };
+
+  const handleTrashCancel = () => {
+    setShowTrashConfirm(false);
     if (playSound) {
       playSound();
     }
@@ -73,30 +99,77 @@ const Desktop = ({ playSound }) => {
       ))}
 
       {/* Open Windows */}
-      {openWindows.map((window) => (
-        <Window
-          key={window.id}
-          project={window}
-          zIndex={window.zIndex}
-          onClose={() => handleWindowClose(window.id)}
-          onFocus={() => handleWindowFocus(window.id)}
-          playSound={playSound}
-        />
-      ))}
+      {openWindows.map((window) => {
+        if (window.type === 'about') {
+          return (
+            <AboutWindow
+              key={window.id}
+              zIndex={window.zIndex}
+              onClose={() => handleWindowClose(window.id)}
+              onFocus={() => handleWindowFocus(window.id)}
+              playSound={playSound}
+            />
+          );
+        } else if (window.type === 'extra') {
+          return (
+            <ExtracurricularsWindow
+              key={window.id}
+              zIndex={window.zIndex}
+              onClose={() => handleWindowClose(window.id)}
+              onFocus={() => handleWindowFocus(window.id)}
+              playSound={playSound}
+            />
+          );
+        } else {
+          return (
+            <Window
+              key={window.id}
+              project={window}
+              zIndex={window.zIndex}
+              onClose={() => handleWindowClose(window.id)}
+              onFocus={() => handleWindowFocus(window.id)}
+              playSound={playSound}
+            />
+          );
+        }
+      })}
 
-      {/* Trash Easter Egg Window */}
+      {/* Trash Confirmation Dialog */}
+      {showTrashConfirm && (
+        <div className="trash-modal" onClick={handleTrashCancel}>
+          <div className="trash-content trash-confirm" onClick={(e) => e.stopPropagation()}>
+            <div className="trash-header">
+              <h2 className="trash-title">🗑️ Pakka?</h2>
+              <button className="trash-close" onClick={handleTrashCancel}>✕</button>
+            </div>
+            <div className="trash-body">
+              <p className="trash-confirm-text">Are you sure about it?</p>
+              <div className="trash-confirm-buttons">
+                <button className="trash-btn trash-btn-yes" onClick={handleTrashConfirm}>
+                  Haan, Dikhao!
+                </button>
+                <button className="trash-btn trash-btn-no" onClick={handleTrashCancel}>
+                  Nahi Nahi
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Dad Jokes Modal */}
       {showTrash && (
         <div className="trash-modal" onClick={handleCloseTrash}>
           <div className="trash-content" onClick={(e) => e.stopPropagation()}>
             <div className="trash-header">
-              <h2 className="trash-title">🗑️ Rejected Concepts</h2>
+              <h2 className="trash-title">😂 Yeh hai Dad ki AI ke baare mein soch</h2>
               <button className="trash-close" onClick={handleCloseTrash}>✕</button>
             </div>
             <div className="trash-body">
-              <p className="trash-subtitle">Ideas that didn't make the cut...</p>
+              <p className="trash-subtitle">Dad's Hilarious Take on AI 🤣</p>
               <ul className="trash-list">
-                {funnyRejectedIdeas.map((idea, idx) => (
-                  <li key={idx} className="trash-item">{idea}</li>
+                {dadJokesAboutAI.map((joke, idx) => (
+                  <li key={idx} className="trash-item">{joke}</li>
                 ))}
               </ul>
             </div>
