@@ -89,6 +89,20 @@ const Desktop = ({ playSound }) => {
       {/* Sticky Note */}
       <StickyNote />
 
+      {/* Row Labels */}
+      <div className="row-label" style={{ top: '55px', left: '40px' }}>
+        <span className="row-label-text">▸ Growth Plans for Thine & Merlin AI</span>
+        <span className="row-label-subtext">This is what I will do for you, from Day 1</span>
+      </div>
+      <div className="row-label" style={{ top: '235px', left: '40px' }}>
+        <span className="row-label-text">▸ My Past Internship Experience</span>
+        <span className="row-label-subtext">Where I've driven growth before</span>
+      </div>
+      <div className="row-label" style={{ top: '415px', left: '40px' }}>
+        <span className="row-label-text">▸ About Me & Quick Links</span>
+        <span className="row-label-subtext">Get to know me better</span>
+      </div>
+
       {/* Desktop Icons */}
       {projectsData.map((project) => (
         <DesktopIcon
@@ -162,11 +176,20 @@ const Desktop = ({ playSound }) => {
         <div className="trash-modal" onClick={handleCloseTrash}>
           <div className="trash-content" onClick={(e) => e.stopPropagation()}>
             <div className="trash-header">
-              <h2 className="trash-title">😂 Yeh hai Dad ki AI ke baare mein soch</h2>
-              <button className="trash-close" onClick={handleCloseTrash}>✕</button>
+              <h2 className="trash-title">😂 Dad Jokes</h2>
+              <button 
+                className="trash-close" 
+                onClick={handleCloseTrash}
+                data-testid="close-dad-jokes"
+              >
+                ✕
+              </button>
             </div>
             <div className="trash-body">
-              <p className="trash-subtitle">Dad's Hilarious Take on AI 🤣</p>
+              <div className="trash-context">
+                📖 <strong>Context:</strong> This is what my Dad said when I asked him about AI, Merlin, and Thine. Pure Hinglish wisdom from the 90s generation!
+              </div>
+              <p className="trash-subtitle">Yeh hai Dad ki AI ke baare mein soch 🤣</p>
               <ul className="trash-list">
                 {dadJokesAboutAI.map((joke, idx) => (
                   <li key={idx} className="trash-item">{joke}</li>
@@ -177,8 +200,11 @@ const Desktop = ({ playSound }) => {
         </div>
       )}
 
-      {/* Pixel Girl Character */}
-      <PixelGirl />
+      {/* Pixel Girl Character - Now Clickable */}
+      <PixelGirl onClick={() => {
+        const aboutProject = projectsData.find(p => p.id === 'about-me');
+        if (aboutProject) handleIconClick(aboutProject);
+      }} />
 
       {/* Dock */}
       <Dock onTrashClick={handleTrashClick} />

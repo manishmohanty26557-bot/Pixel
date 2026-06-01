@@ -6,7 +6,7 @@ export const projectsData = [
     title: 'Meta Ads Scale',
     icon: '📱',
     type: 'strategy',
-    position: { x: 80, y: 80 },
+    position: { x: 80, y: 90 },
     content: {
       role: 'Growth Strategy for Merlin AI',
       description: 'Scale Merlin\'s Meta Ads with AI Video Creatives',
@@ -25,7 +25,7 @@ export const projectsData = [
     title: 'UGC Pipeline',
     icon: '🎬',
     type: 'strategy',
-    position: { x: 220, y: 80 },
+    position: { x: 220, y: 90 },
     content: {
       role: 'Growth Strategy for Merlin & Thine',
       description: 'End-to-End Influencer Marketing / UGC Pipeline',
@@ -44,7 +44,7 @@ export const projectsData = [
     title: 'WhatsApp AI',
     icon: '💬',
     type: 'strategy',
-    position: { x: 360, y: 80 },
+    position: { x: 360, y: 90 },
     content: {
       role: 'Growth Strategy for Both',
       description: 'WhatsApp Marketing via AI Sensy',
@@ -63,7 +63,7 @@ export const projectsData = [
     title: 'Proof of Context',
     icon: '🧠',
     type: 'strategy',
-    position: { x: 500, y: 80 },
+    position: { x: 500, y: 90 },
     content: {
       role: 'Growth Strategy for Thine',
       description: 'Weekly Posts of Real User Stories',
@@ -82,7 +82,7 @@ export const projectsData = [
     title: 'YouTube Scale',
     icon: '📹',
     type: 'strategy',
-    position: { x: 640, y: 80 },
+    position: { x: 640, y: 90 },
     content: {
       role: 'Growth Strategy for Both',
       description: 'Scale YouTube through Shorts and Ads',
@@ -103,7 +103,7 @@ export const projectsData = [
     title: 'Zoop Live',
     icon: '📺',
     type: 'internship',
-    position: { x: 80, y: 240 },
+    position: { x: 80, y: 270 },
     content: {
       role: 'Growth Intern (Founder\'s Office)',
       period: 'January 2026 - April 2026',
@@ -125,7 +125,7 @@ export const projectsData = [
     title: 'Perfora',
     icon: '🛍️',
     type: 'internship',
-    position: { x: 220, y: 240 },
+    position: { x: 220, y: 270 },
     content: {
       role: 'Creative Growth Intern',
       period: 'June 2025 - August 2025',
@@ -147,7 +147,7 @@ export const projectsData = [
     title: 'Eleven Studios',
     icon: '🎨',
     type: 'internship',
-    position: { x: 360, y: 240 },
+    position: { x: 360, y: 270 },
     content: {
       role: 'Growth (Founding Team)',
       period: 'September 2025 - November 2025',
@@ -170,7 +170,7 @@ export const projectsData = [
     title: 'About Me',
     icon: '👤',
     type: 'about',
-    position: { x: 80, y: 400 },
+    position: { x: 80, y: 450 },
     isLink: false
   },
   {
@@ -178,7 +178,7 @@ export const projectsData = [
     title: 'Extracurriculars',
     icon: '🏆',
     type: 'extra',
-    position: { x: 220, y: 400 },
+    position: { x: 220, y: 450 },
     isLink: false
   },
   {
@@ -186,7 +186,7 @@ export const projectsData = [
     title: 'LinkedIn',
     icon: '💼',
     type: 'link',
-    position: { x: 360, y: 400 },
+    position: { x: 360, y: 450 },
     isLink: true,
     url: 'https://www.linkedin.com/in/manish-mohanty-7b76a918b/'
   },
@@ -195,7 +195,7 @@ export const projectsData = [
     title: 'Resume',
     icon: '📄',
     type: 'link',
-    position: { x: 500, y: 400 },
+    position: { x: 500, y: 450 },
     isLink: true,
     url: 'https://tinyurl.com/4pxm97pn'
   },
@@ -204,7 +204,7 @@ export const projectsData = [
     title: 'Review Deck',
     icon: '📊',
     type: 'link',
-    position: { x: 640, y: 400 },
+    position: { x: 640, y: 450 },
     isLink: true,
     url: 'https://tinyurl.com/4zrnpsvn'
   }
