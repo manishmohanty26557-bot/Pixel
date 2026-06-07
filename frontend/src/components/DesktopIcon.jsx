@@ -1,20 +1,23 @@
 import React from 'react';
 import { ExternalLink } from 'lucide-react';
 
-const DesktopIcon = ({ project, onClick }) => {
+const DesktopIcon = ({ project, onClick, inline = false }) => {
   const handleClick = (e) => {
     e.stopPropagation();
     onClick(project);
   };
 
+  const positionStyle = inline ? {} : {
+    position: 'absolute',
+    left: `${project.position?.x}px`,
+    top: `${project.position?.y}px`
+  };
+
   return (
     <div 
-      className={`desktop-icon ${project.isLink ? 'desktop-icon-link' : ''}`}
+      className={`desktop-icon ${project.isLink ? 'desktop-icon-link' : ''} ${inline ? 'desktop-icon-inline' : ''}`}
       onClick={handleClick}
-      style={{
-        left: `${project.position.x}px`,
-        top: `${project.position.y}px`
-      }}
+      style={positionStyle}
       data-testid={`icon-${project.id}`}
     >
       <div className="desktop-icon-image">

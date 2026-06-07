@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
-import DesktopIcon from './DesktopIcon';
 import Window from './Window';
 import AboutWindow from './AboutWindow';
 import ExtracurricularsWindow from './ExtracurricularsWindow';
 import FuturePlansWindow from './FuturePlansWindow';
+import GrowthGameWindow from './GrowthGameWindow';
 import Cloud from './Cloud';
 import StickyNote from './StickyNote';
+import StatNote from './StatNote';
+import SectionBox from './SectionBox';
+import Terminal from './Terminal';
 import PixelGirl from './PixelGirl';
 import Dock from './Dock';
-import { projectsData, dadJokesAboutAI } from '../data/mockData';
+import { 
+  internshipsData, 
+  aboutLinksData, 
+  whatsNextData, 
+  statNotesData, 
+  dadJokesAboutAI 
+} from '../data/mockData';
 
 const Desktop = ({ playSound }) => {
   const [openWindows, setOpenWindows] = useState([]);
@@ -53,61 +62,66 @@ const Desktop = ({ playSound }) => {
 
   const handleTrashClick = () => {
     setShowTrashConfirm(true);
-    if (playSound) {
-      playSound();
-    }
+    if (playSound) playSound();
   };
 
   const handleTrashConfirm = () => {
     setShowTrashConfirm(false);
     setShowTrash(true);
-    if (playSound) {
-      playSound();
-    }
+    if (playSound) playSound();
   };
 
   const handleTrashCancel = () => {
     setShowTrashConfirm(false);
-    if (playSound) {
-      playSound();
-    }
+    if (playSound) playSound();
   };
 
   const handleCloseTrash = () => {
     setShowTrash(false);
-    if (playSound) {
-      playSound();
-    }
+    if (playSound) playSound();
   };
 
   return (
     <div className="desktop">
       {/* Floating Clouds */}
-      <Cloud style={{ top: '15%', left: '10%' }} animationDelay={0} />
-      <Cloud style={{ top: '25%', right: '15%' }} animationDelay={3} />
-      <Cloud style={{ top: '40%', left: '20%' }} animationDelay={6} />
+      <Cloud style={{ top: '15%', right: '8%' }} animationDelay={0} />
+      <Cloud style={{ top: '35%', right: '20%' }} animationDelay={3} />
+      <Cloud style={{ top: '60%', right: '12%' }} animationDelay={6} />
 
-      {/* Sticky Note */}
+      {/* LEFT ZONE: Floating Stat Notes */}
+      <div className="stat-notes-zone">
+        {statNotesData.map(stat => (
+          <StatNote key={stat.id} stat={stat} />
+        ))}
+      </div>
+
+      {/* CENTER ZONE: Section Boxes */}
+      <div className="sections-zone">
+        <SectionBox
+          title="My Past Internship Experience"
+          subtitle="Where I've driven growth before"
+          items={internshipsData}
+          onIconClick={handleIconClick}
+        />
+        <SectionBox
+          title="About Me & Quick Links"
+          subtitle="Get to know me better"
+          items={aboutLinksData}
+          onIconClick={handleIconClick}
+        />
+        <SectionBox
+          title="What's Next"
+          subtitle="Where I'm headed"
+          items={whatsNextData}
+          onIconClick={handleIconClick}
+        />
+      </div>
+
+      {/* RIGHT: Sticky Note */}
       <StickyNote />
 
-      {/* Row Labels */}
-      <div className="row-label" style={{ top: '55px', left: '40px' }}>
-        <span className="row-label-text">▸ My Past Internship Experience</span>
-        <span className="row-label-subtext">Where I've driven growth before</span>
-      </div>
-      <div className="row-label" style={{ top: '235px', left: '40px' }}>
-        <span className="row-label-text">▸ About Me & Quick Links</span>
-        <span className="row-label-subtext">Get to know me better</span>
-      </div>
-
-      {/* Desktop Icons */}
-      {projectsData.map((project) => (
-        <DesktopIcon
-          key={project.id}
-          project={project}
-          onClick={handleIconClick}
-        />
-      ))}
+      {/* BOTTOM LEFT: Terminal */}
+      <Terminal />
 
       {/* Open Windows */}
       {openWindows.map((window) => {
@@ -134,6 +148,16 @@ const Desktop = ({ playSound }) => {
         } else if (window.type === 'future') {
           return (
             <FuturePlansWindow
+              key={window.id}
+              zIndex={window.zIndex}
+              onClose={() => handleWindowClose(window.id)}
+              onFocus={() => handleWindowFocus(window.id)}
+              playSound={playSound}
+            />
+          );
+        } else if (window.type === 'game') {
+          return (
+            <GrowthGameWindow
               key={window.id}
               zIndex={window.zIndex}
               onClose={() => handleWindowClose(window.id)}
@@ -178,7 +202,7 @@ const Desktop = ({ playSound }) => {
         </div>
       )}
 
-      {/* Dad Jokes Modal */}
+      {/* Bin Modal */}
       {showTrash && (
         <div className="trash-modal" onClick={handleCloseTrash}>
           <div className="trash-content" onClick={(e) => e.stopPropagation()}>
@@ -207,14 +231,14 @@ const Desktop = ({ playSound }) => {
       {/* Pixel Girl Character - Now Clickable */}
       <PixelGirl onClick={() => {
         const futurePlan = {
-          id: 'future-plans',
-          type: 'future',
-          title: 'What\'s Next for Manish'
+          id: 'about-me-from-girl',
+          type: 'about',
+          title: 'About Me'
         };
         handleIconClick(futurePlan);
       }} />
 
-      {/* Dock */}
+      {/* Trash Dock */}
       <Dock onTrashClick={handleTrashClick} />
     </div>
   );

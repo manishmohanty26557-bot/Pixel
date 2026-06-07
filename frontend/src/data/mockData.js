@@ -1,13 +1,12 @@
-// Mock data for portfolio projects
-export const projectsData = [
-  // Internship Experiences
+// Mock data for portfolio projects - restructured into sections
+
+export const internshipsData = [
   {
     id: 'zoop-live',
     title: 'Zoop Live',
     icon: '📺',
     type: 'internship',
     badge: { text: 'PPO', color: 'gold' },
-    position: { x: 80, y: 90 },
     content: {
       role: 'Growth Intern (Founder\'s Office)',
       period: 'January 2026 - April 2026',
@@ -30,7 +29,6 @@ export const projectsData = [
     icon: '🛍️',
     type: 'internship',
     badge: { text: 'PPI', color: 'blue' },
-    position: { x: 220, y: 90 },
     content: {
       role: 'Creative Growth Intern',
       period: 'June 2025 - August 2025',
@@ -52,7 +50,6 @@ export const projectsData = [
     title: 'Eleven Studios',
     icon: '🎨',
     type: 'internship',
-    position: { x: 360, y: 90 },
     content: {
       role: 'Growth (Founding Team)',
       period: 'September 2025 - November 2025',
@@ -73,7 +70,6 @@ export const projectsData = [
     title: 'Kankyreacts',
     icon: '🎬',
     type: 'internship',
-    position: { x: 500, y: 90 },
     content: {
       role: 'Social Media Manager',
       period: 'March 2026 · 1 month',
@@ -87,15 +83,15 @@ export const projectsData = [
       ],
       skills: ['Brand Deals', 'Creator Monetization', 'Instagram Growth']
     }
-  },
-  
-  // About & Links
+  }
+];
+
+export const aboutLinksData = [
   {
     id: 'about-me',
     title: 'About Me',
     icon: '👤',
     type: 'about',
-    position: { x: 80, y: 270 },
     isLink: false
   },
   {
@@ -103,7 +99,6 @@ export const projectsData = [
     title: 'Extracurriculars',
     icon: '🏆',
     type: 'extra',
-    position: { x: 220, y: 270 },
     isLink: false
   },
   {
@@ -111,7 +106,6 @@ export const projectsData = [
     title: 'LinkedIn',
     icon: '💼',
     type: 'link',
-    position: { x: 360, y: 270 },
     isLink: true,
     url: 'https://www.linkedin.com/in/manish-mohanty-7b76a918b/'
   },
@@ -120,19 +114,54 @@ export const projectsData = [
     title: 'Resume',
     icon: '📄',
     type: 'link',
-    position: { x: 500, y: 270 },
     isLink: true,
     url: '/assets/resume.pdf'
+  }
+];
+
+export const whatsNextData = [
+  {
+    id: 'future-plans',
+    title: 'Next 2 Months',
+    icon: '🎯',
+    type: 'future',
+    isLink: false
+  },
+  {
+    id: 'growth-game',
+    title: 'Growth Game',
+    icon: '🎮',
+    type: 'game',
+    isLink: false
   },
   {
     id: 'review-deck',
     title: 'Review Deck',
     icon: '📊',
     type: 'link',
-    position: { x: 640, y: 270 },
     isLink: true,
     url: '/assets/review-deck.pdf'
   }
+];
+
+// All projects flat (for window opening logic)
+export const projectsData = [
+  ...internshipsData,
+  ...aboutLinksData,
+  ...whatsNextData
+];
+
+export const statNotesData = [
+  { id: 's1', value: '₹30K/mo', label: 'Meta budget managed', rotation: -4, top: 60, left: 40 },
+  { id: 's2', value: '3,00,000+', label: 'LinkedIn impressions', rotation: 5, top: 180, left: 65 },
+  { id: 's3', value: '120+', label: 'creators onboarded', rotation: -6, top: 300, left: 30 },
+  { id: 's4', value: '4', label: 'internships', rotation: 3, top: 420, left: 55 }
+];
+
+export const terminalData = [
+  '> status · actively looking',
+  '> location · Delhi → Bangalore',
+  '> role · Growth · open'
 ];
 
 export const aboutData = {
@@ -168,7 +197,7 @@ export const aboutData = {
 
 export const stickyNoteData = {
   line1: 'You miss 100% of the shots you don\'t take.',
-  line2: '— Wayne Gretzky — Michael Scott'
+  line2: '— Michael Scott'
 };
 
 export const extracurricularsData = {
