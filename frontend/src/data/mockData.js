@@ -1,109 +1,13 @@
 // Mock data for portfolio projects
 export const projectsData = [
-  // Growth Strategies for Thine & Merlin
-  {
-    id: 'meta-ads-strategy',
-    title: 'Meta Ads Scale',
-    icon: '📱',
-    type: 'strategy',
-    position: { x: 80, y: 90 },
-    content: {
-      role: 'Growth Strategy for Merlin AI',
-      description: 'Scale Merlin\'s Meta Ads with AI Video Creatives',
-      details: 'Weekly AI-generated ad creatives via HeyGen, tested and optimised on a 3-day kill-or-scale cycle. Leverage AI to produce high-converting video content at scale while maintaining low CPR.',
-      keyPoints: [
-        'AI-powered video creative generation using HeyGen',
-        '3-day test cycles for rapid optimization',
-        'Automated creative testing framework',
-        'Scale winning creatives aggressively',
-        'Maintain CPR < ₹2 through constant iteration'
-      ]
-    }
-  },
-  {
-    id: 'influencer-pipeline',
-    title: 'UGC Pipeline',
-    icon: '🎬',
-    type: 'strategy',
-    position: { x: 220, y: 90 },
-    content: {
-      role: 'Growth Strategy for Merlin & Thine',
-      description: 'End-to-End Influencer Marketing / UGC Pipeline',
-      details: 'Creator discovery, scripting, briefing, and posting - targeting micro-creators under 50K with 100+ avg comments. Extend to Thine to increase waitlist signups.',
-      keyPoints: [
-        'Target micro-creators (under 50K followers)',
-        'High engagement rate (100+ comments)',
-        'Complete creator workflow: discovery → scripting → posting',
-        'YouTube, Instagram, and TikTok coverage',
-        'Scalable to drive Thine waitlist growth'
-      ]
-    }
-  },
-  {
-    id: 'whatsapp-marketing',
-    title: 'WhatsApp AI',
-    icon: '💬',
-    type: 'strategy',
-    position: { x: 360, y: 90 },
-    content: {
-      role: 'Growth Strategy for Both',
-      description: 'WhatsApp Marketing via AI Sensy',
-      details: 'Run WhatsApp Activation and Retention campaigns via AI Sensy. Convert Thine\'s waitlist to activated users and Merlin\'s free users to paid through personalised messages.',
-      keyPoints: [
-        'AI-powered personalized messaging',
-        'Waitlist → Active user conversion for Thine',
-        'Free → Paid conversion for Merlin',
-        'Automated retention campaigns',
-        'High-intent user targeting'
-      ]
-    }
-  },
-  {
-    id: 'proof-of-context',
-    title: 'Proof of Context',
-    icon: '🧠',
-    type: 'strategy',
-    position: { x: 500, y: 90 },
-    content: {
-      role: 'Growth Strategy for Thine',
-      description: 'Weekly Posts of Real User Stories',
-      details: 'Post real users asking Thine about something they couldn\'t remember, on Twitter and LinkedIn. Builds trust and showcases product value authentically.',
-      keyPoints: [
-        'User-generated content strategy',
-        'Twitter + LinkedIn distribution',
-        'Authentic product demonstrations',
-        'Trust-building through real stories',
-        'Weekly posting cadence'
-      ]
-    }
-  },
-  {
-    id: 'youtube-scaling',
-    title: 'YouTube Scale',
-    icon: '📹',
-    type: 'strategy',
-    position: { x: 640, y: 90 },
-    content: {
-      role: 'Growth Strategy for Both',
-      description: 'Scale YouTube through Shorts and Ads',
-      details: '1 daily Short per channel using AI, and run weekly ads behind organic winners to improve SEO and engagement of future campaigns.',
-      keyPoints: [
-        'AI-generated Shorts (1 per day per channel)',
-        'Organic content amplified with ads',
-        'SEO optimization through consistent posting',
-        'Engagement boost for future campaigns',
-        'Multiple channels for both products'
-      ]
-    }
-  },
-  
   // Internship Experiences
   {
     id: 'zoop-live',
     title: 'Zoop Live',
     icon: '📺',
     type: 'internship',
-    position: { x: 80, y: 270 },
+    badge: { text: 'PPO', color: 'gold' },
+    position: { x: 80, y: 90 },
     content: {
       role: 'Growth Intern (Founder\'s Office)',
       period: 'January 2026 - April 2026',
@@ -125,7 +29,8 @@ export const projectsData = [
     title: 'Perfora',
     icon: '🛍️',
     type: 'internship',
-    position: { x: 220, y: 270 },
+    badge: { text: 'PPI', color: 'blue' },
+    position: { x: 220, y: 90 },
     content: {
       role: 'Creative Growth Intern',
       period: 'June 2025 - August 2025',
@@ -147,7 +52,7 @@ export const projectsData = [
     title: 'Eleven Studios',
     icon: '🎨',
     type: 'internship',
-    position: { x: 360, y: 270 },
+    position: { x: 360, y: 90 },
     content: {
       role: 'Growth (Founding Team)',
       period: 'September 2025 - November 2025',
@@ -163,6 +68,26 @@ export const projectsData = [
       skills: ['LinkedIn Growth', 'Client Acquisition']
     }
   },
+  {
+    id: 'kankyreacts',
+    title: 'Kankyreacts',
+    icon: '🎬',
+    type: 'internship',
+    position: { x: 500, y: 90 },
+    content: {
+      role: 'Social Media Manager',
+      period: 'March 2026 · 1 month',
+      description: '',
+      achievements: [
+        'Closed ₹1L+ in brand deals in a single month',
+        'Improved average engagement rate from 1% to 3%',
+        'Built outreach pipeline across food, skincare & tech brands',
+        'Established per-reel pricing at ₹40–50K',
+        'Caption & hashtag system lifted reel reach by 40%+'
+      ],
+      skills: ['Brand Deals', 'Creator Monetization', 'Instagram Growth']
+    }
+  },
   
   // About & Links
   {
@@ -170,7 +95,7 @@ export const projectsData = [
     title: 'About Me',
     icon: '👤',
     type: 'about',
-    position: { x: 80, y: 450 },
+    position: { x: 80, y: 270 },
     isLink: false
   },
   {
@@ -178,7 +103,7 @@ export const projectsData = [
     title: 'Extracurriculars',
     icon: '🏆',
     type: 'extra',
-    position: { x: 220, y: 450 },
+    position: { x: 220, y: 270 },
     isLink: false
   },
   {
@@ -186,7 +111,7 @@ export const projectsData = [
     title: 'LinkedIn',
     icon: '💼',
     type: 'link',
-    position: { x: 360, y: 450 },
+    position: { x: 360, y: 270 },
     isLink: true,
     url: 'https://www.linkedin.com/in/manish-mohanty-7b76a918b/'
   },
@@ -195,7 +120,7 @@ export const projectsData = [
     title: 'Resume',
     icon: '📄',
     type: 'link',
-    position: { x: 500, y: 450 },
+    position: { x: 500, y: 270 },
     isLink: true,
     url: '/assets/resume.pdf'
   },
@@ -204,7 +129,7 @@ export const projectsData = [
     title: 'Review Deck',
     icon: '📊',
     type: 'link',
-    position: { x: 640, y: 450 },
+    position: { x: 640, y: 270 },
     isLink: true,
     url: '/assets/review-deck.pdf'
   }
@@ -221,24 +146,29 @@ export const aboutData = {
     {
       icon: '✈️',
       title: 'Move to Bangalore',
-      description: 'Relocating to India\'s startup capital - ready to immerse myself in the tech ecosystem and build with the best.'
+      description: 'Relocating to India\'s startup capital ready to immerse myself in the tech ecosystem and build with the best.'
     },
     {
       icon: '🚀',
       title: 'Work at an AI Startup',
-      description: 'Looking to join an early-stage AI company (preferably Thine/Merlin 👀) where I can own growth end-to-end and ship fast.'
+      description: 'Looking to join an early-stage AI or consumer startup where I can own growth end-to-end from ads to creators to funnels and actually see the impact.'
     },
     {
       icon: '🎸',
       title: 'Something Fun',
-      description: 'Learning to play guitar, hunting for the best filter coffee in Bangalore, and finally beating my friend at FIFA. Priorities!'
+      description: 'Learning guitar, finding Bangalore\'s best filter coffee, and beating my friend at FIFA. In that order. Roughly.'
     },
     {
       icon: '📚',
       title: 'Read 6 Books',
-      description: '1 book every 10 days - mix of biographies (founders), marketing classics, and a sci-fi to keep the brain spicy.'
+      description: '1 book every 10 days founder biographies, growth playbooks, and one sci-fi so my brain doesn\'t fully rot.'
     }
   ]
+};
+
+export const stickyNoteData = {
+  line1: 'You miss 100% of the shots you don\'t take.',
+  line2: '— Wayne Gretzky — Michael Scott'
 };
 
 export const extracurricularsData = {

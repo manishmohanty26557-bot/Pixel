@@ -24,6 +24,11 @@ const DesktopIcon = ({ project, onClick }) => {
             <ExternalLink size={10} />
           </span>
         )}
+        {project.badge && (
+          <span className={`desktop-icon-status-badge badge-${project.badge.color}`}>
+            {project.badge.text}
+          </span>
+        )}
       </div>
       <div className="desktop-icon-label">{project.title}</div>
     </div>

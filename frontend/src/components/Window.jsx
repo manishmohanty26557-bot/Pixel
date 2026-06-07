@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import Draggable from 'react-draggable';
-import { X, Minus, Square } from 'lucide-react';
+import { X } from 'lucide-react';
 
 const Window = ({ project, onClose, zIndex, onFocus, playSound }) => {
   const nodeRef = useRef(null);
@@ -45,18 +45,6 @@ const Window = ({ project, onClose, zIndex, onFocus, playSound }) => {
             >
               <X size={10} />
             </button>
-            <button 
-              className="window-btn window-btn-minimize"
-              onMouseDown={(e) => e.stopPropagation()}
-            >
-              <Minus size={10} />
-            </button>
-            <button 
-              className="window-btn window-btn-maximize"
-              onMouseDown={(e) => e.stopPropagation()}
-            >
-              <Square size={10} />
-            </button>
           </div>
           <div className="window-title">{project.title}</div>
         </div>
@@ -74,7 +62,9 @@ const Window = ({ project, onClose, zIndex, onFocus, playSound }) => {
           </div>
 
           <div className="window-description">
-            <p><strong>{project.content.description}</strong></p>
+            {project.content.description && (
+              <p><strong>{project.content.description}</strong></p>
+            )}
             {project.content.details && (
               <p className="window-details">{project.content.details}</p>
             )}

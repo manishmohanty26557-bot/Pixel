@@ -40,14 +40,6 @@ const FuturePlansWindow = ({ onClose, zIndex, onFocus, playSound }) => {
             >
               <X size={10} />
             </button>
-            <button 
-              className="window-btn window-btn-minimize"
-              onMouseDown={(e) => e.stopPropagation()}
-            />
-            <button 
-              className="window-btn window-btn-maximize"
-              onMouseDown={(e) => e.stopPropagation()}
-            />
           </div>
           <div className="window-title">What's Next for Manish</div>
         </div>

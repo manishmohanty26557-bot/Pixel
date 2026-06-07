@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import Draggable from 'react-draggable';
-import { X, Minus, Square, Mail, Phone, GraduationCap } from 'lucide-react';
+import { X, Mail, Phone, GraduationCap } from 'lucide-react';
 import { aboutData, skillsData } from '../data/mockData';
 
 const AboutWindow = ({ onClose, zIndex, onFocus, playSound }) => {
@@ -40,14 +40,6 @@ const AboutWindow = ({ onClose, zIndex, onFocus, playSound }) => {
             >
               <X size={10} />
             </button>
-            <button 
-              className="window-btn window-btn-minimize"
-              onMouseDown={(e) => e.stopPropagation()}
-            />
-            <button 
-              className="window-btn window-btn-maximize"
-              onMouseDown={(e) => e.stopPropagation()}
-            />
           </div>
           <div className="window-title">About Me</div>
         </div>

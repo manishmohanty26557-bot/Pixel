@@ -92,14 +92,10 @@ const Desktop = ({ playSound }) => {
 
       {/* Row Labels */}
       <div className="row-label" style={{ top: '55px', left: '40px' }}>
-        <span className="row-label-text">▸ Growth Plans for Thine & Merlin AI</span>
-        <span className="row-label-subtext">This is what I will do for you, from Day 1</span>
-      </div>
-      <div className="row-label" style={{ top: '235px', left: '40px' }}>
         <span className="row-label-text">▸ My Past Internship Experience</span>
         <span className="row-label-subtext">Where I've driven growth before</span>
       </div>
-      <div className="row-label" style={{ top: '415px', left: '40px' }}>
+      <div className="row-label" style={{ top: '235px', left: '40px' }}>
         <span className="row-label-text">▸ About Me & Quick Links</span>
         <span className="row-label-subtext">Get to know me better</span>
       </div>

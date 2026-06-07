@@ -192,10 +192,19 @@ input, textarea {
 }
 
 .sticky-note-text {
-  font-size: 10px;
+  font-size: 9px;
   color: #2d2d2d;
   line-height: 1.8;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.sticky-note-text-attribution {
+  font-size: 7px;
+  color: #5b3a00;
+  line-height: 1.6;
+  font-style: italic;
+  text-align: right;
   word-wrap: break-word;
 }
 
@@ -251,6 +260,31 @@ input, textarea {
   align-items: center;
   justify-content: center;
   color: white;
+}
+
+.desktop-icon-status-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  padding: 3px 6px;
+  font-size: 7px;
+  font-weight: bold;
+  border: 2px solid #000;
+  border-radius: 4px;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25);
+  letter-spacing: 0.5px;
+  font-family: 'Press Start 2P', monospace;
+  z-index: 2;
+}
+
+.badge-gold {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #2d1b00;
+}
+
+.badge-blue {
+  background: linear-gradient(135deg, #60A5FA, #2563EB);
+  color: #fff;
 }
 
 .desktop-icon-emoji {
