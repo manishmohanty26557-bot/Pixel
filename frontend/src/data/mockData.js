@@ -153,9 +153,9 @@ export const projectsData = [
 
 export const statNotesData = [
   { id: 's1', value: '₹30K/mo', label: 'Meta budget managed', rotation: -4, top: 60, left: 40 },
-  { id: 's2', value: '3,00,000+', label: 'LinkedIn impressions', rotation: 5, top: 180, left: 65 },
-  { id: 's3', value: '120+', label: 'creators onboarded', rotation: -6, top: 300, left: 30 },
-  { id: 's4', value: '4', label: 'internships', rotation: 3, top: 420, left: 55 }
+  { id: 's2', value: '3,00,000+', label: 'LinkedIn impressions', rotation: 5, top: 170, left: 65 },
+  { id: 's3', value: '120+', label: 'creators onboarded', rotation: -6, top: 285, left: 30 },
+  { id: 's4', value: '4', label: 'internships', rotation: 3, top: 395, left: 55 }
 ];
 
 export const terminalData = [
@@ -170,7 +170,7 @@ export const aboutData = {
   email: 'manishmohanty19@gmail.com',
   phone: '+91-8130625164',
   education: 'B.A. (Hons) Economics - Delhi College of Arts and Commerce, University of Delhi',
-  bio: 'Recently turned 21, drove growth at Zoop & Perfora, and have been following what you\'re building at Merlin and Thine. Growth & Performance Marketing Specialist with proven track record of driving revenue through data-driven strategies across multiple startups.',
+  bio: 'Recently turned 21. Drove growth at Zoop and Perfora. Numbers-first, ai pagluu, still figuring it out.',
   nextTwoMonths: [
     {
       icon: '✈️',
@@ -180,7 +180,7 @@ export const aboutData = {
     {
       icon: '🚀',
       title: 'Work at an AI Startup',
-      description: 'Looking to join an early-stage AI or consumer startup where I can own growth end-to-end from ads to creators to funnels and actually see the impact.'
+      description: 'Looking to join an early-stage startup where I can own growth end-to-end — ads, creators, funnels — and actually see the impact.'
     },
     {
       icon: '🎸',

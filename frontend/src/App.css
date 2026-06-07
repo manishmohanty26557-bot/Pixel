@@ -131,6 +131,42 @@ input, textarea {
   overflow: hidden;
 }
 
+/* Scrollable container for the center sections */
+.sections-zone {
+  position: absolute;
+  top: 50px;
+  left: 250px;
+  right: 350px;
+  bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 4;
+  max-width: 700px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 8px;
+}
+
+/* Custom scrollbar for sections-zone */
+.sections-zone::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sections-zone::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.sections-zone::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.6);
+  border-radius: 4px;
+}
+
+.sections-zone::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.9);
+}
+
 /* Clouds */
 .cloud {
   position: absolute;
@@ -520,11 +556,12 @@ input, textarea {
   image-rendering: pixelated;
 }
 
-/* Dock */
+/* Dock - positioned bottom-right beside terminal (between terminal and pixel girl) */
 .dock-container {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
+  position: fixed !important;
+  bottom: 20px !important;
+  left: auto !important;
+  right: 200px !important;
   z-index: 9998;
   display: flex;
   flex-direction: column;
@@ -946,8 +983,8 @@ input, textarea {
   position: absolute;
   background: #FFE87C;
   border: 2px solid #2d1b69;
-  padding: 10px 12px;
-  width: 150px;
+  padding: 8px 10px;
+  width: 130px;
   box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25);
   pointer-events: auto;
   transition: transform 0.3s ease;
@@ -959,7 +996,7 @@ input, textarea {
 }
 
 .stat-note-value {
-  font-size: 11px;
+  font-size: 10px;
   color: #2d1b69;
   font-weight: bold;
   margin-bottom: 4px;
@@ -976,18 +1013,7 @@ input, textarea {
   line-height: 1.5;
 }
 
-/* Sections Zone (Center) */
-.sections-zone {
-  position: absolute;
-  top: 50px;
-  left: 250px;
-  right: 350px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  z-index: 4;
-  max-width: 700px;
-}
+/* Sections Zone (Center) - defined above with scroll behavior */
 
 .section-box {
   background: rgba(255, 255, 255, 0.55);
@@ -1095,10 +1121,7 @@ input, textarea {
   50%, 100% { opacity: 0; }
 }
 
-/* Trash repositioned above terminal */
-.dock-container {
-  bottom: 130px !important;
-}
+/* Trash position handled in main .dock-container above */
 
 /* ===== Growth Game Styles ===== */
 .growth-game-window {

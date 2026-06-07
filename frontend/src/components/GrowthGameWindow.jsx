@@ -1,16 +1,7 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import Draggable from 'react-draggable';
 import { X } from 'lucide-react';
-
-const LEAD_TYPES = [
-  { emoji: '📘', name: 'FB Lead' },
-  { emoji: '📺', name: 'YT View' },
-  { emoji: '📸', name: 'IG Follow' },
-  { emoji: '💼', name: 'LinkedIn' },
-  { emoji: '📧', name: 'Cold Email' },
-  { emoji: '🎬', name: 'Reel View' },
-  { emoji: '🛍️', name: 'Brand Deal' }
-];
+import { PLATFORM_LOGOS } from './PlatformLogos';
 
 const GAME_DURATION = 20;
 const MAX_MISSES = 5;
@@ -61,13 +52,13 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
   }, [cleanup]);
 
   const spawnLead = useCallback(() => {
-    const leadType = LEAD_TYPES[Math.floor(Math.random() * LEAD_TYPES.length)];
+    const leadType = PLATFORM_LOGOS[Math.floor(Math.random() * PLATFORM_LOGOS.length)];
     const id = Math.random().toString(36).slice(2);
     // Speed increases as time runs out
     const speedMultiplier = 1 + (GAME_DURATION - timeLeftRef.current) / GAME_DURATION;
     const newLead = {
       id,
-      emoji: leadType.emoji,
+      LogoComponent: leadType.Component,
       name: leadType.name,
       x: Math.random() * (CANVAS_WIDTH - 50) + 10,
       y: -40,
@@ -254,19 +245,22 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
 
             {gameState === 'playing' && (
               <>
-                {leads.map(lead => (
-                  <div
-                    key={lead.id}
-                    className="game-lead"
-                    style={{
-                      left: `${lead.x}px`,
-                      top: `${lead.y}px`
-                    }}
-                    onClick={() => handleLeadClick(lead.id)}
-                  >
-                    {lead.emoji}
-                  </div>
-                ))}
+                {leads.map(lead => {
+                  const Logo = lead.LogoComponent;
+                  return (
+                    <div
+                      key={lead.id}
+                      className="game-lead"
+                      style={{
+                        left: `${lead.x}px`,
+                        top: `${lead.y}px`
+                      }}
+                      onClick={() => handleLeadClick(lead.id)}
+                    >
+                      <Logo size={40} />
+                    </div>
+                  );
+                })}
                 {comboFlash && (
                   <div className="combo-flash">{comboFlash}</div>
                 )}
