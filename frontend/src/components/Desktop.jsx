@@ -27,11 +27,11 @@ const Desktop = ({ playSound }) => {
 
 const handleIconClick = (project) => {
   // Handle external links
-  if (project.isLink && project.url) {
-    window.open(project.url, '_blank', 'noopener,noreferrer');
-    if (playSound) playSound();
-    return;
-  }
+if (project.isLink && project.url) {
+  console.log("CLICKED:", project.url);
+  alert("CLICKED: " + project.url);
+  return;
+}
 
   // Check if window is already open
   if (openWindows.find(w => w.id === project.id)) {
