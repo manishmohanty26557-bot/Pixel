@@ -27,7 +27,7 @@ const ExtracurricularsWindow = ({ onClose, zIndex, onFocus, playSound }) => {
       <div 
         ref={nodeRef}
         className="window"
-        style={{ zIndex, top: '8%', left: '22%' }}
+        style={{ zIndex, top: '22%', left: '18%' }}
         onMouseDown={onFocus}
       >
         <div className="window-header">
@@ -41,7 +41,7 @@ const ExtracurricularsWindow = ({ onClose, zIndex, onFocus, playSound }) => {
               <X size={10} />
             </button>
           </div>
-          <div className="window-title">Extracurriculars</div>
+          <div className="window-title">Activities</div>
         </div>
         
         <div className="window-content">

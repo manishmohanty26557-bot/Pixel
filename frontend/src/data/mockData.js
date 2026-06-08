@@ -95,7 +95,7 @@ export const aboutLinksData = [
   },
   {
     id: 'extracurriculars',
-    title: 'Extracurriculars',
+    title: 'Activities',
     icon: '🏆',
     type: 'extra',
     isLink: false
@@ -115,6 +115,14 @@ export const aboutLinksData = [
     type: 'link',
     isLink: true,
     url: '/assets/resume.pdf'
+  },
+  {
+    id: 'perfora-deck',
+    title: 'Perfora Deck',
+    icon: '📄',
+    type: 'link',
+    isLink: true,
+    url: '/assets/review-deck.pdf'
   }
 ];
 
@@ -132,14 +140,6 @@ export const whatsNextData = [
     icon: '🎮',
     type: 'game',
     isLink: false
-  },
-  {
-    id: 'review-deck',
-    title: 'Review Deck',
-    icon: '📊',
-    type: 'link',
-    isLink: true,
-    url: '/assets/review-deck.pdf'
   }
 ];
 
@@ -159,7 +159,7 @@ export const statNotesData = [
 
 export const terminalData = [
   '> status · actively looking',
-  '> location · Delhi → Bangalore',
+  '> location · Delhi · Bangalore',
   '> role · Growth · open'
 ];
 

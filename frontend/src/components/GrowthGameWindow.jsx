@@ -3,8 +3,8 @@ import Draggable from 'react-draggable';
 import { X } from 'lucide-react';
 import { PLATFORM_LOGOS } from './PlatformLogos';
 
-const GAME_DURATION = 20;
-const MAX_MISSES = 5;
+const GAME_DURATION = 14;
+const MAX_MISSES = 6;
 const CANVAS_WIDTH = 480;
 const CANVAS_HEIGHT = 400;
 
@@ -55,14 +55,14 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
     const leadType = PLATFORM_LOGOS[Math.floor(Math.random() * PLATFORM_LOGOS.length)];
     const id = Math.random().toString(36).slice(2);
     // Speed increases as time runs out
-    const speedMultiplier = 1 + (GAME_DURATION - timeLeftRef.current) / GAME_DURATION;
+    const speedMultiplier = 1.0 + (GAME_DURATION - timeLeftRef.current) / (GAME_DURATION * 1.5);
     const newLead = {
       id,
       LogoComponent: leadType.Component,
       name: leadType.name,
       x: Math.random() * (CANVAS_WIDTH - 50) + 10,
       y: -40,
-      speed: (1.5 + Math.random() * 1.5) * speedMultiplier
+      speed: (1.1 + Math.random() * 1.2) * speedMultiplier
     };
     leadsRef.current = [...leadsRef.current, newLead];
     setLeads([...leadsRef.current]);
@@ -105,21 +105,20 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
     timeLeftRef.current = GAME_DURATION;
     setGameState('playing');
 
-    // Spawn leads
+    // Spawn leads at a firmer pace for the shorter round
     spawnIntervalRef.current = setInterval(() => {
-      // Spawn faster as time runs out
       spawnLead();
-    }, 900);
+    }, 1200);
 
-    // Decrease spawn interval over time
+    // Faster spawn later to push for a balanced challenge
     const speedupInterval = setInterval(() => {
       if (gameStateRef.current !== 'playing') {
         clearInterval(speedupInterval);
         return;
       }
-      if (timeLeftRef.current < 10 && spawnIntervalRef.current) {
+      if (timeLeftRef.current < 6 && spawnIntervalRef.current) {
         clearInterval(spawnIntervalRef.current);
-        spawnIntervalRef.current = setInterval(spawnLead, 600);
+        spawnIntervalRef.current = setInterval(spawnLead, 900);
         clearInterval(speedupInterval);
       }
     }, 1000);
@@ -255,6 +254,7 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
                         left: `${lead.x}px`,
                         top: `${lead.y}px`
                       }}
+                      onMouseDown={(e) => e.stopPropagation()}
                       onClick={() => handleLeadClick(lead.id)}
                     >
                       <Logo size={40} />
