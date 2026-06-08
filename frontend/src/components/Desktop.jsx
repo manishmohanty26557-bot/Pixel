@@ -25,28 +25,29 @@ const Desktop = ({ playSound }) => {
   const [showTrash, setShowTrash] = useState(false);
   const [showTrashConfirm, setShowTrashConfirm] = useState(false);
 
-  const handleIconClick = (project) => {
-    // Handle external links
+const handleIconClick = (project) => {
+  // Handle external links
+  if (project.isLink && project.url) {
     window.open(project.url, '_blank', 'noopener,noreferrer');
-     alert(project.url);
-      if (playSound) playSound();
-      return;
-    }
-
-    // Check if window is already open
-    if (openWindows.find(w => w.id === project.id)) {
-      return;
-    }
-
-    const newWindow = {
-      ...project,
-      zIndex: highestZIndex + 1
-    };
-
-    setOpenWindows([...openWindows, newWindow]);
-    setHighestZIndex(highestZIndex + 1);
     if (playSound) playSound();
+    return;
+  }
+
+  // Check if window is already open
+  if (openWindows.find(w => w.id === project.id)) {
+    return;
+  }
+
+  const newWindow = {
+    ...project,
+    zIndex: highestZIndex + 1
   };
+
+  setOpenWindows([...openWindows, newWindow]);
+  setHighestZIndex(highestZIndex + 1);
+  if (playSound) playSound();
+};
+
 
   const handleWindowClose = (projectId) => {
     setOpenWindows(openWindows.filter(w => w.id !== projectId));
