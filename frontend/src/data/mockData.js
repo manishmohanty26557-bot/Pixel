@@ -78,8 +78,7 @@ export const internshipsData = [
         'Closed ₹1L+ in brand deals in a single month',
         'Improved average engagement rate from 1% to 3%',
         'Built outreach pipeline across food, skincare & tech brands',
-        'Established per-reel pricing at ₹40–50K',
-        'Caption & hashtag system lifted reel reach by 40%+'
+        'Established per-reel pricing at ₹40–50K'
       ],
       skills: ['Brand Deals', 'Creator Monetization', 'Instagram Growth']
     }
