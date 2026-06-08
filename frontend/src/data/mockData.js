@@ -114,7 +114,7 @@ export const aboutLinksData = [
     icon: '📄',
     type: 'link',
     isLink: true,
-    url: '/assets/resume.pdf'
+    url: 'https://tinyurl.com/22v4d6nz'
   },
   {
     id: 'perfora-deck',
@@ -122,7 +122,7 @@ export const aboutLinksData = [
     icon: '📄',
     type: 'link',
     isLink: true,
-    url: '/assets/review-deck.pdf'
+    url: 'https://tinyurl.com/4zrnpsvn'
   }
 ];
 
