@@ -28,8 +28,7 @@ const Desktop = ({ playSound }) => {
 const handleIconClick = (project) => {
   // Handle external links
 if (project.isLink && project.url) {
-  console.log("CLICKED:", project.url);
-  alert("CLICKED: " + project.url);
+  window.location.href = project.url;
   return;
 }
 
