@@ -10,6 +10,7 @@ const CANVAS_HEIGHT = 400;
 
 const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
   const nodeRef = useRef(null);
+  const canvasRef = useRef(null);
   const [gameState, setGameState] = useState('start'); // start | playing | gameover
   const [score, setScore] = useState(0);
   const [missed, setMissed] = useState(0);
@@ -17,8 +18,10 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
   const [combo, setCombo] = useState(0);
   const [comboFlash, setComboFlash] = useState(null);
   const [leads, setLeads] = useState([]);
+  const [canvasWidth, setCanvasWidth] = useState(CANVAS_WIDTH);
 
   const leadsRef = useRef([]);
+  const canvasWidthRef = useRef(CANVAS_WIDTH);
   const animationRef = useRef(null);
   const spawnIntervalRef = useRef(null);
   const timerIntervalRef = useRef(null);
@@ -29,6 +32,20 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
   useEffect(() => {
     if (playSound) playSound();
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const updateCanvasWidth = () => {
+      if (!canvasRef.current) return;
+      const parentWidth = canvasRef.current.parentElement?.clientWidth || CANVAS_WIDTH;
+      const resolvedWidth = Math.min(CANVAS_WIDTH, Math.max(280, parentWidth));
+      setCanvasWidth(resolvedWidth);
+      canvasWidthRef.current = resolvedWidth;
+    };
+
+    updateCanvasWidth();
+    window.addEventListener('resize', updateCanvasWidth);
+    return () => window.removeEventListener('resize', updateCanvasWidth);
   }, []);
 
   const handleClose = (e) => {
@@ -52,6 +69,7 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
   }, [cleanup]);
 
   const spawnLead = useCallback(() => {
+    const canvasWidth = canvasWidthRef.current;
     const leadType = PLATFORM_LOGOS[Math.floor(Math.random() * PLATFORM_LOGOS.length)];
     const id = Math.random().toString(36).slice(2);
     // Speed increases as time runs out
@@ -60,7 +78,7 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
       id,
       LogoComponent: leadType.Component,
       name: leadType.name,
-      x: Math.random() * (CANVAS_WIDTH - 50) + 10,
+      x: Math.random() * (canvasWidth - 50) + 10,
       y: -40,
       speed: (1.1 + Math.random() * 1.2) * speedMultiplier
     };
@@ -71,10 +89,12 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
   const animate = useCallback(() => {
     if (gameStateRef.current !== 'playing') return;
 
+    const currentCanvasHeight = (canvasWidthRef.current / CANVAS_WIDTH) * CANVAS_HEIGHT;
+
     leadsRef.current = leadsRef.current
       .map(l => ({ ...l, y: l.y + l.speed }))
       .filter(l => {
-        if (l.y > CANVAS_HEIGHT) {
+        if (l.y > currentCanvasHeight) {
           // Missed
           setMissed(prev => {
             const newMissed = prev + 1;
@@ -150,6 +170,8 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
     return () => cleanup();
   }, [cleanup]);
 
+  const canvasHeight = (canvasWidth / CANVAS_WIDTH) * CANVAS_HEIGHT;
+
   const handleLeadClick = (leadId) => {
     const lead = leadsRef.current.find(l => l.id === leadId);
     if (!lead) return;
@@ -220,7 +242,8 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
 
           <div 
             className="game-canvas" 
-            style={{ width: CANVAS_WIDTH, height: CANVAS_HEIGHT }}
+            ref={canvasRef}
+            style={{ width: '100%', maxWidth: CANVAS_WIDTH, height: canvasHeight }}
             data-testid="game-canvas"
           >
             {gameState === 'start' && (
