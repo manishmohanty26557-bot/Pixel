@@ -29,6 +29,8 @@ const ExtracurricularsWindow = ({ onClose, zIndex, onFocus, playSound }) => {
         className="window"
         style={{ zIndex, top: '22%', left: '18%' }}
         onMouseDown={onFocus}
+        onPointerDown={onFocus}
+        onTouchStart={onFocus}
       >
         <div className="window-header">
           <div className="window-controls">
@@ -36,6 +38,8 @@ const ExtracurricularsWindow = ({ onClose, zIndex, onFocus, playSound }) => {
               className="window-btn window-btn-close" 
               onClick={handleClose}
               onMouseDown={(e) => e.stopPropagation()}
+              onPointerDown={(e) => e.stopPropagation()}
+              onTouchStart={(e) => e.stopPropagation()}
               data-testid="close-extracurriculars"
             >
               <X size={10} />

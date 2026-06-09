@@ -215,6 +215,8 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
         className="window growth-game-window"
         style={{ zIndex, top: '8%', left: '20%' }}
         onMouseDown={onFocus}
+        onPointerDown={onFocus}
+        onTouchStart={onFocus}
       >
         <div className="window-header">
           <div className="window-controls">
@@ -222,6 +224,8 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
               className="window-btn window-btn-close" 
               onClick={handleClose}
               onMouseDown={(e) => e.stopPropagation()}
+              onPointerDown={(e) => e.stopPropagation()}
+              onTouchStart={(e) => e.stopPropagation()}
               data-testid="close-growth-game"
             >
               <X size={10} />
@@ -255,9 +259,11 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
                 <p className="game-instructions">
                   Miss 5 and it's game over.
                 </p>
-                <button 
+                    <button 
                   className="game-btn game-btn-start" 
                   onClick={startGame}
+                  onPointerDown={(e) => e.stopPropagation()}
+                  onTouchStart={(e) => e.stopPropagation()}
                   data-testid="start-game-btn"
                 >
                   ▶ Start
@@ -277,8 +283,14 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
                         left: `${lead.x}px`,
                         top: `${lead.y}px`
                       }}
-                      onMouseDown={(e) => e.stopPropagation()}
-                      onClick={() => handleLeadClick(lead.id)}
+                      onPointerDown={(e) => {
+                        e.stopPropagation();
+                        handleLeadClick(lead.id);
+                      }}
+                      onTouchStart={(e) => {
+                        e.stopPropagation();
+                        handleLeadClick(lead.id);
+                      }}
                     >
                       <Logo size={40} />
                     </div>
@@ -300,6 +312,8 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
                 <button 
                   className="game-btn game-btn-start" 
                   onClick={startGame}
+                  onPointerDown={(e) => e.stopPropagation()}
+                  onTouchStart={(e) => e.stopPropagation()}
                   data-testid="restart-game-btn"
                 >
                   ↻ Play Again

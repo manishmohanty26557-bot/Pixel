@@ -370,30 +370,24 @@ input, textarea {
   align-items: center;
   padding: 0 12px;
   gap: 12px;
-}
+    touch-action: none;
+  }
 
-.window-controls {
-  display: flex;
-  gap: 6px;
-}
+  .window-controls {
+    display: flex;
+    gap: 6px;
+  }
 
-.window-btn {
-  width: 16px;
-  height: 16px;
-  border: 2px solid #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 8px;
-  transition: transform 0.1s;
-}
-
-.window-btn:active {
-  transform: scale(0.9);
-}
-
-.window-btn-close {
-  background: #ff5f56;
+  .window-btn {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    transition: transform 0.1s;
+    touch-action: manipulation;
 }
 
 .window-btn-minimize {
@@ -412,8 +406,7 @@ input, textarea {
 
 .window-content {
   flex: 1;
-  overflow-y: auto;
-  padding: 20px;
+    min-height: 0;
 }
 
 .window-header-section {
@@ -1183,20 +1176,7 @@ input, textarea {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
   pointer-events: auto;
   z-index: 2;
-}
-
-.game-lead:hover {
-  transform: scale(1.2);
-}
-
-.game-lead:active {
-  transform: scale(0.9);
-}
-
-.game-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(15, 4, 32, 0.95);
+    touch-action: manipulation;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1476,6 +1456,19 @@ input, textarea {
 
   .window-content {
     padding: 14px;
+  }
+
+  .window {
+    position: fixed !important;
+    width: min(95vw, 600px) !important;
+    left: 50% !important;
+    top: 12% !important;
+    transform: translateX(-50%) !important;
+    max-height: 90vh !important;
+  }
+
+  .window-content {
+    max-height: calc(90vh - 56px);
   }
 
   .window-header {

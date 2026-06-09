@@ -29,6 +29,8 @@ const AboutWindow = ({ onClose, zIndex, onFocus, playSound }) => {
         className="window"
         style={{ zIndex, top: '10%', left: '25%' }}
         onMouseDown={onFocus}
+        onPointerDown={onFocus}
+        onTouchStart={onFocus}
       >
         <div className="window-header">
           <div className="window-controls">
@@ -36,6 +38,8 @@ const AboutWindow = ({ onClose, zIndex, onFocus, playSound }) => {
               className="window-btn window-btn-close" 
               onClick={handleClose}
               onMouseDown={(e) => e.stopPropagation()}
+              onPointerDown={(e) => e.stopPropagation()}
+              onTouchStart={(e) => e.stopPropagation()}
               data-testid="close-about"
             >
               <X size={10} />
