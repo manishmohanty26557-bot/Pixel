@@ -229,8 +229,14 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
         className="window growth-game-window"
         style={{ zIndex, top: '8%', left: '20%' }}
         onMouseDown={onFocus}
-        onPointerDown={onFocus}
-        onTouchStart={onFocus}
+        onPointerDown={(e) => {
+          e.stopPropagation();
+          onFocus();
+        }}
+        onTouchStart={(e) => {
+          e.stopPropagation();
+          onFocus();
+        }}
       >
         <div className="window-header">
           <div className="window-controls">

@@ -60,6 +60,13 @@ if (project.isLink && project.url) {
     setHighestZIndex(newZIndex);
   };
 
+  const handleDesktopPointerDown = (event) => {
+    if (typeof window === 'undefined' || window.innerWidth >= 768) return;
+    if (!openWindows.length) return;
+    if (event.target.closest('.window')) return;
+    setOpenWindows([]);
+  };
+
   const handleTrashClick = () => {
     setShowTrashConfirm(true);
     if (playSound) playSound();
@@ -82,7 +89,7 @@ if (project.isLink && project.url) {
   };
 
   return (
-    <div className="desktop">
+    <div className="desktop" onPointerDown={handleDesktopPointerDown} onTouchStart={handleDesktopPointerDown}>
       {/* Floating Clouds */}
       <Cloud style={{ top: '15%', right: '8%' }} animationDelay={0} />
       <Cloud style={{ top: '35%', right: '20%' }} animationDelay={3} />

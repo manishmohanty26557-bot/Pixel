@@ -30,8 +30,14 @@ const FuturePlansWindow = ({ onClose, zIndex, onFocus, playSound }) => {
         className="window"
         style={{ zIndex, top: '12%', left: '18%' }}
         onMouseDown={onFocus}
-        onPointerDown={onFocus}
-        onTouchStart={onFocus}
+        onPointerDown={(e) => {
+          e.stopPropagation();
+          onFocus();
+        }}
+        onTouchStart={(e) => {
+          e.stopPropagation();
+          onFocus();
+        }}
       >
         <div className="window-header">
           <div className="window-controls">
