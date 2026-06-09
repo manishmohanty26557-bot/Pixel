@@ -203,12 +203,18 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
     });
   };
 
-  const getEndMessage = () => {
-    if (score >= 150) return 'Bhai you are literally a growth machine. Hire karo isko.';
-    if (score >= 100) return 'Solid. You click leads like Manish closes brand deals.';
-    if (score >= 60) return 'Decent. Manish would have converted those missed ones though.';
-    return 'Rough day. Even the CPR on this was bad.';
-  };
+ const getEndMessage = () => {
+  if (score >= 300)
+    return 'Bhai you are literally a growth machine. Hire karo isko.';
+
+  if (score >= 220)
+    return 'Solid. You click leads like Manish closes brand deals.';
+
+  if (score >= 120)
+    return 'Decent. Manish would have converted those missed ones though.';
+
+  return 'Rough day. Even the CPV on this was bad.';
+};
 
   return (
     <Draggable
