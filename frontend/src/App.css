@@ -17,14 +17,15 @@ input, textarea {
 
 .App {
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* Portfolio Container - Merlin AI inspired purple gradient */
 .portfolio-container {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(135deg, #E0C3FC 0%, #C9B6F5 30%, #A78BFA 70%, #8B5CF6 100%);
   position: relative;
   overflow: hidden;
@@ -1333,7 +1334,8 @@ input, textarea {
 @media (max-width: 767px) {
   .portfolio-container,
   .App {
-    min-height: 100vh;
+    min-height: auto;
+    overflow: visible;
   }
 
   .desktop {
@@ -1351,10 +1353,11 @@ input, textarea {
     max-width: 100%;
     height: auto;
     margin: 0;
-    padding: 72px 16px 180px;
+    padding: 88px 16px 16px;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    overflow: visible;
   }
 
   .sections-zone::-webkit-scrollbar {
@@ -1372,28 +1375,31 @@ input, textarea {
   }
 
   .sticky-note {
-    position: fixed;
-    top: 56px;
-    right: 16px;
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
     width: calc(100% - 32px);
-    max-width: 320px;
-    transform: rotate(1deg);
-    z-index: 60;
+    max-width: 100%;
+    transform: none;
+    margin: 0 auto 16px;
+    z-index: 1;
   }
 
   .stat-notes-zone {
-    position: fixed;
-    top: 120px;
-    left: 16px;
-    right: 16px;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
     width: auto;
     height: auto;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    padding: 0;
+    padding: 0 16px 16px;
+    margin: 0;
     pointer-events: auto;
-    z-index: 60;
+    z-index: 1;
   }
 
   .stat-note {
@@ -1401,7 +1407,7 @@ input, textarea {
     top: auto !important;
     left: auto !important;
     transform: rotate(0deg) !important;
-    width: calc(50% - 8px);
+    width: calc(50% - 5px);
     margin: 0;
     min-width: 0;
   }
@@ -1411,20 +1417,23 @@ input, textarea {
   }
 
   .terminal-widget {
-    position: fixed;
-    bottom: 16px;
-    left: 16px;
+    position: relative;
+    bottom: auto;
+    left: auto;
     width: calc(100% - 32px);
     max-width: 100%;
-    z-index: 70;
+    margin: 0 auto 16px;
+    z-index: 1;
   }
 
   .dock-container {
-    position: fixed !important;
-    bottom: 110px !important;
-    right: 16px !important;
+    position: relative !important;
+    bottom: auto !important;
+    right: auto !important;
     left: auto !important;
-    z-index: 80;
+    width: auto;
+    margin: 0 16px 16px auto;
+    z-index: 1;
   }
 
   .dock {
@@ -1442,9 +1451,13 @@ input, textarea {
   }
 
   .pixel-girl-container {
-    bottom: 16px;
-    right: 16px;
+    position: relative;
+    bottom: auto;
+    right: auto;
+    left: auto;
     width: 72px;
+    margin: 0 16px 16px auto;
+    z-index: 1;
   }
 
   .pixel-girl {
@@ -1517,26 +1530,7 @@ input, textarea {
   }
 
   .cloud {
-    opacity: 0.5;
-  }
-
-  .desktop > .cloud:nth-of-type(1) {
-    left: 16px !important;
-    top: 16px !important;
-    right: auto !important;
-  }
-
-  .desktop > .cloud:nth-of-type(2) {
-    left: 50% !important;
-    top: 52px !important;
-    right: auto !important;
-    transform: translateX(-50%);
-  }
-
-  .desktop > .cloud:nth-of-type(3) {
-    right: 16px !important;
-    top: 42px !important;
-    left: auto !important;
+    display: none;
   }
 
   .game-canvas {
