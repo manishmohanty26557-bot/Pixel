@@ -37,15 +37,23 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
   useEffect(() => {
     const updateCanvasWidth = () => {
       if (!canvasRef.current) return;
-      const parentWidth = canvasRef.current.parentElement?.clientWidth || CANVAS_WIDTH;
-      const resolvedWidth = Math.min(CANVAS_WIDTH, Math.max(280, parentWidth));
+      const measuredWidth = canvasRef.current.clientWidth || canvasRef.current.parentElement?.clientWidth || CANVAS_WIDTH;
+      const resolvedWidth = Math.min(CANVAS_WIDTH, Math.max(280, measuredWidth));
       setCanvasWidth(resolvedWidth);
       canvasWidthRef.current = resolvedWidth;
     };
 
     updateCanvasWidth();
+    const resizeObserver = new ResizeObserver(updateCanvasWidth);
+    if (canvasRef.current) {
+      resizeObserver.observe(canvasRef.current);
+    }
     window.addEventListener('resize', updateCanvasWidth);
-    return () => window.removeEventListener('resize', updateCanvasWidth);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', updateCanvasWidth);
+    };
   }, []);
 
   const handleClose = (e) => {
@@ -125,10 +133,9 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
     timeLeftRef.current = GAME_DURATION;
     setGameState('playing');
 
-    // Spawn leads at a firmer pace for the shorter round
-    spawnIntervalRef.current = setInterval(() => {
-      spawnLead();
-    }, 1200);
+    // Spawn a lead immediately so mobile users see gameplay right away
+    spawnLead();
+    spawnIntervalRef.current = setInterval(spawnLead, 1200);
 
     // Faster spawn later to push for a balanced challenge
     const speedupInterval = setInterval(() => {
@@ -207,6 +214,7 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
     <Draggable
       nodeRef={nodeRef}
       handle=".window-header"
+      cancel=".window-btn"
       bounds="parent"
       onStart={onFocus}
     >
@@ -221,11 +229,13 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
         <div className="window-header">
           <div className="window-controls">
             <button 
+              type="button"
               className="window-btn window-btn-close" 
               onClick={handleClose}
               onMouseDown={(e) => e.stopPropagation()}
               onPointerDown={(e) => e.stopPropagation()}
               onTouchStart={(e) => e.stopPropagation()}
+              onTouchEnd={(e) => { e.stopPropagation(); handleClose(e); }}
               data-testid="close-growth-game"
             >
               <X size={10} />
@@ -260,10 +270,12 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
                   Miss 5 and it's game over.
                 </p>
                     <button 
+                  type="button"
                   className="game-btn game-btn-start" 
                   onClick={startGame}
                   onPointerDown={(e) => e.stopPropagation()}
                   onTouchStart={(e) => e.stopPropagation()}
+                  onTouchEnd={(e) => { e.stopPropagation(); }}
                   data-testid="start-game-btn"
                 >
                   ▶ Start
@@ -310,10 +322,12 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
                 </div>
                 <p className="game-end-message">{getEndMessage()}</p>
                 <button 
+                  type="button"
                   className="game-btn game-btn-start" 
                   onClick={startGame}
                   onPointerDown={(e) => e.stopPropagation()}
                   onTouchStart={(e) => e.stopPropagation()}
+                  onTouchEnd={(e) => { e.stopPropagation(); }}
                   data-testid="restart-game-btn"
                 >
                   ↻ Play Again

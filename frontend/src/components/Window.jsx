@@ -26,6 +26,7 @@ const Window = ({ project, onClose, zIndex, onFocus, playSound }) => {
     <Draggable
       nodeRef={nodeRef}
       handle=".window-header"
+      cancel=".window-btn"
       bounds="parent"
       onStart={onFocus}
     >
@@ -40,11 +41,13 @@ const Window = ({ project, onClose, zIndex, onFocus, playSound }) => {
         <div className="window-header">
           <div className="window-controls">
             <button 
+              type="button"
               className="window-btn window-btn-close" 
               onClick={handleClose}
               onMouseDown={(e) => e.stopPropagation()}
               onPointerDown={(e) => e.stopPropagation()}
               onTouchStart={(e) => e.stopPropagation()}
+              onTouchEnd={(e) => { e.stopPropagation(); handleClose(e); }}
               data-testid={`close-${project.id}`}
             >
               <X size={10} />

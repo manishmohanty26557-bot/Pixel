@@ -370,24 +370,24 @@ input, textarea {
   align-items: center;
   padding: 0 12px;
   gap: 12px;
-    touch-action: none;
-  }
+  touch-action: none;
+}
 
-  .window-controls {
-    display: flex;
-    gap: 6px;
-  }
+.window-controls {
+  display: flex;
+  gap: 6px;
+}
 
-  .window-btn {
-    width: 16px;
-    height: 16px;
-    border: 2px solid #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 8px;
-    transition: transform 0.1s;
-    touch-action: manipulation;
+.window-btn {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  transition: transform 0.1s;
+  touch-action: manipulation;
 }
 
 .window-btn-minimize {
@@ -1123,8 +1123,7 @@ input, textarea {
 
 /* ===== Growth Game Styles ===== */
 .growth-game-window {
-  width: auto !important;
-  max-width: 580px;
+  max-width: 100%;
 }
 
 .game-canvas-wrapper {
@@ -1160,6 +1159,7 @@ input, textarea {
   border-radius: 4px;
   overflow: hidden;
   margin: 0 auto;
+  touch-action: manipulation;
 }
 
 .game-lead {
@@ -1176,14 +1176,7 @@ input, textarea {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
   pointer-events: auto;
   z-index: 2;
-    touch-action: manipulation;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 30px 20px;
-  gap: 14px;
+  touch-action: manipulation;
 }
 
 .game-title {
@@ -1231,6 +1224,7 @@ input, textarea {
   box-shadow: 3px 3px 0 rgba(255, 232, 124, 0.3);
   transition: transform 0.1s;
   margin-top: 10px;
+  touch-action: manipulation;
 }
 
 .game-btn:hover {
