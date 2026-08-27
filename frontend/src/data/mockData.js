@@ -9,12 +9,13 @@ export const internshipsData = [
     type: 'internship',
     content: {
       role: 'Growth Intern',
+      period: 'July 2026 - Present',
       description: 'Built content systems and distribution loops for an AI product',
       achievements: [
         'Built content workflows for YouTube, X, LinkedIn, and Reddit, generating 200+ LLM citations',
-        'Increased organic searches from 2,704 to 3,708 through multi-platform distribution and backlink exchanges',
-        'Improved domain ranking from 47 to 54',
-        'Increased SQLs from 15 to 21 in one month',
+        'Increased organic searches from 2,704 to 3,708 through multi-platform content distribution and backlink exchanges',
+        'Improved domain ranking from 47 to 54 through 30+ monthly backlink exchanges',
+        'Increased SQL bookings from 15 to 21 in one month through improved organic visibility and domain authority',
         'Built recurring backlink outreach using Instantly and HeyReach',
         'Developed Claude skills to automate script-writing across YouTube, X, Instagram, LinkedIn, and Reddit'
       ],
@@ -36,7 +37,7 @@ export const internshipsData = [
         'Ran YouTube ads for 20 live sellers, maintaining CPC < ₹2',
         'Managed ₹30K/month Meta ads budget, achieving ₹1.78 cost per result through creative testing and funnel optimization',
         'Scaled Facebook from 60K to 100K followers using shorts-led distribution and performance marketing',
-        'Built and scripted an end-to-end influencer pipeline with separate buyer and seller funnels',
+        'Built and scripted an end-to-end influencer pipeline and designed separate funnels for buyers and sellers',
         'Developed 3 in-house YouTube channels via shorts, ads, and lives, scaling each to 1K+ subscribers',
         'Built Slack bots to track daily Meta ad spend, sales team performance, and top influencer videos',
         '🏆 Pre-Placement Offer (PPO) based on performance and impact'
@@ -58,12 +59,12 @@ export const internshipsData = [
       achievements: [
         'Optimized 25+ SKUs by improving PDPs, images, and FAQs for SEO and conversion',
         'Localized South India funnels through regional messaging, creatives, and landing pages',
-        'Onboarded 40+ regional creators through targeted outreach and negotiation',
+        'Onboarded 40+ regional creators at ₹5K per creator through targeted outreach and negotiation',
         'Reduced creator onboarding TAT by 50% through SOPs, achieving a 90% acceptance rate',
         'Generated ₹5L/month in South India through creator-led growth and PDP optimization',
         'Improved CTR and funnel efficiency by testing 25+ ad scripts using CTR and hook-rate analysis',
         'Led the South India Birthday Sale, driving 30% of total birthday campaign revenue',
-        '🏆 Pre-Placement Offer (PPO)'
+        '🏆 Awarded a Pre-Placement Offer (PPO) based on performance and impact'
       ],
       skills: ['Creator Marketing', 'Creative Testing', 'CRO']
     }
@@ -93,7 +94,7 @@ export const internshipsData = [
     type: 'internship',
     content: {
       role: 'Social Media Manager',
-      period: 'March 2026 · 1 month',
+      period: 'April 2026 - May 2026',
       description: '',
       achievements: [
         'Closed ₹1L+ in brand deals in a single month',
@@ -197,7 +198,7 @@ export const aboutData = {
   tagline: 'Your Growth Guy',
   email: 'manishmohanty19@gmail.com',
   phone: '+91-8130625164',
-  education: 'B.A. (Hons) Economics - Delhi College of Arts and Commerce, University of Delhi',
+  education: 'B.A. (Hons) Economics - Delhi College of Arts and Commerce, University of Delhi (6.84 CGPA) | Class XII: 88.6% | Class X: 94.7% - Air Force Bal Bharti School, Lodhi Road',
   bio: 'Recently turned 21. Drove growth at Zoop and Perfora. Numbers-first, ai pagluu, still figuring it out.',
   nextTwoMonths: [
     {
@@ -230,7 +231,7 @@ export const stickyNoteData = {
 
 export const extracurricularsData = {
   leadership: [
-    'President at ECOLIBRIUM - Economics Department, DCAC',
+    'President at ECOLIBRIUM - Economics Department, DCAC (September 2025 - June 2026)',
     'Organized Econovision 2.0, an inter-college case competition with 250+ DU participants and a ₹10,000 prize pool',
     'Oversaw budgeting, sponsorship, and logistics, achieving a 40% rise in event participation',
     'Expanded ECOLIBRIUM visibility to 20+ colleges and improved event satisfaction scores'
