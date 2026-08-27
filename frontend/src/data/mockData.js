@@ -2,9 +2,30 @@
 
 export const internshipsData = [
   {
+    id: 'segwise-ai',
+    title: 'Segwise AI',
+    icon: '🤖',
+    logo: '/assets/segwise-logo.svg',
+    type: 'internship',
+    content: {
+      role: 'Growth Intern',
+      description: 'Built content systems and distribution loops for an AI product',
+      achievements: [
+        'Built content workflows for YouTube, X, LinkedIn, and Reddit, generating 200+ LLM citations',
+        'Increased organic searches from 2,704 to 3,708 through multi-platform distribution and backlink exchanges',
+        'Improved domain ranking from 47 to 54',
+        'Increased SQLs from 15 to 21 in one month',
+        'Built recurring backlink outreach using Instantly and HeyReach',
+        'Developed Claude skills to automate script-writing across YouTube, X, Instagram, LinkedIn, and Reddit'
+      ],
+      skills: ['Content Distribution', 'Automation', 'Analytics']
+    }
+  },
+  {
     id: 'zoop-live',
     title: 'Zoop Live',
     icon: '📺',
+    logo: '/assets/zoop-live-logo.svg',
     type: 'internship',
     badge: { text: 'PPO', color: 'gold' },
     content: {
@@ -13,62 +34,62 @@ export const internshipsData = [
       description: 'Led performance marketing initiatives for live commerce platform',
       achievements: [
         'Ran YouTube ads for 20 live sellers, maintaining CPC < ₹2',
-        'Managed ₹30K/month Meta ads budget with CPR of 1.78',
-        'Scaled Facebook from 60K to 100K followers',
-        'Built end-to-end influencer pipeline',
-        'Developed 3 YouTube channels to 1K+ subscribers',
-        'Built Slack bots for performance tracking',
-        '🏆 Pre-Placement Offer (PPO)'
+        'Managed ₹30K/month Meta ads budget, achieving ₹1.78 cost per result through creative testing and funnel optimization',
+        'Scaled Facebook from 60K to 100K followers using shorts-led distribution and performance marketing',
+        'Built and scripted an end-to-end influencer pipeline with separate buyer and seller funnels',
+        'Developed 3 in-house YouTube channels via shorts, ads, and lives, scaling each to 1K+ subscribers',
+        'Built Slack bots to track daily Meta ad spend, sales team performance, and top influencer videos',
+        '🏆 Pre-Placement Offer (PPO) based on performance and impact'
       ],
-      skills: ['YouTube Ads', 'Meta Ads', 'Funnel Optimization']
+      skills: ['Short-form Content', 'Creative Testing', 'Funnel Optimization', 'Automation']
     }
   },
   {
     id: 'perfora',
     title: 'Perfora',
     icon: '🛍️',
+    logo: '/assets/perfora-logo.svg',
     type: 'internship',
-    badge: { text: 'PPI', color: 'blue' },
+    badge: { text: 'PPO', color: 'gold' },
     content: {
       role: 'Creative Growth Intern',
       period: 'June 2025 - August 2025',
       description: 'Optimized growth for oral care D2C brand',
       achievements: [
-        'Optimized 25+ SKUs for SEO and conversion',
-        'Localized South India funnels',
-        'Onboarded 40+ regional creators',
-        'Reduced onboarding TAT by 50%',
-        'Generated ₹5L/month in South India',
-        'Led Birthday Sale: 30% of campaign revenue',
-        '🏆 Pre-Placement Interview (PPI)'
+        'Optimized 25+ SKUs by improving PDPs, images, and FAQs for SEO and conversion',
+        'Localized South India funnels through regional messaging, creatives, and landing pages',
+        'Onboarded 40+ regional creators through targeted outreach and negotiation',
+        'Reduced creator onboarding TAT by 50% through SOPs, achieving a 90% acceptance rate',
+        'Generated ₹5L/month in South India through creator-led growth and PDP optimization',
+        'Improved CTR and funnel efficiency by testing 25+ ad scripts using CTR and hook-rate analysis',
+        'Led the South India Birthday Sale, driving 30% of total birthday campaign revenue',
+        '🏆 Pre-Placement Offer (PPO)'
       ],
-      skills: ['SEO', 'Creator Marketing', 'CRO']
+      skills: ['Creator Marketing', 'Creative Testing', 'CRO']
     }
   },
   {
     id: 'eleven-studios',
     title: 'Eleven Studios',
     icon: '🎨',
+    logo: '/assets/eleven-studios-logo.svg',
     type: 'internship',
     content: {
       role: 'Growth (Founding Team)',
       period: 'September 2025 - November 2025',
       description: 'Led growth for design-first startup',
       achievements: [
-        '3,00,000+ LinkedIn impressions',
-        '50% revenue growth contribution',
-        'Interest from Ankur Warikoo',
-        'Onboarded clients in India, Dubai, Singapore',
-        '₹2L+ project revenue',
+        'Onboarded 4 clients across India, Dubai, and Singapore, generating ₹1.5L+ project revenue',
         'Scaled to ₹1.25L monthly revenue'
       ],
-      skills: ['LinkedIn Growth', 'Client Acquisition']
+      skills: ['Outbound Funnels', 'Inbound Funnels', 'Client Acquisition']
     }
   },
   {
     id: 'kankyreacts',
     title: 'Kankyreacts',
     icon: '🎬',
+    logo: '/assets/kanki-react-logo.svg',
     type: 'internship',
     content: {
       role: 'Social Media Manager',
@@ -77,10 +98,9 @@ export const internshipsData = [
       achievements: [
         'Closed ₹1L+ in brand deals in a single month',
         'Improved average engagement rate from 1% to 3%',
-        'Built outreach pipeline across food, skincare & tech brands',
-        'Established per-reel pricing at ₹40–50K'
+        'Built outreach pipelines across food, skincare, and tech brands'
       ],
-      skills: ['Brand Deals', 'Creator Monetization', 'Instagram Growth']
+      skills: ['Content Optimization', 'Brand Deals', 'Creator Outreach']
     }
   }
 ];
@@ -114,7 +134,7 @@ export const aboutLinksData = [
     icon: '📄',
     type: 'link',
     isLink: true,
-    url: 'https://tinyurl.com/22v4d6nz'
+    url: 'https://www.dropbox.com/scl/fi/jabr2bqqaz7kbnlwjtidl/cv-manish-updated-new-1.pdf?rlkey=onujq4njzfsy6tce9vf81ke88&st=h0e64rj4&dl=0'
   },
   {
     id: 'perfora-deck',
@@ -129,7 +149,7 @@ export const aboutLinksData = [
 export const whatsNextData = [
   {
     id: 'future-plans',
-    title: 'Next 2 Months',
+    title: 'Next 6 Months',
     icon: '🎯',
     type: 'future',
     isLink: false
@@ -151,8 +171,8 @@ export const projectsData = [
 ];
 
 export const statNotesData = [
-  { id: 's1', value: '₹30K/mo', label: 'Meta budget managed', rotation: -4, top: 60, left: 40 },
-  { id: 's2', value: '3,00,000+', label: 'LinkedIn impressions', rotation: 5, top: 170, left: 65 },
+  { id: 's1', value: '30+', label: 'scripts written', rotation: -4, top: 60, left: 40 },
+  { id: 's2', value: '200+', label: 'LLM citations generated', rotation: 5, top: 170, left: 65 },
   { id: 's3', value: '120+', label: 'creators onboarded', rotation: -6, top: 285, left: 30 },
   { id: 's4', value: '4', label: 'internships', rotation: 3, top: 395, left: 55 }
 ];
@@ -172,19 +192,19 @@ export const aboutData = {
   bio: 'Recently turned 21. Drove growth at Zoop and Perfora. Numbers-first, ai pagluu, still figuring it out.',
   nextTwoMonths: [
     {
-      icon: '✈️',
-      title: 'Move to Bangalore',
-      description: 'Relocating to India\'s startup capital ready to immerse myself in the tech ecosystem and build with the best.'
+      icon: '🏠',
+      title: 'Shift to a Flat',
+      description: 'Move into my own place in Bangalore and make a flat feel like home.'
     },
     {
-      icon: '🚀',
-      title: 'Work at an AI Startup',
-      description: 'Looking to join an early-stage startup where I can own growth end-to-end — ads, creators, funnels — and actually see the impact.'
+      icon: '🍛',
+      title: 'Have Meghana Biryani',
+      description: 'Finally make the pilgrimage for a proper plate of Meghana Biryani.'
     },
     {
-      icon: '🎸',
-      title: 'Something Fun',
-      description: 'Learning guitar, finding Bangalore\'s best filter coffee, and beating my friend at FIFA. In that order. Roughly.'
+      icon: '📣',
+      title: 'Work in Distribution',
+      description: 'Get better at putting products and content in front of the right audience.'
     },
     {
       icon: '📚',
@@ -201,9 +221,10 @@ export const stickyNoteData = {
 
 export const extracurricularsData = {
   leadership: [
-    'President at ECOLIBRIUM - Economics Department DCAC (Sept 2025 - Present)',
-    'General Secretary at ECOLIBRIUM (Sept 2024 - July 2025)',
-    'Led 250+ members and academic initiatives'
+    'President at ECOLIBRIUM - Economics Department, DCAC',
+    'Organized Econovision 2.0, an inter-college case competition with 250+ DU participants and a ₹10,000 prize pool',
+    'Oversaw budgeting, sponsorship, and logistics, achieving a 40% rise in event participation',
+    'Expanded ECOLIBRIUM visibility to 20+ colleges and improved event satisfaction scores'
   ],
   competitions: [
     '1st place - Ecovision (Economics Debate, DCAC, DU)',
@@ -215,14 +236,11 @@ export const extracurricularsData = {
     'Special Mention - Fiscal Frenzy (Aryabhatta, DU)'
   ],
   events: [
-    'Organized Econovision 2.0: 250+ participants, ₹10K prize pool',
-    'Managed ECOLIBRIUM Annual Fests with ₹50K budget',
-    'Coordinated CV-building Seminar with 50+ participants'
+    'Organized Econovision 2.0: 250+ DU participants and a ₹10,000 prize pool'
   ],
   other: [
-    'Published article - "Love is on Sale" in Ecossential (Economics Newsletter)',
-    '120 hrs community service - Project Tanzeal (NSS), teaching underprivileged children',
-    '99 percentile – CUET (Mathematics & Economics)'
+    '99 percentile - CUET (Mathematics & Economics)',
+    'Published article - "Love is on Sale"'
   ]
 };
 

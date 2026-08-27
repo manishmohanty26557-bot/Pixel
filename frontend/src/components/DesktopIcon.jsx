@@ -15,13 +15,17 @@ const DesktopIcon = ({ project, onClick, inline = false }) => {
 
   return (
     <div 
-      className={`desktop-icon ${project.isLink ? 'desktop-icon-link' : ''} ${inline ? 'desktop-icon-inline' : ''}`}
+      className={`desktop-icon ${project.isLink ? 'desktop-icon-link' : ''} ${project.id === 'segwise-ai' ? 'desktop-icon-segwise' : ''} ${inline ? 'desktop-icon-inline' : ''}`}
       onClick={handleClick}
       style={positionStyle}
       data-testid={`icon-${project.id}`}
     >
       <div className="desktop-icon-image">
-        <span className="desktop-icon-emoji">{project.icon}</span>
+        {project.logo ? (
+          <img className="desktop-icon-logo" src={project.logo} alt={`${project.title} logo`} />
+        ) : (
+          <span className="desktop-icon-emoji">{project.icon}</span>
+        )}
         {project.isLink && (
           <span className="desktop-icon-link-badge">
             <ExternalLink size={10} />

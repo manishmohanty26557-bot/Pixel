@@ -334,6 +334,14 @@ input, textarea {
   font-size: 32px;
 }
 
+.desktop-icon-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  display: block;
+  border-radius: 9px;
+}
+
 .desktop-icon-label {
   display: block;
   width: 100%;
@@ -912,7 +920,7 @@ input, textarea {
   opacity: 0.9;
 }
 
-/* Next 2 Months Cards */
+/* Next 6 Months Cards */
 .next-months-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

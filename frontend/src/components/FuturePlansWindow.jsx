@@ -61,7 +61,7 @@ const FuturePlansWindow = ({ onClose, zIndex, onFocus, playSound }) => {
           <div className="window-header-section">
             <div className="window-icon">🎯</div>
             <div>
-              <h2 className="window-project-title">Next 2 Months</h2>
+              <h2 className="window-project-title">Next 6 Months</h2>
               <p className="window-role">What I want to do next</p>
             </div>
           </div>
