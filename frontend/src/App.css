@@ -75,7 +75,6 @@ input, textarea {
   background: #333;
   border: 2px solid #666;
   margin-bottom: 20px;
-  overflow: hidden;
 }
 
 .boot-progress-bar {
@@ -335,10 +334,8 @@ input, textarea {
 }
 
 .desktop-icon-logo {
-  width: auto;
-  height: auto;
-  max-width: calc(100% - 8px);
-  max-height: calc(100% - 8px);
+  width: 88%;
+  height: 88%;
   object-fit: contain;
   object-position: center;
   display: block;
