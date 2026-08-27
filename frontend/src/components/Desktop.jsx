@@ -29,7 +29,7 @@ const handleIconClick = (project) => {
   // Handle external links
 if (project.isLink && project.url) {
   if (project.openInNewTab) {
-    window.open(project.url, '_blank', 'noopener,noreferrer');
+    return;
   } else {
     window.location.href = project.url;
   }
