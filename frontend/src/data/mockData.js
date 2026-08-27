@@ -88,7 +88,7 @@ export const internshipsData = [
   {
     id: 'kankyreacts',
     title: 'Kankyreacts',
-    icon: '🎬',
+    icon: '🔥',
     logo: '/assets/kanki-react-logo.svg',
     type: 'internship',
     content: {
@@ -143,6 +143,15 @@ export const aboutLinksData = [
     type: 'link',
     isLink: true,
     url: 'https://tinyurl.com/4zrnpsvn'
+  },
+  {
+    id: 'viral-content',
+    title: 'Viral Content',
+    icon: '🎬',
+    type: 'link',
+    isLink: true,
+    openInNewTab: true,
+    url: 'https://docs.google.com/spreadsheets/d/1lCCFRa-feG-hpk5pgfToyNAn7SZMRpsVrMBZkwNeMGk/edit?usp=sharing'
   }
 ];
 

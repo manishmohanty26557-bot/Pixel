@@ -28,7 +28,11 @@ const Desktop = ({ playSound }) => {
 const handleIconClick = (project) => {
   // Handle external links
 if (project.isLink && project.url) {
-  window.location.href = project.url;
+  if (project.openInNewTab) {
+    window.open(project.url, '_blank', 'noopener,noreferrer');
+  } else {
+    window.location.href = project.url;
+  }
   return;
 }
 
