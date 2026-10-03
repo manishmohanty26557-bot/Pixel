@@ -1,15 +1,11 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import Draggable from 'react-draggable';
 import { X } from 'lucide-react';
 import { extracurricularsData } from '../data/mockData';
 
-const ExtracurricularsWindow = ({ onClose, zIndex, onFocus, playSound }) => {
+const ExtracurricularsWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) => {
   const nodeRef = useRef(null);
 
-  useEffect(() => {
-    if (playSound) playSound();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const handleClose = (e) => {
     e.stopPropagation();
@@ -23,18 +19,14 @@ const ExtracurricularsWindow = ({ onClose, zIndex, onFocus, playSound }) => {
       handle=".window-header"
       cancel=".window-btn"
       bounds="parent"
-      onStart={onFocus}
     >
       <div 
         ref={nodeRef}
         className="window"
-        style={{ zIndex, top: '22%', left: '18%' }}
-        onMouseDown={onFocus}
+        style={{ zIndex, top: `calc(22% + ${cascade * 28}px)`, left: `calc(18% + ${cascade * 28}px)` }}
+        role="dialog"
+        aria-label="Activities"
         onPointerDown={(e) => {
-          e.stopPropagation();
-          onFocus();
-        }}
-        onTouchStart={(e) => {
           e.stopPropagation();
           onFocus();
         }}
@@ -43,12 +35,12 @@ const ExtracurricularsWindow = ({ onClose, zIndex, onFocus, playSound }) => {
           <div className="window-controls">
             <button 
               type="button"
-              className="window-btn window-btn-close" 
+              className="window-btn window-btn-close"
+              aria-label="Close window" 
               onClick={handleClose}
               onMouseDown={(e) => e.stopPropagation()}
               onPointerDown={(e) => e.stopPropagation()}
               onTouchStart={(e) => e.stopPropagation()}
-              onTouchEnd={(e) => { e.stopPropagation(); handleClose(e); }}
               data-testid="close-extracurriculars"
             >
               <X size={10} />

@@ -2,13 +2,14 @@ import React, { useRef, useEffect, useState, useCallback } from 'react';
 import Draggable from 'react-draggable';
 import { X } from 'lucide-react';
 import { PLATFORM_LOGOS } from './PlatformLogos';
+import { contactLinks, emailComposeUrl } from '../data/mockData';
 
 const GAME_DURATION = 14;
 const MAX_MISSES = 6;
 const CANVAS_WIDTH = 480;
 const CANVAS_HEIGHT = 400;
 
-const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
+const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) => {
   const nodeRef = useRef(null);
   const canvasRef = useRef(null);
   const [gameState, setGameState] = useState('start'); // start | playing | gameover
@@ -29,10 +30,6 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
   const gameStateRef = useRef('start');
   const timeLeftRef = useRef(GAME_DURATION);
 
-  useEffect(() => {
-    if (playSound) playSound();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     const updateCanvasWidth = () => {
@@ -222,18 +219,14 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
       handle=".window-header"
       cancel=".window-btn"
       bounds="parent"
-      onStart={onFocus}
     >
       <div 
         ref={nodeRef}
         className="window growth-game-window"
-        style={{ zIndex, top: '8%', left: '20%' }}
-        onMouseDown={onFocus}
+        style={{ zIndex, top: `calc(8% + ${cascade * 28}px)`, left: `calc(20% + ${cascade * 28}px)` }}
+        role="dialog"
+        aria-label="Growth Game"
         onPointerDown={(e) => {
-          e.stopPropagation();
-          onFocus();
-        }}
-        onTouchStart={(e) => {
           e.stopPropagation();
           onFocus();
         }}
@@ -242,12 +235,12 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
           <div className="window-controls">
             <button 
               type="button"
-              className="window-btn window-btn-close" 
+              className="window-btn window-btn-close"
+              aria-label="Close window" 
               onClick={handleClose}
               onMouseDown={(e) => e.stopPropagation()}
               onPointerDown={(e) => e.stopPropagation()}
               onTouchStart={(e) => e.stopPropagation()}
-              onTouchEnd={(e) => { e.stopPropagation(); handleClose(e); }}
               data-testid="close-growth-game"
             >
               <X size={10} />
@@ -274,12 +267,12 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
           >
             {gameState === 'start' && (
               <div className="game-overlay">
-                <h2 className="game-title">🎮 Catch the Lead</h2>
+                <h2 className="game-title">Catch the Lead</h2>
                 <p className="game-instructions">
-                  Leads are falling — click them before they escape.
+                  Leads are falling — tap them before they escape.
                 </p>
                 <p className="game-instructions">
-                  Miss 5 and it's game over.
+                  Miss {MAX_MISSES} and it's game over.
                 </p>
                     <button 
                   type="button"
@@ -344,6 +337,10 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound }) => {
                 >
                   ↻ Play Again
                 </button>
+                <div className="game-cta-links">
+                  <a href={contactLinks.resume} target="_blank" rel="noopener noreferrer">Resume ↗</a>
+                  <a href={emailComposeUrl('Hiring: saw your Growth Game')} target="_blank" rel="noopener noreferrer">Hire the real growth guy →</a>
+                </div>
               </div>
             )}
           </div>

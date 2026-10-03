@@ -1,15 +1,11 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import Draggable from 'react-draggable';
 import { X } from 'lucide-react';
-import { aboutData } from '../data/mockData';
+import { aboutData, emailComposeUrl } from '../data/mockData';
 
-const FuturePlansWindow = ({ onClose, zIndex, onFocus, playSound }) => {
+const FuturePlansWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) => {
   const nodeRef = useRef(null);
 
-  useEffect(() => {
-    if (playSound) playSound();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const handleClose = (e) => {
     e.stopPropagation();
@@ -23,18 +19,14 @@ const FuturePlansWindow = ({ onClose, zIndex, onFocus, playSound }) => {
       handle=".window-header"
       cancel=".window-btn"
       bounds="parent"
-      onStart={onFocus}
     >
       <div 
         ref={nodeRef}
         className="window"
-        style={{ zIndex, top: '12%', left: '18%' }}
-        onMouseDown={onFocus}
+        style={{ zIndex, top: `calc(12% + ${cascade * 28}px)`, left: `calc(18% + ${cascade * 28}px)` }}
+        role="dialog"
+        aria-label="Next 6 Months"
         onPointerDown={(e) => {
-          e.stopPropagation();
-          onFocus();
-        }}
-        onTouchStart={(e) => {
           e.stopPropagation();
           onFocus();
         }}
@@ -43,12 +35,12 @@ const FuturePlansWindow = ({ onClose, zIndex, onFocus, playSound }) => {
           <div className="window-controls">
             <button 
               type="button"
-              className="window-btn window-btn-close" 
+              className="window-btn window-btn-close"
+              aria-label="Close window" 
               onClick={handleClose}
               onMouseDown={(e) => e.stopPropagation()}
               onPointerDown={(e) => e.stopPropagation()}
               onTouchStart={(e) => e.stopPropagation()}
-              onTouchEnd={(e) => { e.stopPropagation(); handleClose(e); }}
               data-testid="close-future-plans"
             >
               <X size={10} />
@@ -82,9 +74,9 @@ const FuturePlansWindow = ({ onClose, zIndex, onFocus, playSound }) => {
             ))}
           </div>
 
-          <div className="future-cta">
+          <a className="future-cta" href={emailComposeUrl("Let's talk growth")} target="_blank" rel="noopener noreferrer">
             <p>If this sounds like someone you'd want on your team, let's talk →</p>
-          </div>
+          </a>
         </div>
       </div>
     </Draggable>

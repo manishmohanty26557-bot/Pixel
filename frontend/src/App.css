@@ -1319,7 +1319,7 @@ input, textarea {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767px), (max-height: 500px) and (max-width: 1023px), (max-width: 1023px) and (orientation: portrait) {
   .portfolio-container,
   .App {
     min-height: auto;
@@ -1544,3 +1544,781 @@ input, textarea {
     flex-wrap: wrap;
   }
 }
+
+/* ===================================================================
+   Polish pass: readability, hierarchy, accessibility, mobile fixes
+   =================================================================== */
+
+.portfolio-container {
+  font-synthesis: none;
+}
+
+/* Pixel font has one weight; avoid smeared fake bold / italics */
+.menu-item,
+.desktop-icon-label,
+.window-title,
+.section-box-title,
+.stat-note-value,
+.row-label-text,
+.desktop-icon-status-badge {
+  font-weight: 400;
+}
+
+.section-box-subtitle,
+.row-label-subtext,
+.sticky-note-text-attribution,
+.bin-context,
+.game-end-message {
+  font-style: normal;
+}
+
+/* Readable body copy: Inter for long text, pixel font for display */
+.window-description,
+.window-details,
+.window-achievement-item,
+.about-contact-item,
+.next-month-desc,
+.trash-item,
+.game-instructions,
+.bin-context {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  line-height: 1.65;
+  font-weight: 500;
+  color: #3b2a6b;
+}
+
+.window-description strong {
+  font-weight: 600;
+  color: #2d1b69;
+}
+
+.window-role { font-size: 10px; color: #5a4a8a; }
+.window-period { font-size: 9px; color: #5a4a8a; }
+.window-skill-tag { font-size: 8px; padding: 5px 8px; }
+
+.window-achievement-item::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  top: 0.65em;
+  left: 2px;
+  background: #8B5CF6;
+}
+
+/* Minimum label sizes (7px pixel text was unreadable) */
+.desktop-icon-label,
+.section-box-subtitle,
+.stat-note-label,
+.terminal-line,
+.terminal-title,
+.dock-label,
+.sticky-note-text-attribution,
+.next-month-title {
+  font-size: 8px;
+}
+
+.desktop-icon-label {
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: auto;
+}
+
+.desktop-icon { width: 96px; }
+
+.section-box-icons { gap: 12px; }
+
+.section-box-title { font-size: 11px; }
+
+.stat-note-value { font-size: 16px; }
+
+/* Interactive elements rendered as real buttons/links */
+button.desktop-icon,
+button.dock-item,
+button.pixel-girl-container {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+}
+
+button.desktop-icon { padding: 8px; }
+
+a.desktop-icon {
+  display: block;
+  text-decoration: none;
+}
+
+button.dock-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.desktop-icon-pixel {
+  width: 40px;
+  height: 40px;
+  image-rendering: pixelated;
+  display: block;
+}
+
+.desktop-icon:active { transform: scale(0.96); }
+
+/* Visible keyboard focus everywhere */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 3px solid #2d1b69;
+  outline-offset: 3px;
+}
+
+.window-btn:focus-visible { outline-offset: 2px; }
+
+/* Window chrome */
+.window-btn {
+  position: relative;
+  padding: 0;
+}
+
+.window-btn::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+}
+
+.window-btn-close {
+  background: #ff5f56;
+  color: #2d1b69;
+}
+
+.window-btn-close:hover { transform: scale(1.15); }
+.window-btn-close:active { transform: scale(0.9); }
+
+.window-icon-img {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #2d1b69;
+  image-rendering: pixelated;
+  display: block;
+}
+
+/* Layering: dock sits below windows; menu bar & modals on top */
+.dock-container { z-index: 70; }
+
+/* Menu bar */
+.menu-logo {
+  width: 18px;
+  height: 18px;
+  image-rendering: pixelated;
+  display: block;
+}
+
+.menu-name { color: #2d1b69; }
+
+.menu-link {
+  color: #2d1b69;
+  text-decoration: none;
+  padding: 4px 6px;
+  border: 2px solid transparent;
+}
+
+.menu-link:hover {
+  border-color: #2d1b69;
+  background: #FFE87C;
+}
+
+/* Hero: who this is and what to do next */
+.hero-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 20px;
+  padding: 16px 18px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 2px solid #2d1b69;
+  box-shadow: 4px 4px 0 rgba(45, 27, 105, 0.35);
+  flex-shrink: 0;
+}
+
+.hero-name {
+  font-size: 18px;
+  line-height: 1.3;
+  color: #2d1b69;
+  margin: 0 0 8px;
+  font-weight: 400;
+}
+
+.hero-role {
+  font-size: 9px;
+  color: #6D28D9;
+  margin: 0 0 8px;
+  line-height: 1.6;
+}
+
+.hero-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #065f46;
+}
+
+.hero-dot {
+  width: 8px;
+  height: 8px;
+  background: #34d399;
+  border: 1px solid #065f46;
+  flex-shrink: 0;
+}
+
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hero-cta,
+.window-cta,
+.game-cta-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 8px 12px;
+  font-size: 9px;
+  color: #2d1b69;
+  background: #fff;
+  border: 2px solid #2d1b69;
+  box-shadow: 3px 3px 0 #2d1b69;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.hero-cta-primary {
+  background: #FFE87C;
+}
+
+.hero-cta:hover,
+.window-cta:hover,
+.game-cta-links a:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #2d1b69;
+}
+
+.hero-cta:active,
+.window-cta:active,
+.game-cta-links a:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #2d1b69;
+}
+
+.window-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+/* About window */
+.about-contact-item {
+  align-items: flex-start;
+}
+
+.about-contact-item svg {
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.about-contact-item a {
+  color: #6D28D9;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  word-break: break-all;
+}
+
+/* Future plans CTA is now a link */
+a.future-cta {
+  display: block;
+  text-decoration: none;
+}
+
+a.future-cta:hover {
+  background: linear-gradient(135deg, #7C3AED, #6D28D9);
+}
+
+.next-months-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.next-month-card { min-width: 0; }
+
+/* Growth game overlay (was unstyled) */
+.game-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  text-align: center;
+  background: rgba(15, 4, 32, 0.72);
+  z-index: 5;
+}
+
+.game-instructions { color: #ddd6fe; }
+
+.game-cta-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.game-lead {
+  width: 48px;
+  height: 48px;
+}
+
+/* Avatar: pressed state */
+.pixel-girl-container:active .pixel-girl { transform: scale(0.96); }
+
+/* Boot screen: on-brand purple instead of terminal green */
+.boot-screen { background: #12082a; }
+
+.boot-logo {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 20px;
+  display: block;
+  image-rendering: pixelated;
+  animation: none;
+}
+
+.boot-title {
+  color: #FFE87C;
+  text-shadow: 3px 3px 0 #6D28D9;
+}
+
+.boot-progress-container {
+  background: #1a0a2e;
+  border-color: #C9B6F5;
+}
+
+.boot-progress-bar {
+  background: repeating-linear-gradient(90deg, #A78BFA 0 12px, transparent 12px 16px);
+  transition: width 0.25s steps(4);
+}
+
+.boot-text { color: #C9B6F5; }
+
+.boot-skip {
+  margin-top: 24px;
+  font-size: 8px;
+  color: #8a7fb0;
+}
+
+/* Layout: give the sections column more room on wide screens */
+@media (min-width: 1280px) {
+  .sections-zone {
+    left: 320px;
+    max-width: 760px;
+    bottom: 24px;
+  }
+}
+
+/* Short desktop screens: tighten so "What's Next" isn't clipped */
+@media (min-width: 768px) and (max-height: 800px) {
+  .section-box { padding: 10px 14px; }
+  .section-box-header { margin-bottom: 8px; padding-bottom: 6px; }
+  .desktop-icon-image { width: 56px; height: 56px; margin-bottom: 6px; }
+  .hero-card { padding: 12px 14px; }
+  .hero-name { font-size: 16px; }
+}
+
+/* Tablet: keep the dock clear of the avatar */
+@media (max-width: 1023px) {
+  .pixel-girl-container { right: 96px; }
+}
+
+/* Phones */
+@media (max-width: 767px), (max-height: 500px) and (max-width: 1023px), (max-width: 1023px) and (orientation: portrait) {
+  .portfolio-container { display: flow-root; }
+
+  .stat-notes-zone { padding-top: 12px; }
+
+  .hero-name { font-size: 16px; }
+  .hero-ctas { width: 100%; }
+  .hero-cta { flex: 1 1 auto; justify-content: center; min-height: 44px; }
+
+  .section-box-icons {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-items: center;
+    justify-content: initial;
+  }
+
+  .desktop-icon { width: 100%; max-width: 96px; }
+
+  .window-title,
+  .window-role,
+  .window-period,
+  .window-section-title,
+  .window-skill-tag,
+  .next-month-title,
+  .game-hud-item,
+  .terminal-line,
+  .desktop-icon-label,
+  .stat-note-label,
+  .section-box-subtitle {
+    font-size: 9px;
+  }
+
+  .window-description,
+  .window-achievement-item,
+  .about-contact-item,
+  .next-month-desc {
+    font-size: 13px;
+  }
+
+  .window {
+    top: 44px !important;
+    max-height: calc(100dvh - 60px) !important;
+  }
+
+  .window-content {
+    max-height: calc(100dvh - 100px);
+    overscroll-behavior: contain;
+  }
+
+  .trash-body { overscroll-behavior: contain; }
+
+  .next-months-grid { grid-template-columns: 1fr; }
+
+  .menu-link { padding: 4px 2px; }
+  .menu-bar-right { gap: 10px; }
+}
+
+@media (max-width: 380px) {
+  .menu-clock { display: none; }
+}
+
+/* Touch screens: bigger tap targets, no sticky hover */
+@media (pointer: coarse) {
+  .window-btn { width: 28px; height: 28px; }
+  .trash-close,
+  .trash-btn { min-width: 44px; min-height: 44px; }
+}
+
+@media (hover: none) {
+  .desktop-icon:hover,
+  .pixel-girl-container:hover .pixel-girl,
+  .next-month-card:hover,
+  .stat-note:hover {
+    transform: none;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.section-box-title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-box-bullet {
+  width: 6px;
+  height: 6px;
+  background: #8B5CF6;
+  flex-shrink: 0;
+}
+
+/* Phones: lead with the name/CTA header, then stats */
+@media (max-width: 767px), (max-height: 500px) and (max-width: 1023px), (max-width: 1023px) and (orientation: portrait) {
+  .desktop {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sections-zone { order: -1; }
+}
+
+/* ===================================================================
+   Spacing pass: remove dead gaps, keep rhythm tight and even
+   =================================================================== */
+
+/* No white flash/strip when the page over-scrolls or ends early */
+html,
+body {
+  background-color: #A78BFA;
+}
+
+/* Clouds drift through the sky band above the content, behind everything,
+   instead of hanging as stray blocks in the right-hand column */
+.cloud {
+  z-index: 0;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* "What's Next" (2 items): wide tiles that fill the row instead of two
+   lonely icons in a mostly empty box */
+.section-box--tiles .section-box-icons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.section-box--tiles .desktop-icon {
+  width: auto;
+  max-width: none;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  column-gap: 14px;
+  row-gap: 6px;
+  align-items: center;
+  text-align: left;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 2px solid rgba(45, 27, 105, 0.18);
+  border-radius: 8px;
+}
+
+.section-box--tiles .desktop-icon:hover {
+  transform: translate(-1px, -1px);
+  border-color: rgba(45, 27, 105, 0.45);
+}
+
+.section-box--tiles .desktop-icon:active { transform: translate(1px, 1px); }
+
+.section-box--tiles .desktop-icon-image {
+  grid-row: 1 / span 2;
+  width: 56px;
+  height: 56px;
+  margin: 0;
+}
+
+.section-box--tiles .desktop-icon-label {
+  align-self: end;
+  font-size: 10px;
+}
+
+.desktop-icon-hint {
+  align-self: start;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #5b21b6;
+}
+
+/* Desktop + tablet (everything that is not the stacked phone layout) */
+@media (min-width: 1024px), (min-width: 768px) and (min-height: 501px) and (orientation: landscape) {
+  /* Icon rows spread across the full card width (no empty right side) */
+  .section-box-icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+    gap: 12px 8px;
+    justify-items: center;
+  }
+
+  .section-box--tiles .section-box-icons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-items: stretch;
+  }
+
+  /* Stat notes: one evenly spaced column from the hero's top edge down
+     to just above the terminal (was hand-placed with uneven gaps and a
+     ~300px empty band underneath) */
+  .stat-notes-zone {
+    top: 50px;
+    bottom: max(136px, calc(100% - 760px));
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .stat-note {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    flex-shrink: 0;
+  }
+
+  .stat-note:nth-child(1) { margin-left: 36px; }
+  .stat-note:nth-child(2) { margin-left: 60px; }
+  .stat-note:nth-child(3) { margin-left: 30px; }
+  .stat-note:nth-child(4) { margin-left: 54px; }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) and (min-height: 501px) and (orientation: landscape) {
+  .stat-note:nth-child(1) { margin-left: 16px; }
+  .stat-note:nth-child(2) { margin-left: 30px; }
+  .stat-note:nth-child(3) { margin-left: 12px; }
+  .stat-note:nth-child(4) { margin-left: 26px; }
+}
+
+/* Laptops: let the content column use the room up to the sticky note
+   (was capped at 760px, leaving an ~85px dead band beside it) */
+@media (min-width: 1280px) {
+  .sections-zone {
+    left: 320px;
+    right: 276px;
+    max-width: 960px;
+  }
+
+  .sticky-note {
+    top: 50px;
+    right: 40px;
+    width: 210px;
+  }
+
+  .stat-note {
+    width: 150px;
+    padding: 10px 12px;
+  }
+}
+
+/* Phones / short landscape: one consistent 12px rhythm, avatar + trash
+   share the last row instead of each taking a full row */
+@media (max-width: 767px), (max-height: 500px) and (max-width: 1023px), (max-width: 1023px) and (orientation: portrait) {
+  .desktop {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    padding-bottom: 16px;
+  }
+
+  .sections-zone {
+    flex: 0 0 100%;
+    padding: 12px 16px 0;
+    gap: 12px;
+  }
+
+  .stat-notes-zone {
+    flex: 0 0 100%;
+    padding: 12px 16px 0;
+    gap: 10px;
+  }
+
+  .sticky-note,
+  .terminal-widget {
+    flex: 0 0 calc(100% - 32px);
+    width: calc(100% - 32px);
+    margin: 12px 16px 0;
+  }
+
+  .pixel-girl-container {
+    right: auto;
+    align-self: center;
+    margin: 12px 0 0 16px;
+  }
+
+  .dock-container {
+    align-self: center;
+    margin: 12px 16px 0 auto;
+  }
+
+  /* 3-up icon grid with the last row centred (no hole in 2-item rows) */
+  .section-box-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 0;
+  }
+
+  .section-box-icons > .desktop-icon {
+    flex: 0 0 33.333%;
+    width: 33.333%;
+    max-width: none;
+  }
+
+  .section-box--tiles .section-box-icons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .section-box--tiles .section-box-icons > .desktop-icon {
+    width: auto;
+    padding: 8px;
+    column-gap: 10px;
+  }
+
+  .section-box--tiles .desktop-icon-image {
+    width: 44px;
+    height: 44px;
+  }
+
+  .section-box--tiles .desktop-icon-label { font-size: 9px; }
+  .desktop-icon-hint { font-size: 11px; }
+}
+
+/* Laptops: right column mirrors the left one - sticky note on top, avatar
+   in the middle, trash at the bottom, all on one centre line - instead of
+   a 450px empty band between the note and the avatar */
+@media (min-width: 1280px) and (min-height: 640px) {
+  .pixel-girl-container {
+    top: calc(50% - 34px);
+    bottom: auto;
+    right: 95px;
+  }
+
+  .dock-container {
+    right: 111px !important;
+  }
+}
+
+/* Short laptops (1280x720, 1366x768): trim vertical rhythm so all three
+   cards fit without the column scrolling */
+@media (min-width: 768px) and (max-height: 800px) {
+  .sections-zone { gap: 12px; }
+  .section-box--tiles .desktop-icon { padding: 6px 10px; }
+  .section-box--tiles .desktop-icon-image { width: 44px; height: 44px; }
+}
+
+/* Phones: all three hero buttons on one row when they fit */
+@media (max-width: 767px), (max-height: 500px) and (max-width: 1023px), (max-width: 1023px) and (orientation: portrait) {
+  .hero-ctas { gap: 8px; }
+  .hero-cta { padding: 8px 6px; }
+}
+
+/* Small laptops (1024-1279): same idea, column reaches the sticky note */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .sections-zone {
+    right: 254px;
+    max-width: none;
+  }
+
+  .sticky-note {
+    top: 50px;
+    right: 24px;
+    width: 210px;
+  }
+
+  .section-box-icons {
+    grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
+  }
+}
+
+/* Real brand logos: scale smoothly, not pixelated */
+.desktop-icon-logo { image-rendering: auto; }

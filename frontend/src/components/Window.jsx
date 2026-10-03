@@ -1,16 +1,10 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import Draggable from 'react-draggable';
 import { X } from 'lucide-react';
 
-const Window = ({ project, onClose, zIndex, onFocus, playSound }) => {
+const Window = ({ project, onClose, zIndex, onFocus, playSound, cascade = 0 }) => {
   const nodeRef = useRef(null);
 
-  useEffect(() => {
-    if (playSound) {
-      playSound();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const handleClose = (e) => {
     e.stopPropagation();
@@ -28,18 +22,14 @@ const Window = ({ project, onClose, zIndex, onFocus, playSound }) => {
       handle=".window-header"
       cancel=".window-btn"
       bounds="parent"
-      onStart={onFocus}
     >
       <div 
         ref={nodeRef}
         className="window"
-        style={{ zIndex }}
-        onMouseDown={onFocus}
+        style={{ zIndex, top: `calc(15% + ${cascade * 28}px)`, left: `calc(20% + ${cascade * 28}px)` }}
+        role="dialog"
+        aria-label={project.title}
         onPointerDown={(e) => {
-          e.stopPropagation();
-          onFocus();
-        }}
-        onTouchStart={(e) => {
           e.stopPropagation();
           onFocus();
         }}
@@ -48,12 +38,12 @@ const Window = ({ project, onClose, zIndex, onFocus, playSound }) => {
           <div className="window-controls">
             <button 
               type="button"
-              className="window-btn window-btn-close" 
+              className="window-btn window-btn-close"
+              aria-label="Close window" 
               onClick={handleClose}
               onMouseDown={(e) => e.stopPropagation()}
               onPointerDown={(e) => e.stopPropagation()}
               onTouchStart={(e) => e.stopPropagation()}
-              onTouchEnd={(e) => { e.stopPropagation(); handleClose(e); }}
               data-testid={`close-${project.id}`}
             >
               <X size={10} />

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Window from './Window';
 import AboutWindow from './AboutWindow';
 import ExtracurricularsWindow from './ExtracurricularsWindow';
 import FuturePlansWindow from './FuturePlansWindow';
 import GrowthGameWindow from './GrowthGameWindow';
+import ViralContentWindow from './ViralContentWindow';
 import Cloud from './Cloud';
 import StickyNote from './StickyNote';
 import StatNote from './StatNote';
@@ -16,58 +17,69 @@ import {
   aboutLinksData, 
   whatsNextData, 
   statNotesData, 
-  dadJokesAboutAI 
+  dadJokesAboutAI,
+  aboutData,
+  contactLinks,
+  emailComposeUrl
 } from '../data/mockData';
 
 const Desktop = ({ playSound }) => {
   const [openWindows, setOpenWindows] = useState([]);
-  const [highestZIndex, setHighestZIndex] = useState(100);
   const [showTrash, setShowTrash] = useState(false);
   const [showTrashConfirm, setShowTrashConfirm] = useState(false);
 
-const handleIconClick = (project) => {
-  // Handle external links
-if (project.isLink && project.url) {
-  if (project.openInNewTab) {
-    return;
-  } else {
-    window.location.href = project.url;
-  }
-  return;
-}
-
-  // Check if window is already open
-  if (openWindows.find(w => w.id === project.id)) {
-    return;
-  }
-
-  const newWindow = {
-    ...project,
-    zIndex: highestZIndex + 1
-  };
-
-  setOpenWindows([...openWindows, newWindow]);
-  setHighestZIndex(highestZIndex + 1);
-  if (playSound) playSound();
-};
-
-
-  const handleWindowClose = (projectId) => {
-    setOpenWindows(openWindows.filter(w => w.id !== projectId));
+  const zRef = useRef(100);
+  const nextZ = () => {
+    // Keep windows below the menu bar and modals
+    zRef.current = zRef.current >= 800 ? 101 : zRef.current + 1;
+    return zRef.current;
   };
 
   const handleWindowFocus = (projectId) => {
-    const newZIndex = highestZIndex + 1;
-    setOpenWindows(openWindows.map(w => 
-      w.id === projectId ? { ...w, zIndex: newZIndex } : w
-    ));
-    setHighestZIndex(newZIndex);
+    const z = nextZ();
+    setOpenWindows(ws => ws.map(w => (w.id === projectId ? { ...w, zIndex: z } : w)));
   };
 
-  const handleDesktopPointerDown = (event) => {
-    if (typeof window === 'undefined' || window.innerWidth >= 768) return;
+  const handleIconClick = (project) => {
+    // External links are real <a target="_blank"> elements
+    if (project.isLink) return;
+
+    if (openWindows.some(w => w.id === project.id)) {
+      handleWindowFocus(project.id);
+      return;
+    }
+
+    const z = nextZ();
+    setOpenWindows(ws => (ws.some(w => w.id === project.id)
+      ? ws
+      : [...ws, { ...project, zIndex: z, cascade: ws.length % 5 }]));
+    if (playSound) playSound();
+  };
+
+  const handleWindowClose = (projectId) => {
+    setOpenWindows(ws => ws.filter(w => w.id !== projectId));
+  };
+
+  // Escape closes the top-most window
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.key !== 'Escape') return;
+      setOpenWindows(ws => {
+        if (!ws.length) return ws;
+        const top = ws.reduce((a, b) => (b.zIndex > a.zIndex ? b : a));
+        return ws.filter(w => w.id !== top.id);
+      });
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, []);
+
+  // On phones, a tap on empty desktop dismisses windows. Uses click (not
+  // touchstart) so scrolling doesn't close them.
+  const handleDesktopClick = (event) => {
+    if (typeof window === 'undefined' || !window.matchMedia('(max-width: 767px), (max-height: 500px) and (max-width: 1023px), (max-width: 1023px) and (orientation: portrait)').matches) return;
     if (!openWindows.length) return;
-    if (event.target.closest('.window')) return;
+    if (event.target.closest('.window, a, button, .desktop-icon, .pixel-girl-container')) return;
     setOpenWindows([]);
   };
 
@@ -93,11 +105,11 @@ if (project.isLink && project.url) {
   };
 
   return (
-    <div className="desktop" onPointerDown={handleDesktopPointerDown} onTouchStart={handleDesktopPointerDown}>
-      {/* Floating Clouds */}
-      <Cloud style={{ top: '15%', right: '8%' }} animationDelay={0} />
-      <Cloud style={{ top: '35%', right: '20%' }} animationDelay={3} />
-      <Cloud style={{ top: '60%', right: '12%' }} animationDelay={6} />
+    <main className="desktop" onClick={handleDesktopClick} aria-label="Desktop">
+      {/* Floating Clouds: drift across the sky band above the content */}
+      <Cloud style={{ top: '10px', left: 0 }} animationDelay={-4} />
+      <Cloud style={{ top: '26px', left: 0 }} animationDelay={-14} />
+      <Cloud style={{ top: '14px', left: 0 }} animationDelay={-24} />
 
       {/* LEFT ZONE: Floating Stat Notes */}
       <div className="stat-notes-zone">
@@ -108,6 +120,18 @@ if (project.isLink && project.url) {
 
       {/* CENTER ZONE: Section Boxes */}
       <div className="sections-zone">
+        <header className="hero-card">
+          <div className="hero-text">
+            <h1 className="hero-name">{aboutData.name}</h1>
+            <p className="hero-role">Growth Marketer · {aboutData.tagline}</p>
+            <p className="hero-status"><span className="hero-dot" aria-hidden="true" /> Open to growth roles · Delhi / Bangalore</p>
+          </div>
+          <nav className="hero-ctas" aria-label="Quick links">
+            <a className="hero-cta hero-cta-primary" href={contactLinks.resume} target="_blank" rel="noopener noreferrer">Resume ↗</a>
+            <a className="hero-cta" href={contactLinks.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            <a className="hero-cta" href={emailComposeUrl('Hello Manish')} target="_blank" rel="noopener noreferrer">Email ↗</a>
+          </nav>
+        </header>
         <SectionBox
           title="My Past Internship Experience"
           subtitle="Where I've driven growth before"
@@ -123,6 +147,7 @@ if (project.isLink && project.url) {
         <SectionBox
           title="What's Next"
           subtitle="Where I'm headed"
+          variant="tiles"
           items={whatsNextData}
           onIconClick={handleIconClick}
         />
@@ -141,6 +166,7 @@ if (project.isLink && project.url) {
             <AboutWindow
               key={window.id}
               zIndex={window.zIndex}
+              cascade={window.cascade}
               onClose={() => handleWindowClose(window.id)}
               onFocus={() => handleWindowFocus(window.id)}
               playSound={playSound}
@@ -151,6 +177,7 @@ if (project.isLink && project.url) {
             <ExtracurricularsWindow
               key={window.id}
               zIndex={window.zIndex}
+              cascade={window.cascade}
               onClose={() => handleWindowClose(window.id)}
               onFocus={() => handleWindowFocus(window.id)}
               playSound={playSound}
@@ -161,6 +188,7 @@ if (project.isLink && project.url) {
             <FuturePlansWindow
               key={window.id}
               zIndex={window.zIndex}
+              cascade={window.cascade}
               onClose={() => handleWindowClose(window.id)}
               onFocus={() => handleWindowFocus(window.id)}
               playSound={playSound}
@@ -171,6 +199,18 @@ if (project.isLink && project.url) {
             <GrowthGameWindow
               key={window.id}
               zIndex={window.zIndex}
+              cascade={window.cascade}
+              onClose={() => handleWindowClose(window.id)}
+              onFocus={() => handleWindowFocus(window.id)}
+              playSound={playSound}
+            />
+          );
+        } else if (window.type === 'viral') {
+          return (
+            <ViralContentWindow
+              key={window.id}
+              zIndex={window.zIndex}
+              cascade={window.cascade}
               onClose={() => handleWindowClose(window.id)}
               onFocus={() => handleWindowFocus(window.id)}
               playSound={playSound}
@@ -182,6 +222,7 @@ if (project.isLink && project.url) {
               key={window.id}
               project={window}
               zIndex={window.zIndex}
+              cascade={window.cascade}
               onClose={() => handleWindowClose(window.id)}
               onFocus={() => handleWindowFocus(window.id)}
               playSound={playSound}
@@ -192,11 +233,11 @@ if (project.isLink && project.url) {
 
       {/* Trash Confirmation Dialog */}
       {showTrashConfirm && (
-        <div className="trash-modal" onClick={handleTrashCancel}>
-          <div className="trash-content trash-confirm" onClick={(e) => e.stopPropagation()}>
+        <div className="trash-modal" onClick={handleTrashCancel} role="presentation">
+          <div className="trash-content trash-confirm" role="alertdialog" aria-modal="true" aria-label="Open the bin?" onClick={(e) => e.stopPropagation()}>
             <div className="trash-header">
               <h2 className="trash-title">🗑️ Pakka?</h2>
-              <button className="trash-close" onClick={handleTrashCancel}>✕</button>
+              <button type="button" className="trash-close" aria-label="Close" onClick={handleTrashCancel}>✕</button>
             </div>
             <div className="trash-body">
               <p className="trash-confirm-text">Are you sure about it?</p>
@@ -220,7 +261,8 @@ if (project.isLink && project.url) {
             <div className="trash-header">
               <h2 className="trash-title">Bin</h2>
               <button 
-                className="trash-close" 
+                className="trash-close"
+                aria-label="Close"
                 onClick={handleCloseTrash}
                 data-testid="close-dad-jokes"
               >
@@ -241,17 +283,12 @@ if (project.isLink && project.url) {
 
       {/* Pixel Girl Character - Now Clickable */}
       <PixelGirl onClick={() => {
-        const futurePlan = {
-          id: 'about-me-from-girl',
-          type: 'about',
-          title: 'About Me'
-        };
-        handleIconClick(futurePlan);
+        handleIconClick(aboutLinksData.find(p => p.id === 'about-me'));
       }} />
 
       {/* Trash Dock */}
       <Dock onTrashClick={handleTrashClick} />
-    </div>
+    </main>
   );
 };
 

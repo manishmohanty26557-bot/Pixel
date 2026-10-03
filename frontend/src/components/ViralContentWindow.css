@@ -1,0 +1,306 @@
+/* Viral Content window: creator reels pulled from the campaign sheet */
+
+.window.viral-window {
+  width: 680px;
+  max-height: 78vh;
+}
+
+.viral-header-icon {
+  background: #FFE87C;
+}
+
+/* Summary strip */
+.viral-stats {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.viral-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #FFE87C;
+  border: 2px solid #2d1b69;
+  box-shadow: 3px 3px 0 #2d1b69;
+  min-width: 0;
+}
+
+.viral-stat-value {
+  font-size: 16px;
+  line-height: 1.2;
+  color: #2d1b69;
+}
+
+.viral-stat-currency {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-weight: 800;
+  font-size: 17px;
+  margin-right: 1px;
+}
+
+.viral-stat-label {
+  font-size: 8px;
+  line-height: 1.4;
+  color: #5a4a8a;
+}
+
+/* Filter tabs */
+.viral-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.viral-filter {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 6px 10px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  line-height: 1.4;
+  color: #2d1b69;
+  background: #fff;
+  border: 2px solid #2d1b69;
+  box-shadow: 2px 2px 0 rgba(45, 27, 105, 0.35);
+  transition: transform 0.1s, box-shadow 0.1s, background 0.1s;
+}
+
+.viral-filter:hover {
+  background: #f3edff;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 rgba(45, 27, 105, 0.35);
+}
+
+.viral-filter.is-active {
+  background: #8B5CF6;
+  color: #fff;
+  box-shadow: 2px 2px 0 #2d1b69;
+}
+
+.viral-filter-count {
+  display: inline-block;
+  min-width: 18px;
+  padding: 3px 4px;
+  text-align: center;
+  background: #2d1b69;
+  color: #FFE87C;
+}
+
+.viral-filter.is-active .viral-filter-count {
+  background: #FFE87C;
+  color: #2d1b69;
+}
+
+/* Cards */
+.viral-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.viral-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  padding: 12px;
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.15), rgba(139, 92, 246, 0.1));
+  border: 2px solid #8B5CF6;
+  box-shadow: 3px 3px 0 rgba(139, 92, 246, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.viral-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 rgba(139, 92, 246, 0.3);
+}
+
+.viral-card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.viral-avatar {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #FFE87C;
+  background: #2d1b69;
+  border: 2px solid #2d1b69;
+  box-shadow: 2px 2px 0 #8B5CF6;
+}
+
+.viral-card-who {
+  min-width: 0;
+}
+
+.viral-creator {
+  margin: 0 0 6px;
+  font-size: 10px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: #2d1b69;
+  overflow-wrap: anywhere;
+}
+
+.viral-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.viral-tag {
+  font-size: 8px;
+  line-height: 1.4;
+  padding: 3px 5px;
+  color: #2d1b69;
+  background: #fff;
+  border: 1px solid #2d1b69;
+}
+
+.viral-tag-lang {
+  background: #FFE87C;
+}
+
+.viral-hook {
+  flex: 1;
+  margin: 0;
+  padding: 10px 10px 10px 12px;
+  background: rgba(255, 255, 255, 0.75);
+  border-left: 4px solid #FFE87C;
+  outline: 1px solid rgba(45, 27, 105, 0.15);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  line-height: 1.55;
+  font-weight: 500;
+  color: #3b2a6b;
+  overflow-wrap: anywhere;
+}
+
+.viral-hook-visual {
+  font-style: normal;
+  color: #5a4a8a;
+}
+
+.viral-hook-label {
+  display: block;
+  margin-bottom: 6px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  line-height: 1.4;
+  color: #8B5CF6;
+}
+
+.viral-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.viral-cost {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.viral-cost-label {
+  font-size: 8px;
+  color: #5a4a8a;
+}
+
+.viral-cost-value {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #2d1b69;
+}
+
+.window-cta.viral-watch {
+  background: #FFE87C;
+  font-size: 8px;
+}
+
+/* Footer fallback link */
+.viral-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0 0;
+  padding-top: 12px;
+  border-top: 2px dashed rgba(45, 27, 105, 0.25);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 12px;
+  color: #5a4a8a;
+}
+
+.viral-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  font-weight: 600;
+  color: #6D28D9;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Phones */
+@media (max-width: 767px), (max-height: 500px) and (max-width: 1023px) {
+  .viral-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .viral-stat { padding: 8px 10px; gap: 6px; }
+  .viral-stat-value { font-size: 14px; }
+
+  .viral-filters {
+    gap: 6px;
+  }
+
+  .viral-filter {
+    min-height: 44px;
+    font-size: 8px;
+  }
+
+  .viral-grid { grid-template-columns: 1fr; }
+
+  .viral-tag { font-size: 8px; }
+  .viral-hook-label,
+  .viral-cost-label { font-size: 8px; }
+
+  .window-cta.viral-watch {
+    min-height: 44px;
+    font-size: 9px;
+  }
+
+  .viral-footer a { min-height: 44px; }
+}
+
+@media (hover: none) {
+  .viral-card:hover,
+  .viral-filter:hover {
+    transform: none;
+  }
+}

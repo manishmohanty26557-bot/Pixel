@@ -1,15 +1,11 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import Draggable from 'react-draggable';
 import { X, Mail, Phone, GraduationCap } from 'lucide-react';
-import { aboutData, skillsData } from '../data/mockData';
+import { aboutData, skillsData, contactLinks, emailComposeUrl } from '../data/mockData';
 
-const AboutWindow = ({ onClose, zIndex, onFocus, playSound }) => {
+const AboutWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) => {
   const nodeRef = useRef(null);
 
-  useEffect(() => {
-    if (playSound) playSound();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const handleClose = (e) => {
     e.stopPropagation();
@@ -23,18 +19,14 @@ const AboutWindow = ({ onClose, zIndex, onFocus, playSound }) => {
       handle=".window-header"
       cancel=".window-btn"
       bounds="parent"
-      onStart={onFocus}
     >
       <div 
         ref={nodeRef}
         className="window"
-        style={{ zIndex, top: '10%', left: '25%' }}
-        onMouseDown={onFocus}
+        style={{ zIndex, top: `calc(10% + ${cascade * 28}px)`, left: `calc(25% + ${cascade * 28}px)` }}
+        role="dialog"
+        aria-label="About Me"
         onPointerDown={(e) => {
-          e.stopPropagation();
-          onFocus();
-        }}
-        onTouchStart={(e) => {
           e.stopPropagation();
           onFocus();
         }}
@@ -43,12 +35,12 @@ const AboutWindow = ({ onClose, zIndex, onFocus, playSound }) => {
           <div className="window-controls">
             <button 
               type="button"
-              className="window-btn window-btn-close" 
+              className="window-btn window-btn-close"
+              aria-label="Close window" 
               onClick={handleClose}
               onMouseDown={(e) => e.stopPropagation()}
               onPointerDown={(e) => e.stopPropagation()}
               onTouchStart={(e) => e.stopPropagation()}
-              onTouchEnd={(e) => { e.stopPropagation(); handleClose(e); }}
               data-testid="close-about"
             >
               <X size={10} />
@@ -59,7 +51,7 @@ const AboutWindow = ({ onClose, zIndex, onFocus, playSound }) => {
         
         <div className="window-content">
           <div className="window-header-section">
-            <div className="window-icon">👤</div>
+            <div className="window-icon"><img src="/assets/manish-avatar.png" alt="" width="40" height="40" className="window-icon-img" /></div>
             <div>
               <h2 className="window-project-title">{aboutData.name}</h2>
               <p className="window-role">{aboutData.tagline}</p>
@@ -74,14 +66,18 @@ const AboutWindow = ({ onClose, zIndex, onFocus, playSound }) => {
             <h3 className="window-section-title">Contact</h3>
             <div className="about-contact">
               <p className="about-contact-item">
-                <Mail size={12} /> {aboutData.email}
+                <Mail size={12} /> <a href={emailComposeUrl()} target="_blank" rel="noopener noreferrer">{aboutData.email}</a>
               </p>
               <p className="about-contact-item">
-                <Phone size={12} /> {aboutData.phone}
+                <Phone size={12} /> <a href={`tel:${aboutData.phone.replace(/-/g, '')}`}>{aboutData.phone}</a>
               </p>
               <p className="about-contact-item">
                 <GraduationCap size={12} /> {aboutData.education}
               </p>
+            </div>
+            <div className="window-cta-row">
+              <a className="window-cta" href={contactLinks.resume} target="_blank" rel="noopener noreferrer">Resume ↗</a>
+              <a className="window-cta" href={contactLinks.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
             </div>
           </div>
 

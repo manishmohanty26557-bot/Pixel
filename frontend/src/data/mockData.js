@@ -5,7 +5,7 @@ export const internshipsData = [
     id: 'segwise-ai',
     title: 'Segwise AI',
     icon: '🤖',
-    logo: '/assets/segwise-logo.svg',
+    logo: '/assets/segwise-logo.png',
     type: 'internship',
     content: {
       role: 'Growth Intern',
@@ -73,7 +73,7 @@ export const internshipsData = [
     id: 'eleven-studios',
     title: 'Eleven Studios',
     icon: '🎨',
-    logo: '/assets/eleven-studios-logo.svg',
+    logo: '/assets/eleven-studios-logo.png',
     type: 'internship',
     content: {
       role: 'Growth (Founding Team)',
@@ -90,7 +90,7 @@ export const internshipsData = [
     id: 'kankyreacts',
     title: 'Kankyreacts',
     icon: '🔥',
-    logo: '/assets/kanki-react-logo.svg',
+    logo: '/assets/kanki-react-logo.png',
     type: 'internship',
     content: {
       role: 'Social Media Manager',
@@ -109,6 +109,7 @@ export const internshipsData = [
 export const aboutLinksData = [
   {
     id: 'about-me',
+    pixelIcon: 'aboutMe',
     title: 'About Me',
     icon: '👤',
     type: 'about',
@@ -116,6 +117,7 @@ export const aboutLinksData = [
   },
   {
     id: 'extracurriculars',
+    pixelIcon: 'activities',
     title: 'Activities',
     icon: '🏆',
     type: 'extra',
@@ -127,6 +129,8 @@ export const aboutLinksData = [
     icon: '💼',
     type: 'link',
     isLink: true,
+    openInNewTab: true,
+    pixelIcon: 'linkedin',
     url: 'https://www.linkedin.com/in/manish-mohanty-7b76a918b/'
   },
   {
@@ -135,6 +139,8 @@ export const aboutLinksData = [
     icon: '📄',
     type: 'link',
     isLink: true,
+    openInNewTab: true,
+    pixelIcon: 'resume',
     url: 'https://www.dropbox.com/scl/fi/jabr2bqqaz7kbnlwjtidl/cv-manish-updated-new-1.pdf?rlkey=onujq4njzfsy6tce9vf81ke88&st=h0e64rj4&dl=0'
   },
   {
@@ -143,30 +149,44 @@ export const aboutLinksData = [
     icon: '📄',
     type: 'link',
     isLink: true,
+    openInNewTab: true,
+    pixelIcon: 'perforaDeck',
     url: 'https://tinyurl.com/4zrnpsvn'
   },
   {
     id: 'viral-content',
     title: 'Viral Content',
     icon: '🎬',
-    type: 'link',
-    isLink: true,
-    openInNewTab: true,
-    url: 'https://docs.google.com/spreadsheets/d/1lCCFRa-feG-hpk5pgfToyNAn7SZMRpsVrMBZkwNeMGk/edit?usp=sharing'
+    type: 'viral',
+    pixelIcon: 'viralContent'
   }
 ];
+
+export const contactLinks = {
+  resume: aboutLinksData.find(l => l.id === 'resume').url,
+  linkedin: aboutLinksData.find(l => l.id === 'linkedin').url,
+  email: 'manishmohanty19@gmail.com'
+};
+
+// Opens Gmail compose in the browser; mailto: does nothing without a mail app
+export const emailComposeUrl = (subject = '') =>
+  `https://mail.google.com/mail/?view=cm&fs=1&to=${contactLinks.email}${subject ? `&su=${encodeURIComponent(subject)}` : ''}`;
 
 export const whatsNextData = [
   {
     id: 'future-plans',
+    pixelIcon: 'nextSixMonths',
     title: 'Next 6 Months',
+    hint: 'What I want to do next',
     icon: '🎯',
     type: 'future',
     isLink: false
   },
   {
     id: 'growth-game',
+    pixelIcon: 'growthGame',
     title: 'Growth Game',
+    hint: 'Play: Catch the Lead',
     icon: '🎮',
     type: 'game',
     isLink: false
