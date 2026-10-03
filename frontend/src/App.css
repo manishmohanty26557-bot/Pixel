@@ -2322,3 +2322,102 @@ body {
 
 /* Real brand logos: scale smoothly, not pixelated */
 .desktop-icon-logo { image-rendering: auto; }
+
+/* ===================================================================
+   Wide-screen pass: on big monitors the desktop is one centred
+   composition (1720px wide at 1x) instead of a capped column with
+   dead bands either side. --side is the empty margin outside that
+   frame; every edge-anchored element is offset by it so stat notes,
+   sticky note, avatar, trash and terminal hug the content. On tall
+   1080p+/1440p screens --z scales the pixel UI up so it isn't tiny.
+   (zoom also scales an element's own offsets, hence the "/ --z".)
+   =================================================================== */
+@media (min-width: 1536px) {
+  .desktop {
+    --z: 1;
+    --side: max(0px, calc((100vw - 1720px * var(--z)) / 2));
+  }
+
+  .stat-notes-zone {
+    left: var(--side);
+    width: calc(260px * var(--z));
+    bottom: max(calc(136px * var(--z)), calc(100% - 760px * var(--z)));
+  }
+
+  .sections-zone {
+    left: calc(var(--side) + 320px * var(--z));
+    right: calc(var(--side) + 276px * var(--z));
+    max-width: none;
+  }
+
+  .stat-note,
+  .hero-card,
+  .section-box,
+  .sticky-note,
+  .terminal-widget,
+  .pixel-girl-container,
+  .dock-container {
+    zoom: var(--z);
+  }
+
+  .sticky-note {
+    top: calc(50px / var(--z));
+    right: calc(var(--side) / var(--z) + 40px);
+  }
+
+  .terminal-widget { left: calc(var(--side) / var(--z) + 20px); }
+
+  .pixel-girl-container { right: calc(var(--side) / var(--z) + 40px); }
+  .dock-container { right: calc(var(--side) / var(--z) + 200px) !important; }
+
+  /* Windows open over the content column, not hard left of centre */
+  .window { margin-left: calc(30vw - 340px); }
+}
+
+@media (min-width: 1536px) and (min-height: 640px) {
+  .pixel-girl-container { right: calc(var(--side) / var(--z) + 95px); }
+  .dock-container { right: calc(var(--side) / var(--z) + 111px) !important; }
+}
+
+@media (min-width: 1536px) and (min-height: 800px) {
+  .sections-zone { gap: calc(16px * var(--z)); }
+}
+
+@media (min-width: 1800px) and (min-height: 900px) {
+  .desktop { --z: 1.2; }
+}
+
+@media (min-width: 2200px) and (min-height: 1200px) {
+  .desktop { --z: 1.55; }
+}
+
+/* Small laptops / landscape iPads (1024-1279): narrower stat notes so the
+   content column can start further left; with the extra width the hero
+   buttons and icon rows stop wrapping and all three cards fit */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .stat-notes-zone { width: 170px; }
+  .stat-note { width: 128px; padding: 8px 10px; }
+  .stat-note:nth-child(1) { margin-left: 14px; }
+  .stat-note:nth-child(2) { margin-left: 28px; }
+  .stat-note:nth-child(3) { margin-left: 10px; }
+  .stat-note:nth-child(4) { margin-left: 24px; }
+  .sections-zone { left: 176px; }
+  .hero-card { padding: 12px 14px; gap: 10px 14px; }
+  .hero-cta { padding: 8px 10px; }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .sections-zone { top: 40px; bottom: 116px; gap: 10px; }
+  .hero-name { font-size: 15px; margin-bottom: 6px; }
+  .hero-role { margin-bottom: 6px; }
+  .hero-ctas { gap: 8px; }
+  .hero-cta { font-size: 8px; padding: 7px 8px; min-height: 32px; }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) and (max-height: 820px) {
+  .desktop-icon-image { width: 48px; height: 48px; margin-bottom: 4px; }
+  .desktop-icon-pixel { width: 32px; height: 32px; }
+  button.desktop-icon, a.desktop-icon { padding: 4px; }
+  .section-box { padding: 8px 12px; }
+  .section-box-header { margin-bottom: 6px; padding-bottom: 4px; }
+}
