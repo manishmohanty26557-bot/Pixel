@@ -59,7 +59,7 @@ const FuturePlansWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 })
           </div>
 
           <div className="window-description">
-            <p>The next chapter is all about big moves, building, and a little bit of fun. Here's what I'm chasing:</p>
+            <p>Here's what I'm chasing next, work first:</p>
           </div>
 
           <div className="next-months-grid">
@@ -74,7 +74,7 @@ const FuturePlansWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 })
             ))}
           </div>
 
-          <a className="future-cta" href={emailComposeUrl("Let's talk growth")} target="_blank" rel="noopener noreferrer">
+          <a className="future-cta" href={emailComposeUrl("Let's talk growth")}>
             <p>If this sounds like someone you'd want on your team, let's talk →</p>
           </a>
         </div>

@@ -77,15 +77,6 @@ const ExtracurricularsWindow = ({ onClose, zIndex, onFocus, playSound, cascade =
           </div>
 
           <div className="window-section">
-            <h3 className="window-section-title">🎪 Events Organized</h3>
-            <ul className="window-achievements">
-              {extracurricularsData.events.map((item, idx) => (
-                <li key={idx} className="window-achievement-item">{item}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="window-section">
             <h3 className="window-section-title">⭐ Other Highlights</h3>
             <ul className="window-achievements">
               {extracurricularsData.other.map((item, idx) => (

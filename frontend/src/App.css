@@ -2421,3 +2421,147 @@ body {
   .section-box { padding: 8px 12px; }
   .section-box-header { margin-bottom: 6px; padding-bottom: 4px; }
 }
+
+/* ===== Recruiter-first pass: outcome notes, looking-for note, dated tiles ===== */
+button.stat-note {
+  appearance: none;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  display: block;
+}
+
+button.stat-note:focus-visible,
+.sticky-note-cta:focus-visible {
+  outline: 3px solid #8B5CF6;
+  outline-offset: 2px;
+}
+
+.stat-note-source {
+  margin-top: 6px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  color: #6D28D9;
+  line-height: 1.3;
+}
+
+.sticky-note-title {
+  font-size: 9px;
+  color: #2d1b69;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+
+.sticky-note-list {
+  list-style: none;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+.sticky-note-list .sticky-note-text {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.45;
+  margin: 0 0 6px;
+  padding-left: 12px;
+  position: relative;
+}
+
+.sticky-note-list .sticky-note-text::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  background: #2d1b69;
+}
+
+.sticky-note-cta {
+  appearance: none;
+  background: #2d1b69;
+  color: #FFE87C;
+  border: 2px solid #000;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.hero-email {
+  margin: 6px 0 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.hero-email a {
+  color: #2d1b69;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Dates under experience tiles (the tiles grid, not the What's Next tiles) */
+.section-box:not(.section-box--tiles) .desktop-icon-hint {
+  font-size: 10px;
+  font-weight: 600;
+  color: #5a4a8a;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+.window-icon-logo {
+  object-fit: contain;
+  background: #fff;
+  image-rendering: auto;
+}
+
+/* Bin items are text, not links */
+.trash-item {
+  cursor: default !important;
+}
+
+/* Mobile proof block: hidden on desktop/tablet, replaces the bottom-of-page notes on phones */
+.mobile-proof { display: none; }
+
+@media (max-width: 767px), (max-height: 500px) and (max-width: 1023px), (max-width: 1023px) and (orientation: portrait) {
+  .mobile-proof {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .mobile-proof-notes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .mobile-proof .stat-note {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: auto;
+    margin: 0;
+  }
+
+  .mobile-proof .sticky-note {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: auto;
+    margin: 0;
+    transform: none;
+    flex: none;
+  }
+
+  .desktop > .stat-notes-zone,
+  .desktop > .sticky-note {
+    display: none;
+  }
+}

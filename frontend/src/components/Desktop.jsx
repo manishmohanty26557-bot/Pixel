@@ -16,7 +16,8 @@ import {
   internshipsData, 
   aboutLinksData, 
   whatsNextData, 
-  statNotesData, 
+  statNotesData,
+  projectsData,
   dadJokesAboutAI,
   aboutData,
   contactLinks,
@@ -56,14 +57,26 @@ const Desktop = ({ playSound }) => {
     if (playSound) playSound();
   };
 
+  const openById = (id) => {
+    const project = projectsData.find(p => p.id === id);
+    if (project) handleIconClick(project);
+  };
+
   const handleWindowClose = (projectId) => {
     setOpenWindows(ws => ws.filter(w => w.id !== projectId));
   };
 
-  // Escape closes the top-most window
+  // Escape closes the bin dialogs first, then the top-most window
+  const binOpenRef = useRef(false);
+  binOpenRef.current = showTrash || showTrashConfirm;
   useEffect(() => {
     const onKeyDown = (e) => {
       if (e.key !== 'Escape') return;
+      if (binOpenRef.current) {
+        setShowTrash(false);
+        setShowTrashConfirm(false);
+        return;
+      }
       setOpenWindows(ws => {
         if (!ws.length) return ws;
         const top = ws.reduce((a, b) => (b.zIndex > a.zIndex ? b : a));
@@ -114,7 +127,7 @@ const Desktop = ({ playSound }) => {
       {/* LEFT ZONE: Floating Stat Notes */}
       <div className="stat-notes-zone">
         {statNotesData.map(stat => (
-          <StatNote key={stat.id} stat={stat} />
+          <StatNote key={stat.id} stat={stat} onOpen={openById} />
         ))}
       </div>
 
@@ -123,18 +136,28 @@ const Desktop = ({ playSound }) => {
         <header className="hero-card">
           <div className="hero-text">
             <h1 className="hero-name">{aboutData.name}</h1>
-            <p className="hero-role">Growth Marketer · {aboutData.tagline}</p>
-            <p className="hero-status"><span className="hero-dot" aria-hidden="true" /> Open to growth roles · Delhi / Bangalore</p>
+            <p className="hero-role">{aboutData.tagline} · {aboutData.focus}</p>
+            <p className="hero-status"><span className="hero-dot" aria-hidden="true" /> Growth Intern @ Segwise AI · Open to growth roles · Delhi / Bangalore</p>
+            <p className="hero-email"><a href={emailComposeUrl('Hello Manish')}>{contactLinks.email}</a></p>
           </div>
           <nav className="hero-ctas" aria-label="Quick links">
             <a className="hero-cta hero-cta-primary" href={contactLinks.resume} target="_blank" rel="noopener noreferrer">Resume ↗</a>
             <a className="hero-cta" href={contactLinks.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-            <a className="hero-cta" href={emailComposeUrl('Hello Manish')} target="_blank" rel="noopener noreferrer">Email ↗</a>
+            <a className="hero-cta" href={emailComposeUrl('Hello Manish')}>Email</a>
           </nav>
         </header>
+        {/* Phones: proof and "looking for" right under the hero instead of at the page bottom */}
+        <div className="mobile-proof" aria-label="Highlights">
+          <div className="mobile-proof-notes">
+            {statNotesData.map(stat => (
+              <StatNote key={stat.id} stat={stat} onOpen={openById} />
+            ))}
+          </div>
+          <StickyNote onOpen={() => openById('future-plans')} />
+        </div>
         <SectionBox
-          title="My Past Internship Experience"
-          subtitle="Where I've driven growth before"
+          title="Experience"
+          subtitle="Newest first · tap any for the full story"
           items={internshipsData}
           onIconClick={handleIconClick}
         />
@@ -154,7 +177,7 @@ const Desktop = ({ playSound }) => {
       </div>
 
       {/* RIGHT: Sticky Note */}
-      <StickyNote />
+      <StickyNote onOpen={() => openById('future-plans')} />
 
       {/* BOTTOM LEFT: Terminal */}
       <Terminal />

@@ -4,13 +4,14 @@ export const internshipsData = [
   {
     id: 'segwise-ai',
     title: 'Segwise AI',
+    hint: "Jul '26 – now",
     icon: '🤖',
     logo: '/assets/segwise-logo.png',
     type: 'internship',
     content: {
       role: 'Growth Intern',
       period: 'July 2026 - Present',
-      description: 'Built content systems and distribution loops for an AI product',
+      description: 'The problem: 15 SQLs a month and a domain rating of 47. Not enough people were finding the product, so I built content and distribution loops across YouTube, X, LinkedIn and Reddit.',
       achievements: [
         'Built content workflows for YouTube, X, LinkedIn, and Reddit, generating 200+ LLM citations',
         'Increased organic searches from 2,704 to 3,708 through multi-platform content distribution and backlink exchanges',
@@ -23,8 +24,28 @@ export const internshipsData = [
     }
   },
   {
+    id: 'kankyreacts',
+    title: 'Kankyreacts',
+    hint: "Apr–May '26",
+    icon: '🔥',
+    logo: '/assets/kanki-react-logo.png',
+    type: 'internship',
+    content: {
+      role: 'Social Media Manager',
+      period: 'April 2026 - May 2026',
+      description: 'Social media manager for Kanky Reacts, a Hindi-English reaction creator with 50K+ followers on Instagram.',
+      achievements: [
+        'Closed ₹2L+ in brand deals in a single month',
+        'Improved average engagement rate from 1% to 3%',
+        'Built outreach pipelines across food, skincare, and tech brands'
+      ],
+      skills: ['Content Optimization', 'Brand Deals', 'Creator Outreach']
+    }
+  },
+  {
     id: 'zoop-live',
     title: 'Zoop Live',
+    hint: "Jan–Apr '26",
     icon: '📺',
     logo: '/assets/zoop-live-logo.svg',
     type: 'internship',
@@ -32,7 +53,7 @@ export const internshipsData = [
     content: {
       role: 'Growth Intern (Founder\'s Office)',
       period: 'January 2026 - April 2026',
-      description: 'Led performance marketing initiatives for live commerce platform',
+      description: 'A two-sided live-commerce marketplace: win sellers and buyers on ₹30K/month of Meta. I ran performance marketing for both sides.',
       achievements: [
         'Ran YouTube ads for 20 live sellers, maintaining CPC < ₹2',
         'Managed ₹30K/month Meta ads budget, achieving ₹1.78 cost per result through creative testing and funnel optimization',
@@ -46,8 +67,27 @@ export const internshipsData = [
     }
   },
   {
+    id: 'eleven-studios',
+    title: 'Eleven Studios',
+    hint: "Sep–Nov '25",
+    icon: '🎨',
+    logo: '/assets/eleven-studios-logo.png',
+    type: 'internship',
+    content: {
+      role: 'Growth (Founding Team)',
+      period: 'September 2025 - November 2025',
+      description: 'Founding team at a design-first startup. No playbook: I built the outbound and inbound funnels that brought in clients.',
+      achievements: [
+        'Onboarded 4 clients across India, Dubai, and Singapore, generating ₹1.5L+ project revenue',
+        'Scaled to ₹1.25L monthly revenue'
+      ],
+      skills: ['Outbound Funnels', 'Inbound Funnels', 'Client Acquisition']
+    }
+  },
+  {
     id: 'perfora',
     title: 'Perfora',
+    hint: "Jun–Aug '25",
     icon: '🛍️',
     logo: '/assets/perfora-logo.svg',
     type: 'internship',
@@ -55,7 +95,7 @@ export const internshipsData = [
     content: {
       role: 'Creative Growth Intern',
       period: 'June 2025 - August 2025',
-      description: 'Optimized growth for oral care D2C brand',
+      description: 'Oral-care D2C brand. South India needed its own funnel, so I built it: regional messaging, creators, PDPs and landing pages.',
       achievements: [
         'Optimized 25+ SKUs by improving PDPs, images, and FAQs for SEO and conversion',
         'Localized South India funnels through regional messaging, creatives, and landing pages',
@@ -67,41 +107,6 @@ export const internshipsData = [
         '🏆 Awarded a Pre-Placement Offer (PPO) based on performance and impact'
       ],
       skills: ['Creator Marketing', 'Creative Testing', 'CRO']
-    }
-  },
-  {
-    id: 'eleven-studios',
-    title: 'Eleven Studios',
-    icon: '🎨',
-    logo: '/assets/eleven-studios-logo.png',
-    type: 'internship',
-    content: {
-      role: 'Growth (Founding Team)',
-      period: 'September 2025 - November 2025',
-      description: 'Led growth for design-first startup',
-      achievements: [
-        'Onboarded 4 clients across India, Dubai, and Singapore, generating ₹1.5L+ project revenue',
-        'Scaled to ₹1.25L monthly revenue'
-      ],
-      skills: ['Outbound Funnels', 'Inbound Funnels', 'Client Acquisition']
-    }
-  },
-  {
-    id: 'kankyreacts',
-    title: 'Kankyreacts',
-    icon: '🔥',
-    logo: '/assets/kanki-react-logo.png',
-    type: 'internship',
-    content: {
-      role: 'Social Media Manager',
-      period: 'April 2026 - May 2026',
-      description: '',
-      achievements: [
-        'Closed ₹1L+ in brand deals in a single month',
-        'Improved average engagement rate from 1% to 3%',
-        'Built outreach pipelines across food, skincare, and tech brands'
-      ],
-      skills: ['Content Optimization', 'Brand Deals', 'Creator Outreach']
     }
   }
 ];
@@ -141,7 +146,7 @@ export const aboutLinksData = [
     isLink: true,
     openInNewTab: true,
     pixelIcon: 'resume',
-    url: 'https://www.dropbox.com/scl/fi/jabr2bqqaz7kbnlwjtidl/cv-manish-updated-new-1.pdf?rlkey=onujq4njzfsy6tce9vf81ke88&st=h0e64rj4&dl=0'
+    url: '/manish-mohanty-resume.pdf'
   },
   {
     id: 'perfora-deck',
@@ -151,7 +156,7 @@ export const aboutLinksData = [
     isLink: true,
     openInNewTab: true,
     pixelIcon: 'perforaDeck',
-    url: 'https://tinyurl.com/4zrnpsvn'
+    url: '/manish-mohanty-perfora-deck.pdf'
   },
   {
     id: 'viral-content',
@@ -168,9 +173,9 @@ export const contactLinks = {
   email: 'manishmohanty19@gmail.com'
 };
 
-// Opens Gmail compose in the browser; mailto: does nothing without a mail app
+// mailto: works with any mail client; the address is also shown as text so it can be copied
 export const emailComposeUrl = (subject = '') =>
-  `https://mail.google.com/mail/?view=cm&fs=1&to=${contactLinks.email}${subject ? `&su=${encodeURIComponent(subject)}` : ''}`;
+  `mailto:${contactLinks.email}${subject ? `?subject=${encodeURIComponent(subject)}` : ''}`;
 
 export const whatsNextData = [
   {
@@ -201,52 +206,57 @@ export const projectsData = [
 ];
 
 export const statNotesData = [
-  { id: 's1', value: '30+', label: 'scripts written', rotation: -4, top: 60, left: 40 },
-  { id: 's2', value: '200+', label: 'LLM citations generated', rotation: 5, top: 170, left: 65 },
-  { id: 's3', value: '120+', label: 'creators onboarded', rotation: -6, top: 285, left: 30 },
-  { id: 's4', value: '4', label: 'internships', rotation: 3, top: 395, left: 55 }
+  { id: 's1', value: '₹5L/mo', label: 'South India revenue', source: 'Perfora', opens: 'perfora', rotation: -4, top: 60, left: 40 },
+  { id: 's2', value: '2 PPOs', label: 'pre-placement offers', source: 'Zoop Live + Perfora', opens: 'zoop-live', rotation: 5, top: 170, left: 65 },
+  { id: 's3', value: 'SQLs +40%', label: '15 to 21 in one month', source: 'Segwise AI', opens: 'segwise-ai', rotation: -6, top: 285, left: 30 },
+  { id: 's4', value: '22.8M+', label: 'organic views · ~65K comments', source: 'Perfora + Zoop reels', opens: 'viral-content', rotation: 3, top: 395, left: 55 }
 ];
 
 export const terminalData = [
-  '> status · actively looking',
+  '> now · segwise ai',
   '> location · Delhi · Bangalore',
-  '> role · Growth · open'
+  '> open to · growth roles'
 ];
 
 export const aboutData = {
   name: 'Manish Mohanty',
-  tagline: 'Your Growth Guy',
+  tagline: 'Growth Generalist',
+  focus: 'Creators · Paid ads · Organic & AI search · Outbound',
   email: 'manishmohanty19@gmail.com',
-  phone: '+91-8130625164',
-  education: 'B.A. (Hons) Economics - Delhi College of Arts and Commerce, University of Delhi (6.84 CGPA) | Class XII: 88.6% | Class X: 94.7% - Air Force Bal Bharti School, Lodhi Road',
-  bio: 'Recently turned 21. Drove growth at Zoop and Perfora. Numbers-first, ai pagluu, still figuring it out.',
+  education: 'B.A. (Hons) Economics, Delhi College of Arts and Commerce, University of Delhi (2023–2026)',
+  bio: 'Growth Intern at Segwise AI. Before that, Perfora and Zoop Live, with Pre-Placement Offers at both. A growth generalist: creator-led content, Meta & YouTube ads, organic / AI-search distribution and outbound. Numbers-first.',
   nextTwoMonths: [
-    {
-      icon: '🏠',
-      title: 'Shift to a Flat',
-      description: 'Move into my own place in Bangalore and make a flat feel like home.'
-    },
-    {
-      icon: '🍛',
-      title: 'Have Meghana Biryani',
-      description: 'Finally make the pilgrimage for a proper plate of Meghana Biryani.'
-    },
     {
       icon: '📣',
       title: 'Work in Distribution',
-      description: 'Get better at putting products and content in front of the right audience.'
+      description: 'A full-time growth role at a fast-growing startup in Delhi or Bangalore, putting products and content in front of the right audience.'
+    },
+    {
+      icon: '🔁',
+      title: 'Learn Retention',
+      description: 'My wins are all acquisition and distribution. Retention, lifecycle and CRM are the gap I want to close next.'
     },
     {
       icon: '📚',
       title: 'Read 6 Books',
-      description: '1 book every 10 days founder biographies, growth playbooks, and one sci-fi so my brain doesn\'t fully rot.'
+      description: '1 a month: founder biographies, growth playbooks, and one sci-fi so my brain doesn\'t fully rot.'
+    },
+    {
+      icon: '🍛',
+      title: 'Side quest: Meghana Biryani',
+      description: 'Finally make the pilgrimage for a proper plate of Meghana Biryani.'
     }
   ]
 };
 
 export const stickyNoteData = {
-  line1: 'You miss 100% of the shots you don\'t take.',
-  line2: '— Michael Scott'
+  title: 'Looking for',
+  lines: [
+    'Full-time growth role at a fast-growing startup',
+    'Delhi or Bangalore',
+    'Generalist: creators, paid, organic & outbound'
+  ],
+  cta: 'What I want next →'
 };
 
 export const extracurricularsData = {
@@ -264,9 +274,6 @@ export const extracurricularsData = {
     'Top 5 / 1400 teams - National Case Competition (Hansraj College, DU)',
     'Special Mention – Shark Bowl (Startup Pitch, Ramjas College, DU)',
     'Special Mention - Fiscal Frenzy (Aryabhatta, DU)'
-  ],
-  events: [
-    'Organized Econovision 2.0: 250+ DU participants and a ₹10,000 prize pool'
   ],
   other: [
     '99 percentile - CUET (Mathematics & Economics)',

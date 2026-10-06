@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import Draggable from 'react-draggable';
-import { X, Mail, Phone, GraduationCap } from 'lucide-react';
+import { X, Mail, GraduationCap } from 'lucide-react';
 import { aboutData, skillsData, contactLinks, emailComposeUrl } from '../data/mockData';
 
 const AboutWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) => {
@@ -54,7 +54,7 @@ const AboutWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) => {
             <div className="window-icon"><img src="/assets/manish-avatar.png" alt="" width="40" height="40" className="window-icon-img" /></div>
             <div>
               <h2 className="window-project-title">{aboutData.name}</h2>
-              <p className="window-role">{aboutData.tagline}</p>
+              <p className="window-role">{aboutData.tagline} · {aboutData.focus}</p>
             </div>
           </div>
 
@@ -66,10 +66,7 @@ const AboutWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) => {
             <h3 className="window-section-title">Contact</h3>
             <div className="about-contact">
               <p className="about-contact-item">
-                <Mail size={12} /> <a href={emailComposeUrl()} target="_blank" rel="noopener noreferrer">{aboutData.email}</a>
-              </p>
-              <p className="about-contact-item">
-                <Phone size={12} /> <a href={`tel:${aboutData.phone.replace(/-/g, '')}`}>{aboutData.phone}</a>
+                <Mail size={12} /> <a href={emailComposeUrl()}>{aboutData.email}</a>
               </p>
               <p className="about-contact-item">
                 <GraduationCap size={12} /> {aboutData.education}

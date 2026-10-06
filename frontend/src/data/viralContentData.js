@@ -1,6 +1,9 @@
 // Snapshot of the "Viral Content" Google Sheet (single tab: Sheet1).
-// Columns: Creator, Language, Product, Hook, Reel (hyperlink), Cost.
+// Columns: Creator, Language, Product, Hook, Reel (hyperlink). (Creator fees intentionally not published.)
 // Re-export the sheet and update this file if the sheet changes.
+
+// Instagram view and comment counts read from each post on this date
+export const viewsCheckedOn = 'Oct 2026';
 
 export const viralContentSheetUrl =
   'https://docs.google.com/spreadsheets/d/1lCCFRa-feG-hpk5pgfToyNAn7SZMRpsVrMBZkwNeMGk/edit?usp=sharing';
@@ -15,7 +18,9 @@ export const viralContentSheetUrl =
  * @property {'spoken'|'visual'} hookType
  * @property {'reel'|'post'} format
  * @property {string} url         Instagram link
- * @property {number} cost        Creator fee in INR
+ * @property {number} views       Instagram plays (ig_play_count)
+ * @property {?number} comments   Instagram comment count; null when comments are turned off
+
  */
 
 /** @type {ViralPiece[]} */
@@ -29,7 +34,8 @@ export const viralContent = [
     hookType: 'spoken',
     format: 'reel',
     url: 'https://www.instagram.com/reel/DLM9RT-T96u/',
-    cost: 11000,
+    views: 667562,
+    comments: 8416,
   },
   {
     id: 'sourav',
@@ -40,7 +46,8 @@ export const viralContent = [
     hookType: 'spoken',
     format: 'reel',
     url: 'https://www.instagram.com/reel/DL6ZyeJSLKX/',
-    cost: 15000,
+    views: 362857,
+    comments: 789,
   },
   {
     id: 'sarath',
@@ -51,7 +58,8 @@ export const viralContent = [
     hookType: 'spoken',
     format: 'reel',
     url: 'https://www.instagram.com/reel/DLpURPzRTRV/',
-    cost: 20000,
+    views: 12208081,
+    comments: 10427,
   },
   {
     id: 'keerthana',
@@ -62,7 +70,8 @@ export const viralContent = [
     hookType: 'spoken',
     format: 'reel',
     url: 'https://www.instagram.com/reel/DMekTV0Txx2/',
-    cost: 7000,
+    views: 2866656,
+    comments: 10476,
   },
   {
     id: 'indushree',
@@ -73,7 +82,10 @@ export const viralContent = [
     hookType: 'spoken',
     format: 'reel',
     url: 'https://www.instagram.com/reel/DMw6HCTvWBu/',
-    cost: 2500,
+    views: 4904982,
+    // Comments are now turned off on this reel; ~10K is Manish's figure from before
+    comments: 10000,
+    commentsApprox: true,
   },
   {
     id: 'jomas-journey',
@@ -84,7 +96,8 @@ export const viralContent = [
     hookType: 'visual',
     format: 'reel',
     url: 'https://www.instagram.com/reel/DNNqKDdxjOs/',
-    cost: 20000,
+    views: 960129,
+    comments: 12258,
   },
   {
     id: 'charulatha',
@@ -95,7 +108,8 @@ export const viralContent = [
     hookType: 'spoken',
     format: 'reel',
     url: 'https://www.instagram.com/reel/DMxjoRky0j8/',
-    cost: 8000,
+    views: 332589,
+    comments: 1129,
   },
   {
     id: 'sunny',
@@ -106,7 +120,8 @@ export const viralContent = [
     hookType: 'spoken',
     format: 'reel',
     url: 'https://www.instagram.com/reel/DNNxYwwTKz4/',
-    cost: 3000,
+    views: 419034,
+    comments: 10995,
   },
   {
     id: 'noor',
@@ -117,6 +132,7 @@ export const viralContent = [
     hookType: 'visual',
     format: 'post',
     url: 'https://www.instagram.com/p/DUszGgik24A/',
-    cost: 2500,
+    views: 67951,
+    comments: 699,
   },
 ];

@@ -54,7 +54,11 @@ const Window = ({ project, onClose, zIndex, onFocus, playSound, cascade = 0 }) =
         
         <div className="window-content">
           <div className="window-header-section">
-            <div className="window-icon">{project.icon}</div>
+            <div className="window-icon">
+              {project.logo
+                ? <img src={project.logo} alt="" width="40" height="40" className="window-icon-img window-icon-logo" />
+                : project.icon}
+            </div>
             <div>
               <h2 className="window-project-title">{project.title}</h2>
               <p className="window-role">{project.content.role}</p>
