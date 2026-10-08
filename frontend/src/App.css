@@ -2492,19 +2492,6 @@ button.stat-note:focus-visible,
   text-align: center;
 }
 
-.hero-email {
-  margin: 6px 0 0;
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.hero-email a {
-  color: #2d1b69;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
 /* Dates under experience tiles (the tiles grid, not the What's Next tiles) */
 .section-box:not(.section-box--tiles) .desktop-icon-hint {
   font-size: 10px;
@@ -2602,13 +2589,11 @@ button.stat-note:focus-visible,
 .stat-note-source .brand-link { text-decoration: none; }
 .stat-note-source .brand-link:hover { text-decoration: underline; }
 
-/* Phone: declutter. Hidden here are only true repeats: the hero already has an
-   Email button (address is in About Me), the terminal repeats the hero status
+/* Phone: declutter. Hidden here are only true repeats: the terminal repeats the hero status
    line, the avatar button repeats the About Me tile, the LinkedIn/Resume tiles
    repeat the hero buttons, and section subtitles wrap to two lines of pixel type.
    The Trash stays: the dad-jokes bin lives nowhere else. */
 @media (max-width: 767px), (max-height: 500px) and (max-width: 1023px), (max-width: 1023px) and (orientation: portrait) {
-  .hero-email,
   .terminal-widget,
   .pixel-girl-container,
   .section-box-subtitle,
