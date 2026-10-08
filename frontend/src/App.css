@@ -2597,3 +2597,99 @@ button.stat-note:focus-visible,
   margin: 4px auto 12px;
 }
 .game-platform-row span { display: inline-flex; }
+
+/* Company links on the notes: colour only, underline on hover, so the notes stay calm */
+.stat-note-source .brand-link { text-decoration: none; }
+.stat-note-source .brand-link:hover { text-decoration: underline; }
+
+/* Phone: declutter. Hidden here are only true repeats: the hero already has an
+   Email button (address is in About Me), the terminal repeats the hero status
+   line, the avatar button repeats the About Me tile, the LinkedIn/Resume tiles
+   repeat the hero buttons, and section subtitles wrap to two lines of pixel type.
+   The Trash stays: the dad-jokes bin lives nowhere else. */
+@media (max-width: 767px), (max-height: 500px) and (max-width: 1023px), (max-width: 1023px) and (orientation: portrait) {
+  .hero-email,
+  .terminal-widget,
+  .pixel-girl-container,
+  .section-box-subtitle,
+  .section-box [data-testid="icon-linkedin"],
+  .section-box [data-testid="icon-resume"] { display: none; }
+
+  /* Role: title on its own line, focus areas wrap only between items */
+  .hero-role { font-size: 9px; line-height: 1.9; margin-bottom: 10px; }
+  .hero-role-part { white-space: nowrap; }
+  .hero-role-tagline { display: block; font-size: 11px; line-height: 1.6; margin-bottom: 2px; }
+  .hero-role-tagline .hero-role-sep { display: none; }
+  .hero-status { font-size: 13px; align-items: flex-start; }
+  .hero-status .hero-dot { margin-top: 0.45em; }
+  .hero-status > span:last-child { min-width: 0; }
+
+  /* Stat values on one line ("SQLs +40%" wrapped at 16px) */
+  .mobile-proof .stat-note-value { font-size: 14px; }
+
+  /* Icon labels get the full column width at the laptop's 8px size, so
+     "Kankyreacts" no longer runs into "Zoop Live" (9px pixel type needs 99px,
+     a 360px phone column has 100px) and "Segwise AI" stays on one line */
+  .section-box:not(.section-box--tiles) .section-box-icons > .desktop-icon {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .section-box:not(.section-box--tiles) .desktop-icon-label { font-size: 8px; line-height: 1.6; }
+
+  /* Quick Links is down to 4 tiles: a 2x2 grid instead of 3 + a lone 1 */
+  .section-box:has([data-testid="icon-about-me"]) .section-box-icons > .desktop-icon {
+    flex-basis: 50%;
+    width: 50%;
+  }
+
+  /* Trash: a quiet end-of-page easter egg, right-aligned under the cards */
+  .dock-container { margin: 12px 16px 0 auto; }
+}
+
+/* Phone: What's Next cards stack full width so their titles stay on one line */
+@media (max-width: 767px), (max-height: 500px) and (max-width: 1023px), (max-width: 1023px) and (orientation: portrait) {
+  .section-box--tiles .section-box-icons { grid-template-columns: 1fr; justify-items: stretch; }
+  .section-box--tiles .desktop-icon { width: 100%; max-width: none; justify-content: flex-start; }
+}
+
+/* Phone, pass 2: lighter visual weight. Thin borders, no hard drop shadows,
+   one accent colour per block, and the hero trimmed to name + role + status */
+@media (max-width: 767px), (max-height: 500px) and (max-width: 1023px), (max-width: 1023px) and (orientation: portrait) {
+  .hero-card,
+  .mobile-proof-notes .stat-note,
+  .sticky-note,
+  .section-box {
+    border-width: 1.5px;
+    box-shadow: 0 1px 2px rgba(45, 27, 105, 0.08);
+  }
+  .hero-cta,
+  .hero-cta.hero-cta-primary {
+    border-width: 1.5px;
+    box-shadow: none;
+  }
+
+  /* Hero: keep "Growth Generalist", drop the four focus areas (About Me covers them) */
+  .hero-role-part:not(.hero-role-tagline),
+  .hero-role-tagline .hero-role-sep { display: none; }
+  .hero-role { margin-bottom: 8px; }
+  .hero-status { font-size: 12px; line-height: 1.5; }
+
+  /* Number notes: flat cards, number does the talking */
+  .mobile-proof-notes .stat-note { padding: 10px 12px; transform: none; }
+  .mobile-proof-notes .stat-note-value { margin-bottom: 2px; }
+  .mobile-proof-notes .stat-note-label {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-size: 12px;
+    line-height: 1.35;
+    letter-spacing: 0;
+  }
+  .mobile-proof-notes .stat-note-source { font-size: 11px; margin-top: 4px; }
+
+  /* Looking For: no tape strip, no CTA (What's Next below opens the same window) */
+  .sticky-note-header,
+  .sticky-note-cta { display: none; }
+  .sticky-note { padding: 0; border: 1.5px solid #2d1b69; transform: none; }
+  .sticky-note-content { padding: 12px 14px; }
+  .sticky-note-title { margin-bottom: 6px; }
+  .sticky-note-text { font-size: 13px; }
+}

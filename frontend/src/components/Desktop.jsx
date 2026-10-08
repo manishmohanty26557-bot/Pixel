@@ -136,8 +136,18 @@ const Desktop = ({ playSound }) => {
         <header className="hero-card">
           <div className="hero-text">
             <h1 className="hero-name">{aboutData.name}</h1>
-            <p className="hero-role">{aboutData.tagline} · {aboutData.focus}</p>
-            <p className="hero-status"><span className="hero-dot" aria-hidden="true" /> Growth Intern @ <a href="https://segwise.ai/" target="_blank" rel="noopener noreferrer" className="brand-link">Segwise AI</a> · Open to growth roles · Delhi / Bangalore</p>
+            {/* Each part stays on one line so the pixel font never strands a lone "·" */}
+            <p className="hero-role">
+              {[aboutData.tagline, ...aboutData.focus.split(' · ')].map((part, i, parts) => (
+                <React.Fragment key={part}>
+                  <span className={`hero-role-part${i === 0 ? ' hero-role-tagline' : ''}`}>
+                    {part}{i < parts.length - 1 && <span className="hero-role-sep">{' ·'}</span>}
+                  </span>
+                  {i < parts.length - 1 && ' '}
+                </React.Fragment>
+              ))}
+            </p>
+            <p className="hero-status"><span className="hero-dot" aria-hidden="true" /> <span>Growth Intern @ <a href="https://segwise.ai/" target="_blank" rel="noopener noreferrer" className="brand-link">Segwise AI</a> · Open to growth roles · Delhi / Bangalore</span></p>
             <p className="hero-email"><a href={emailFor('role')} target="_blank" rel="noopener noreferrer">{contactLinks.email}</a></p>
           </div>
           <nav className="hero-ctas" aria-label="Quick links">
