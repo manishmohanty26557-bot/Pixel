@@ -179,8 +179,70 @@ export const contactLinks = {
 };
 
 // mailto: works with any mail client; the address is also shown as text so it can be copied
-export const emailComposeUrl = (subject = '') =>
-  `mailto:${contactLinks.email}${subject ? `?subject=${encodeURIComponent(subject)}` : ''}`;
+/* Email drafts, written from the sender's side (usually a recruiter).
+   [Brackets] are placeholders the sender fills in before sending. */
+const roleBody = (intro) => [
+  'Hi Manish,',
+  '',
+  `I'm [your name], [your role] at [Company]. ${intro}`,
+  '',
+  'Role: [title]',
+  'Location: [Delhi / Bangalore / other]',
+  'A good time for a quick call: [day + time]',
+  '',
+  'Thanks,',
+  '[your name]',
+  '[LinkedIn or phone]',
+].join('\n');
+
+export const EMAIL_TEMPLATES = {
+  // hero "Email", About window
+  role: {
+    subject: 'Growth role at [Company]',
+    body: roleBody('I saw your portfolio and would like to talk about a growth role on our team.'),
+  },
+  // "Next 6 Months" window
+  plans: {
+    subject: 'Growth role at [Company]',
+    body: roleBody('I read your plans for the next 6 months and would like to talk about a growth role on our team.'),
+  },
+  // Growth Game end screen
+  game: {
+    subject: 'Growth role at [Company] (via your Growth Game)',
+    body: roleBody('I played the Growth Game on your portfolio and would like to talk about a growth role on our team.'),
+  },
+};
+
+// Phones and tablets always have a mail app (and often no Gmail web session), so they get mailto:
+const isMobileDevice = () => {
+  if (typeof navigator === 'undefined') return false;
+  const ua = navigator.userAgent || '';
+  return /Android|iPhone|iPad|iPod|Mobile/i.test(ua)
+    || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1); // iPadOS
+};
+
+/* Compose link to Manish with subject + body prefilled.
+   Desktop: Gmail web compose (mailto: does nothing without a mail app).
+   Mobile: mailto:, which opens the phone's mail app. */
+export const emailComposeUrl = (subject = EMAIL_TEMPLATES.role.subject, body = EMAIL_TEMPLATES.role.body) => {
+  const to = contactLinks.email;
+  if (isMobileDevice()) {
+    const q = [
+      subject && `subject=${encodeURIComponent(subject)}`,
+      body && `body=${encodeURIComponent(body)}`,
+    ].filter(Boolean).join('&');
+    return `mailto:${to}${q ? `?${q}` : ''}`;
+  }
+  return `https://mail.google.com/mail/?view=cm&fs=1&to=${to}`
+    + (subject ? `&su=${encodeURIComponent(subject)}` : '')
+    + (body ? `&body=${encodeURIComponent(body)}` : '');
+};
+
+// Compose link from a named template above
+export const emailFor = (key) => {
+  const t = EMAIL_TEMPLATES[key] || EMAIL_TEMPLATES.role;
+  return emailComposeUrl(t.subject, t.body);
+};
 
 export const whatsNextData = [
   {

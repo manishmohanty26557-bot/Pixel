@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import Draggable from 'react-draggable';
 import { X } from 'lucide-react';
-import { aboutData, emailComposeUrl } from '../data/mockData';
+import { aboutData, emailFor } from '../data/mockData';
 
 const FuturePlansWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) => {
   const nodeRef = useRef(null);
@@ -74,7 +74,7 @@ const FuturePlansWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 })
             ))}
           </div>
 
-          <a className="future-cta" href={emailComposeUrl("Let's talk growth")}>
+          <a className="future-cta" href={emailFor('plans')} target="_blank" rel="noopener noreferrer">
             <p>If this sounds like someone you'd want on your team, let's talk →</p>
           </a>
         </div>

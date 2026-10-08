@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState, useCallback } from 'react';
 import Draggable from 'react-draggable';
 import { X } from 'lucide-react';
 import { PLATFORM_LOGOS } from './PlatformLogos';
-import { contactLinks, emailComposeUrl } from '../data/mockData';
+import { contactLinks, emailFor } from '../data/mockData';
 
 const GAME_DURATION = 14;
 const MAX_MISSES = 6;
@@ -349,7 +349,7 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) 
                 </button>
                 <div className="game-cta-links">
                   <a href={contactLinks.resume} target="_blank" rel="noopener noreferrer">Resume ↗</a>
-                  <a href={emailComposeUrl('Hiring: saw your Growth Game')} target="_blank" rel="noopener noreferrer">Hire the real growth guy →</a>
+                  <a href={emailFor('game')} target="_blank" rel="noopener noreferrer">Hire the real growth guy →</a>
                 </div>
               </div>
             )}

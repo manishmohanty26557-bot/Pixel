@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import Draggable from 'react-draggable';
 import { X, Mail, GraduationCap } from 'lucide-react';
-import { aboutData, skillsData, contactLinks, emailComposeUrl } from '../data/mockData';
+import { aboutData, skillsData, contactLinks, emailFor } from '../data/mockData';
 import BrandText from './BrandText';
 
 const AboutWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) => {
@@ -67,7 +67,7 @@ const AboutWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) => {
             <h3 className="window-section-title">Contact</h3>
             <div className="about-contact">
               <p className="about-contact-item">
-                <Mail size={12} /> <a href={emailComposeUrl()}>{aboutData.email}</a>
+                <Mail size={12} /> <a href={emailFor('role')} target="_blank" rel="noopener noreferrer">{aboutData.email}</a>
               </p>
               <p className="about-contact-item">
                 <GraduationCap size={12} /> {aboutData.education}

@@ -21,7 +21,7 @@ import {
   dadJokesAboutAI,
   aboutData,
   contactLinks,
-  emailComposeUrl
+  emailFor
 } from '../data/mockData';
 
 const Desktop = ({ playSound }) => {
@@ -138,12 +138,12 @@ const Desktop = ({ playSound }) => {
             <h1 className="hero-name">{aboutData.name}</h1>
             <p className="hero-role">{aboutData.tagline} · {aboutData.focus}</p>
             <p className="hero-status"><span className="hero-dot" aria-hidden="true" /> Growth Intern @ <a href="https://segwise.ai/" target="_blank" rel="noopener noreferrer" className="brand-link">Segwise AI</a> · Open to growth roles · Delhi / Bangalore</p>
-            <p className="hero-email"><a href={emailComposeUrl('Hello Manish')}>{contactLinks.email}</a></p>
+            <p className="hero-email"><a href={emailFor('role')} target="_blank" rel="noopener noreferrer">{contactLinks.email}</a></p>
           </div>
           <nav className="hero-ctas" aria-label="Quick links">
             <a className="hero-cta hero-cta-primary" href={contactLinks.resume} target="_blank" rel="noopener noreferrer">Resume ↗</a>
             <a className="hero-cta" href={contactLinks.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-            <a className="hero-cta" href={emailComposeUrl('Hello Manish')}>Email</a>
+            <a className="hero-cta" href={emailFor('role')} target="_blank" rel="noopener noreferrer" title={contactLinks.email}>Email ↗</a>
           </nav>
         </header>
         {/* Phones: proof and "looking for" right under the hero instead of at the page bottom */}
