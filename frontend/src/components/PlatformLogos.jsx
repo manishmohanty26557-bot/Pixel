@@ -1,8 +1,5 @@
 import React, { useId } from 'react';
-import {
-  siYoutube, siInstagram, siFacebook, siX, siReddit, siWhatsapp,
-  siThreads, siSnapchat, siPinterest, siTelegram, siDiscord, siQuora
-} from 'simple-icons';
+import { siYoutube, siInstagram, siX, siTiktok, siSubstack } from 'simple-icons';
 
 // Official brand glyphs (Simple Icons, 24x24 viewBox) on an app-icon tile.
 // simple-icons dropped LinkedIn at LinkedIn's request, so its mark is inlined.
@@ -31,19 +28,12 @@ const Tile = ({ size, bg, fg, path, gradient }) => {
 const INSTAGRAM_GRADIENT = [['0%', '#FDF497'], ['5%', '#FDF497'], ['45%', '#FD5949'], ['60%', '#D6249F'], ['90%', '#285AEB']];
 
 const PLATFORMS = [
-  { id: 'youtube', name: 'YouTube', bg: `#${siYoutube.hex}`, fg: '#FFFFFF', path: siYoutube.path },
-  { id: 'instagram', name: 'Instagram', fg: '#FFFFFF', path: siInstagram.path, gradient: INSTAGRAM_GRADIENT },
-  { id: 'facebook', name: 'Facebook', bg: `#${siFacebook.hex}`, fg: '#FFFFFF', path: siFacebook.path },
   { id: 'linkedin', name: 'LinkedIn', bg: '#0A66C2', fg: '#FFFFFF', path: LINKEDIN_PATH },
   { id: 'x', name: 'X', bg: '#000000', fg: '#FFFFFF', path: siX.path },
-  { id: 'reddit', name: 'Reddit', bg: `#${siReddit.hex}`, fg: '#FFFFFF', path: siReddit.path },
-  { id: 'whatsapp', name: 'WhatsApp', bg: `#${siWhatsapp.hex}`, fg: '#FFFFFF', path: siWhatsapp.path },
-  { id: 'threads', name: 'Threads', bg: '#000000', fg: '#FFFFFF', path: siThreads.path },
-  { id: 'snapchat', name: 'Snapchat', bg: `#${siSnapchat.hex}`, fg: '#000000', path: siSnapchat.path },
-  { id: 'pinterest', name: 'Pinterest', bg: `#${siPinterest.hex}`, fg: '#FFFFFF', path: siPinterest.path },
-  { id: 'telegram', name: 'Telegram', bg: `#${siTelegram.hex}`, fg: '#FFFFFF', path: siTelegram.path },
-  { id: 'discord', name: 'Discord', bg: `#${siDiscord.hex}`, fg: '#FFFFFF', path: siDiscord.path },
-  { id: 'quora', name: 'Quora', bg: `#${siQuora.hex}`, fg: '#FFFFFF', path: siQuora.path }
+  { id: 'youtube', name: 'YouTube', bg: `#${siYoutube.hex}`, fg: '#FFFFFF', path: siYoutube.path },
+  { id: 'instagram', name: 'Instagram', fg: '#FFFFFF', path: siInstagram.path, gradient: INSTAGRAM_GRADIENT },
+  { id: 'tiktok', name: 'TikTok', bg: '#000000', fg: '#FFFFFF', path: siTiktok.path },
+  { id: 'substack', name: 'Substack', bg: `#${siSubstack.hex}`, fg: '#FFFFFF', path: siSubstack.path }
 ];
 
 export const PLATFORM_LOGOS = PLATFORMS.map(({ id, name, ...tile }) => ({

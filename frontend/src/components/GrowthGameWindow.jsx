@@ -273,11 +273,11 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) 
               <div className="game-overlay">
                 <h2 className="game-title">Catch the Lead</h2>
                 <p className="game-instructions">
-                  Leads are dropping in from every platform. Tap them before they escape.
+                  Leads are dropping in from your feeds. Tap them before they escape.
                 </p>
                 <div className="game-platform-row" aria-label="Platforms in the game">
                   {PLATFORM_LOGOS.map(({ id, name, Component }) => (
-                    <span key={id} title={name}><Component size={22} /></span>
+                    <span key={id} title={name}><Component size={30} /></span>
                   ))}
                 </div>
                 <p className="game-instructions">
