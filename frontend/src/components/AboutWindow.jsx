@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import Draggable from 'react-draggable';
 import { X, Mail, GraduationCap } from 'lucide-react';
 import { aboutData, skillsData, contactLinks, emailComposeUrl } from '../data/mockData';
+import BrandText from './BrandText';
 
 const AboutWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) => {
   const nodeRef = useRef(null);
@@ -59,7 +60,7 @@ const AboutWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) => {
           </div>
 
           <div className="window-description">
-            <p>{aboutData.bio}</p>
+            <p><BrandText text={aboutData.bio} /></p>
           </div>
 
           <div className="window-section">

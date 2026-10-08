@@ -2565,3 +2565,35 @@ button.stat-note:focus-visible,
     display: none;
   }
 }
+
+/* Company names link out to the brand's own site */
+.window-company-link,
+.brand-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.window-company-link:hover,
+.brand-link:hover { text-decoration-thickness: 2px; }
+
+/* Note body is a button so it stays keyboard-reachable; source links sit beside it */
+.stat-note { cursor: pointer; }
+.stat-note-main {
+  all: unset;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+.stat-note-main:focus-visible { outline: 2px solid #2d1b69; outline-offset: 2px; }
+
+/* Growth game: the platforms leads come from */
+.game-platform-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  max-width: 300px;
+  margin: 4px auto 12px;
+}
+.game-platform-row span { display: inline-flex; }

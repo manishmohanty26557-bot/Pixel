@@ -1,5 +1,6 @@
 import React from 'react';
 import { terminalData } from '../data/mockData';
+import BrandText from './BrandText';
 
 const Terminal = () => {
   return (
@@ -13,7 +14,7 @@ const Terminal = () => {
       <div className="terminal-body">
         {terminalData.map((line, idx) => (
           <div key={idx} className="terminal-line">
-            {line}
+            <BrandText text={line} />
             {idx === terminalData.length - 1 && <span className="terminal-cursor">_</span>}
           </div>
         ))}

@@ -29,6 +29,8 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) 
   const comboFlashTimeoutRef = useRef(null);
   const gameStateRef = useRef('start');
   const timeLeftRef = useRef(GAME_DURATION);
+  const comboRef = useRef(0);
+  const speedupIntervalRef = useRef(null);
 
 
   useEffect(() => {
@@ -64,6 +66,7 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) 
     if (animationRef.current) cancelAnimationFrame(animationRef.current);
     if (spawnIntervalRef.current) clearInterval(spawnIntervalRef.current);
     if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
+    if (speedupIntervalRef.current) clearInterval(speedupIntervalRef.current);
     if (comboFlashTimeoutRef.current) clearTimeout(comboFlashTimeoutRef.current);
   }, []);
 
@@ -108,6 +111,7 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) 
             }
             return newMissed;
           });
+          comboRef.current = 0;
           setCombo(0);
           return false;
         }
@@ -119,6 +123,8 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) 
   }, [endGame]);
 
   const startGame = () => {
+    cleanup();
+    comboRef.current = 0;
     setScore(0);
     setMissed(0);
     setTimeLeft(GAME_DURATION);
@@ -135,15 +141,15 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) 
     spawnIntervalRef.current = setInterval(spawnLead, 1200);
 
     // Faster spawn later to push for a balanced challenge
-    const speedupInterval = setInterval(() => {
+    speedupIntervalRef.current = setInterval(() => {
       if (gameStateRef.current !== 'playing') {
-        clearInterval(speedupInterval);
+        clearInterval(speedupIntervalRef.current);
         return;
       }
       if (timeLeftRef.current < 6 && spawnIntervalRef.current) {
         clearInterval(spawnIntervalRef.current);
         spawnIntervalRef.current = setInterval(spawnLead, 900);
-        clearInterval(speedupInterval);
+        clearInterval(speedupIntervalRef.current);
       }
     }, 1000);
 
@@ -155,9 +161,8 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) 
         endGame();
       }
     }, 1000);
-
-    // Animation loop
-    animationRef.current = requestAnimationFrame(animate);
+    // The animation loop starts from the gameState effect below; starting it
+    // here too ran two loops and made leads fall at double speed
   };
 
   // Re-trigger animation on each render while playing
@@ -184,20 +189,19 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) 
     leadsRef.current = leadsRef.current.filter(l => l.id !== leadId);
     setLeads([...leadsRef.current]);
 
-    // Calculate score based on combo
-    setCombo(prev => {
-      const newCombo = prev + 1;
-      let points = 10;
-      if (newCombo === 2) points = 15;
-      else if (newCombo >= 3) {
-        points = 20;
-        setComboFlash(`COMBO x${newCombo}!`);
-        if (comboFlashTimeoutRef.current) clearTimeout(comboFlashTimeoutRef.current);
-        comboFlashTimeoutRef.current = setTimeout(() => setComboFlash(null), 800);
-      }
-      setScore(prevScore => prevScore + points);
-      return newCombo;
-    });
+    // Score from the combo; kept in a ref so one catch is counted once
+    const newCombo = comboRef.current + 1;
+    comboRef.current = newCombo;
+    let points = 10;
+    if (newCombo === 2) points = 15;
+    else if (newCombo >= 3) {
+      points = 20;
+      setComboFlash(`COMBO x${newCombo}!`);
+      if (comboFlashTimeoutRef.current) clearTimeout(comboFlashTimeoutRef.current);
+      comboFlashTimeoutRef.current = setTimeout(() => setComboFlash(null), 800);
+    }
+    setCombo(newCombo);
+    setScore(prevScore => prevScore + points);
   };
 
  const getEndMessage = () => {
@@ -269,8 +273,13 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) 
               <div className="game-overlay">
                 <h2 className="game-title">Catch the Lead</h2>
                 <p className="game-instructions">
-                  Leads are falling — tap them before they escape.
+                  Leads are dropping in from every platform. Tap them before they escape.
                 </p>
+                <div className="game-platform-row" aria-label="Platforms in the game">
+                  {PLATFORM_LOGOS.map(({ id, name, Component }) => (
+                    <span key={id} title={name}><Component size={22} /></span>
+                  ))}
+                </div>
                 <p className="game-instructions">
                   Miss {MAX_MISSES} and it's game over.
                 </p>
@@ -296,6 +305,7 @@ const GrowthGameWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }) 
                     <div
                       key={lead.id}
                       className="game-lead"
+                      aria-label={`${lead.name} lead`}
                       style={{
                         left: `${lead.x}px`,
                         top: `${lead.y}px`

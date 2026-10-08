@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import Draggable from 'react-draggable';
 import { X } from 'lucide-react';
+import BrandText from './BrandText';
 
 const Window = ({ project, onClose, zIndex, onFocus, playSound, cascade = 0 }) => {
   const nodeRef = useRef(null);
@@ -60,7 +61,11 @@ const Window = ({ project, onClose, zIndex, onFocus, playSound, cascade = 0 }) =
                 : project.icon}
             </div>
             <div>
-              <h2 className="window-project-title">{project.title}</h2>
+              <h2 className="window-project-title">
+                {project.website
+                  ? <a href={project.website} target="_blank" rel="noopener noreferrer" className="window-company-link">{project.title} ↗</a>
+                  : project.title}
+              </h2>
               <p className="window-role">{project.content.role}</p>
               {project.content.period && (
                 <p className="window-period">{project.content.period}</p>
@@ -70,7 +75,7 @@ const Window = ({ project, onClose, zIndex, onFocus, playSound, cascade = 0 }) =
 
           <div className="window-description">
             {project.content.description && (
-              <p><strong>{project.content.description}</strong></p>
+              <p><strong><BrandText text={project.content.description} /></strong></p>
             )}
             {project.content.details && (
               <p className="window-details">{project.content.details}</p>

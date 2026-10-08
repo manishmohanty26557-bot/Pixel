@@ -3,6 +3,7 @@ import Draggable from 'react-draggable';
 import { X } from 'lucide-react';
 import { viralContent } from '../data/viralContentData';
 import './ViralContentWindow.css';
+import BrandText from './BrandText';
 
 const formatViews = (n) => new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }).format(n);
 const byViews = [...viralContent].sort((a, b) => b.views - a.views);
@@ -64,7 +65,7 @@ const ViralContentWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }
           </div>
 
           <p className="window-description viral-intro">
-            {formatViews(totalViews)}+ organic Instagram views across {viralContent.length} creator reels I worked on end to end at Perfora and Zoop Live.
+            {formatViews(totalViews)}+ organic Instagram views across {viralContent.length} creator reels I worked on end to end at <BrandText text="Perfora" /> and <BrandText text="Zoop Live" />.
           </p>
 
           <ul className="viral-grid" aria-live="polite">
@@ -76,7 +77,7 @@ const ViralContentWindow = ({ onClose, zIndex, onFocus, playSound, cascade = 0 }
                     <h3 className="viral-creator">{item.creator}</h3>
                     <div className="viral-tags">
                       <span className="viral-tag viral-tag-lang">{item.language}</span>
-                      <span className="viral-tag">{item.product}</span>
+                      <span className="viral-tag"><BrandText text={item.product} /></span>
                     </div>
                   </div>
                 </div>

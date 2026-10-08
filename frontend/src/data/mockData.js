@@ -4,6 +4,7 @@ export const internshipsData = [
   {
     id: 'segwise-ai',
     title: 'Segwise AI',
+    website: 'https://segwise.ai/',
     hint: "Jul '26 – now",
     icon: '🤖',
     logo: '/assets/segwise-logo.png',
@@ -26,6 +27,7 @@ export const internshipsData = [
   {
     id: 'kankyreacts',
     title: 'Kankyreacts',
+    website: 'https://www.instagram.com/kankyreacts/',
     hint: "Apr–May '26",
     icon: '🔥',
     logo: '/assets/kanki-react-logo.png',
@@ -45,6 +47,7 @@ export const internshipsData = [
   {
     id: 'zoop-live',
     title: 'Zoop Live',
+    website: 'https://zooplive.com/',
     hint: "Jan–Apr '26",
     icon: '📺',
     logo: '/assets/zoop-live-logo.svg',
@@ -69,6 +72,7 @@ export const internshipsData = [
   {
     id: 'eleven-studios',
     title: 'Eleven Studios',
+    website: 'https://www.linkedin.com/company/eleven-design-studio/',
     hint: "Sep–Nov '25",
     icon: '🎨',
     logo: '/assets/eleven-studios-logo.png',
@@ -87,6 +91,7 @@ export const internshipsData = [
   {
     id: 'perfora',
     title: 'Perfora',
+    website: 'https://perforacare.com/',
     hint: "Jun–Aug '25",
     icon: '🛍️',
     logo: '/assets/perfora-logo.svg',
@@ -253,8 +258,7 @@ export const stickyNoteData = {
   title: 'Looking for',
   lines: [
     'Full-time growth role at a fast-growing startup',
-    'Delhi or Bangalore',
-    'Generalist: creators, paid, organic & outbound'
+    'Delhi or Bangalore'
   ],
   cta: 'What I want next →'
 };
