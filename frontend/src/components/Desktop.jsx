@@ -147,7 +147,7 @@ const Desktop = ({ playSound }) => {
                 </React.Fragment>
               ))}
             </p>
-            <p className="hero-status"><span className="hero-dot" aria-hidden="true" /> <span>Growth Intern @ <a href="https://segwise.ai/" target="_blank" rel="noopener noreferrer" className="brand-link">Segwise AI</a> · Open to growth roles · Delhi / Bangalore</span></p>
+            <p className="hero-status"><span className="hero-dot" aria-hidden="true" /> <span>Growth Intern @ <a href="https://segwise.ai/" target="_blank" rel="noopener noreferrer" className="brand-link">Segwise AI</a></span></p>
             <p className="hero-email"><a href={emailFor('role')} target="_blank" rel="noopener noreferrer">{contactLinks.email}</a></p>
           </div>
           <nav className="hero-ctas" aria-label="Quick links">
