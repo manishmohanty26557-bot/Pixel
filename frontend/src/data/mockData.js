@@ -14,12 +14,11 @@ export const internshipsData = [
       period: 'July 2026 - Present',
       description: 'The problem: 15 SQLs a month and a domain rating of 47. Not enough people were finding the product, so I built content and distribution loops across YouTube, X, LinkedIn and Reddit.',
       achievements: [
-        'Built content workflows for YouTube, X, LinkedIn, and Reddit, generating 200+ LLM citations',
-        'Increased organic searches from 2,704 to 3,708 through multi-platform content distribution and backlink exchanges',
-        'Improved domain ranking from 47 to 54 through 30+ monthly backlink exchanges',
-        'Increased SQL bookings from 15 to 21 in one month through improved organic visibility and domain authority',
-        'Built recurring backlink outreach using Instantly and HeyReach',
-        'Developed Claude skills to automate script-writing across YouTube, X, Instagram, LinkedIn, and Reddit'
+        'Built an AI content engine of 10+ Claude skills that writes and scores posts for YouTube, X, LinkedIn and Reddit',
+        'Got Segwise cited 300+ times in AI search through multi-platform content distribution',
+        'Grew organic searches from 2,704 to 3,708 through content distribution and backlink exchanges',
+        'Ran outreach on Instantly and HeyReach that closed 30+ backlink swaps a month, taking domain rating from 47 to 54',
+        'Grew qualified sales meetings (SQLs) from 15 to 21 in one month through better organic visibility and domain authority'
       ],
       skills: ['Content Distribution', 'Automation', 'Analytics']
     }
@@ -37,9 +36,8 @@ export const internshipsData = [
       period: 'April 2026 - May 2026',
       description: 'Social media manager for Kanky Reacts, a Hindi-English reaction creator with 50K+ followers on Instagram.',
       achievements: [
-        'Closed ₹2L+ in brand deals in a single month',
-        'Improved average engagement rate from 1% to 3%',
-        'Built outreach pipelines across food, skincare, and tech brands'
+        'Built outreach pipelines across food, skincare and tech brands, closing ₹1L+ in brand deals in one month',
+        'Raised average engagement from 1% to 8% by running different content experiments'
       ],
       skills: ['Content Optimization', 'Brand Deals', 'Creator Outreach']
     }
@@ -61,7 +59,7 @@ export const internshipsData = [
         'Ran YouTube ads for 20 live sellers, maintaining CPC < ₹2',
         'Managed ₹30K/month Meta ads budget, achieving ₹1.78 cost per result through creative testing and funnel optimization',
         'Scaled Facebook from 60K to 100K followers using shorts-led distribution and performance marketing',
-        'Built and scripted an end-to-end influencer pipeline and designed separate funnels for buyers and sellers',
+        'Built and scripted an end-to-end influencer pipeline with separate funnels for buyers and sellers: 10 influencers, 1M+ organic views',
         'Developed 3 in-house YouTube channels via shorts, ads, and lives, scaling each to 1K+ subscribers',
         'Built Slack bots to track daily Meta ad spend, sales team performance, and top influencer videos',
         '🏆 Pre-Placement Offer (PPO) based on performance and impact'
@@ -83,7 +81,7 @@ export const internshipsData = [
       description: 'Founding team at a design-first startup. No playbook: I built the outbound and inbound funnels that brought in clients.',
       achievements: [
         'Onboarded 4 clients across India, Dubai, and Singapore, generating ₹1.5L+ project revenue',
-        'Scaled to ₹1.25L monthly revenue'
+        'Grew monthly revenue to ₹1.25L by running both outbound and inbound lead funnels'
       ],
       skills: ['Outbound Funnels', 'Inbound Funnels', 'Client Acquisition']
     }
@@ -102,13 +100,11 @@ export const internshipsData = [
       period: 'June 2025 - August 2025',
       description: 'Oral-care D2C brand. South India needed its own funnel, so I built it: regional messaging, creators, PDPs and landing pages.',
       achievements: [
-        'Optimized 25+ SKUs by improving PDPs, images, and FAQs for SEO and conversion',
-        'Localized South India funnels through regional messaging, creatives, and landing pages',
-        'Onboarded 40+ regional creators at ₹5K per creator through targeted outreach and negotiation',
-        'Reduced creator onboarding TAT by 50% through SOPs, achieving a 90% acceptance rate',
-        'Generated ₹5L/month in South India through creator-led growth and PDP optimization',
-        'Improved CTR and funnel efficiency by testing 25+ ad scripts using CTR and hook-rate analysis',
-        'Led the South India Birthday Sale, driving 30% of total birthday campaign revenue',
+        'Ran creator campaigns that reached 30M+ views and 80K+ comments',
+        'Onboarded 40+ regional creators at ₹5K each through targeted outreach and negotiation',
+        'Generated ₹5L/month in South India by localizing messaging, creatives and landing pages',
+        'Led the South India Birthday Sale, which brought in 30% of total campaign revenue',
+        'Reworked PDPs, images and FAQs for 25+ SKUs to lift SEO and conversion',
         '🏆 Awarded a Pre-Placement Offer (PPO) based on performance and impact'
       ],
       skills: ['Creator Marketing', 'Creative Testing', 'CRO']
@@ -162,6 +158,16 @@ export const aboutLinksData = [
     openInNewTab: true,
     pixelIcon: 'perforaDeck',
     url: '/manish-mohanty-perfora-deck.pdf'
+  },
+  {
+    id: 'thalapathy-outreach',
+    title: 'Thalapathy Outreach',
+    icon: '✉️',
+    type: 'link',
+    isLink: true,
+    openInNewTab: true,
+    logo: '/assets/thalapathy-outreach-logo.png',
+    url: 'https://steal-my-outreach-message.vercel.app/'
   },
   {
     id: 'viral-content',
@@ -276,7 +282,7 @@ export const statNotesData = [
   { id: 's1', value: '₹5L/mo', label: 'South India revenue', source: 'Perfora', opens: 'perfora', rotation: -4, top: 60, left: 40 },
   { id: 's2', value: '2 PPOs', label: 'pre-placement offers', source: 'Zoop Live + Perfora', opens: 'zoop-live', rotation: 5, top: 170, left: 65 },
   { id: 's3', value: 'SQLs +40%', label: '15 to 21 in one month', source: 'Segwise AI', opens: 'segwise-ai', rotation: -6, top: 285, left: 30 },
-  { id: 's4', value: '22.8M+', label: 'organic views · ~65K comments', source: 'Perfora + Zoop reels', opens: 'viral-content', rotation: 3, top: 395, left: 55 }
+  { id: 's4', value: '30M+', label: 'views · 80K+ comments', source: 'Perfora creator campaigns', opens: 'perfora', rotation: 3, top: 395, left: 55 }
 ];
 
 export const terminalData = [
@@ -335,15 +341,13 @@ export const extracurricularsData = {
   competitions: [
     '1st place - Ecovision (Economics Debate, DCAC, DU)',
     '2nd place - Econfluence (Quiz, KMC, DU)',
-    '3rd place - Sequence & Scandals (Case Competition, SGGSCC, DU)',
-    'Top 5 / 500 teams – Eco-no-vision (LSR, DU)',
     'Top 5 / 1400 teams - National Case Competition (Hansraj College, DU)',
-    'Special Mention – Shark Bowl (Startup Pitch, Ramjas College, DU)',
-    'Special Mention - Fiscal Frenzy (Aryabhatta, DU)'
+    'Top 5 / 500 teams – Eco-no-vision (Economics Case Competition, LSR, DU)',
+    'Special Mention – Shark Bowl (Startup Pitch, Ramjas College, DU)'
   ],
   other: [
-    '99 percentile - CUET (Mathematics & Economics)',
-    'Published article - "Love is on Sale"'
+    '3,200+ LinkedIn followers - my posts reach 9K–13K impressions',
+    '99 percentile - CUET (Mathematics & Economics)'
   ]
 };
 
