@@ -155,24 +155,25 @@ const Desktop = ({ playSound }) => {
             <a className="hero-cta" href={emailFor('role')} target="_blank" rel="noopener noreferrer" title={contactLinks.email}>Email ↗</a>
           </nav>
         </header>
-        {/* Phones: proof and "looking for" right under the hero instead of at the page bottom */}
+        {/* Phones: a slim stats strip right under the hero */}
         <div className="mobile-proof" aria-label="Highlights">
           <div className="mobile-proof-notes">
             {statNotesData.map(stat => (
               <StatNote key={stat.id} stat={stat} onOpen={openById} />
             ))}
           </div>
-          <StickyNote onOpen={() => openById('future-plans')} />
         </div>
         <SectionBox
           title="Experience"
           subtitle="Newest first · tap any for the full story"
+          variant="experience"
           items={internshipsData}
           onIconClick={handleIconClick}
         />
         <SectionBox
           title="About Me & Quick Links"
           subtitle="Get to know me better"
+          variant="links"
           items={aboutLinksData}
           onIconClick={handleIconClick}
         />
@@ -183,6 +184,8 @@ const Desktop = ({ playSound }) => {
           items={whatsNextData}
           onIconClick={handleIconClick}
         />
+        {/* Phones: "Looking for" closes the page as the final ask */}
+        <StickyNote className="mobile-closing" emailHref={emailFor('role')} />
       </div>
 
       {/* RIGHT: Sticky Note */}

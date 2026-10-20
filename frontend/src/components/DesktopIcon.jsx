@@ -62,6 +62,8 @@ const DesktopIcon = ({ project, onClick, inline = false }) => {
       </div>
       <div className="desktop-icon-label">{project.title}</div>
       {project.hint && <div className="desktop-icon-hint">{project.hint}</div>}
+      {/* Phone list rows only: one line of proof under the company name */}
+      {project.proof && <div className="desktop-icon-proof">{project.proof}</div>}
     </IconContainer>
   );
 };

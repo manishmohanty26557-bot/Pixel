@@ -6,6 +6,7 @@ export const internshipsData = [
     title: 'Segwise AI',
     website: 'https://segwise.ai/',
     hint: "Jul '26 – now",
+    proof: '300+ AI citations · SQLs 15→21',
     icon: '🤖',
     logo: '/assets/segwise-logo.png',
     type: 'internship',
@@ -28,6 +29,7 @@ export const internshipsData = [
     title: 'Kankyreacts',
     website: 'https://www.instagram.com/kankyreacts/',
     hint: "Apr–May '26",
+    proof: '₹1L+ deals · 1%→8% engagement',
     icon: '🔥',
     logo: '/assets/kanki-react-logo.png',
     type: 'internship',
@@ -47,6 +49,7 @@ export const internshipsData = [
     title: 'Zoop Live',
     website: 'https://zooplive.com/',
     hint: "Jan–Apr '26",
+    proof: '₹1.78/result · 1M+ organic views',
     icon: '📺',
     logo: '/assets/zoop-live-logo.svg',
     type: 'internship',
@@ -72,6 +75,7 @@ export const internshipsData = [
     title: 'Eleven Studios',
     website: 'https://www.linkedin.com/company/eleven-design-studio/',
     hint: "Sep–Nov '25",
+    proof: '4 intl clients · ₹1.25L/mo',
     icon: '🎨',
     logo: '/assets/eleven-studios-logo.png',
     type: 'internship',
@@ -91,6 +95,7 @@ export const internshipsData = [
     title: 'Perfora',
     website: 'https://perforacare.com/',
     hint: "Jun–Aug '25",
+    proof: '30M+ views · ₹5L/mo South India',
     icon: '🛍️',
     logo: '/assets/perfora-logo.svg',
     type: 'internship',
@@ -279,10 +284,10 @@ export const projectsData = [
 ];
 
 export const statNotesData = [
-  { id: 's1', value: '₹5L/mo', label: 'South India revenue', source: 'Perfora', opens: 'perfora', rotation: -4, top: 60, left: 40 },
-  { id: 's2', value: '2 PPOs', label: 'pre-placement offers', source: 'Zoop Live + Perfora', opens: 'zoop-live', rotation: 5, top: 170, left: 65 },
-  { id: 's3', value: 'SQLs +40%', label: '15 to 21 in one month', source: 'Segwise AI', opens: 'segwise-ai', rotation: -6, top: 285, left: 30 },
-  { id: 's4', value: '30M+', label: 'views · 80K+ comments', source: 'Perfora creator campaigns', opens: 'perfora', rotation: 3, top: 395, left: 55 }
+  { id: 's1', value: '₹5L/mo', short: 'South India', label: 'South India revenue', source: 'Perfora', opens: 'perfora', rotation: -4, top: 60, left: 40 },
+  { id: 's2', value: '2 PPOs', short: 'Zoop · Perfora', label: 'pre-placement offers', source: 'Zoop Live + Perfora', opens: 'zoop-live', rotation: 5, top: 170, left: 65 },
+  { id: 's3', value: 'SQLs +40%', mobileValue: '+40%', short: 'SQLs', label: '15 to 21 in one month', source: 'Segwise AI', opens: 'segwise-ai', rotation: -6, top: 285, left: 30 },
+  { id: 's4', value: '30M+', short: 'views', label: 'views · 80K+ comments', source: 'Perfora creator campaigns', opens: 'perfora', rotation: 3, top: 395, left: 55 }
 ];
 
 export const terminalData = [

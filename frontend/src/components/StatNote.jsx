@@ -22,6 +22,9 @@ const StatNote = ({ stat, onOpen }) => {
         aria-label={`${stat.value} ${stat.label}, ${stat.source}. Open details`}
       >
         <div className="stat-note-value">{stat.value}</div>
+        {/* Phone stats strip: compact number + one-word label */}
+        <div className="stat-note-mobile-value" aria-hidden="true">{stat.mobileValue || stat.value}</div>
+        <div className="stat-note-short" aria-hidden="true">{stat.short}</div>
         <div className="stat-note-divider">·</div>
         <div className="stat-note-label">{stat.label}</div>
       </button>
