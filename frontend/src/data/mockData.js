@@ -155,16 +155,6 @@ export const aboutLinksData = [
     url: '/manish-mohanty-resume.pdf'
   },
   {
-    id: 'perfora-deck',
-    title: 'Perfora Deck',
-    icon: '📄',
-    type: 'link',
-    isLink: true,
-    openInNewTab: true,
-    pixelIcon: 'perforaDeck',
-    url: '/manish-mohanty-perfora-deck.pdf'
-  },
-  {
     id: 'thalapathy-outreach',
     title: 'Thalapathy Outreach',
     icon: '✉️',
